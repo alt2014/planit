@@ -76,6 +76,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D0F81BB4191D537400E54ACE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		E0D7459D190FAB4400999C2D = {
 			isa = PBXGroup;
 			children = (
@@ -109,6 +116,7 @@
 		E0D745AF190FAB4400999C2D /* planit */ = {
 			isa = PBXGroup;
 			children = (
+				D0F81BB4191D537400E54ACE /* Model */,
 				E0D745B8190FAB4400999C2D /* AppDelegate.h */,
 				E0D745B9190FAB4400999C2D /* AppDelegate.m */,
 				E0D745BB190FAB4500999C2D /* Images.xcassets */,
@@ -443,6 +451,7 @@
 				E0D745D4190FAB4500999C2D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E0D745D5190FAB4500999C2D /* Build configuration list for PBXNativeTarget "planitTests" */ = {
 			isa = XCConfigurationList;
@@ -451,6 +460,7 @@
 				E0D745D7190FAB4500999C2D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
