@@ -20,6 +20,8 @@
 		E0D745CD190FAB4500999C2D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E0D745CB190FAB4500999C2D /* InfoPlist.strings */; };
 		E0D745CF190FAB4500999C2D /* planitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E0D745CE190FAB4500999C2D /* planitTests.m */; };
 		E0D745DD190FB05B00999C2D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0D745DC190FB05B00999C2D /* Main.storyboard */; };
+		E0E20EA8191DD73600B61A52 /* ItineraryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E0E20EA6191DD73600B61A52 /* ItineraryViewController.m */; };
+		E0FD0E98191EB19E007AE809 /* ItineraryItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E0FD0E97191EB19E007AE809 /* ItineraryItemViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +52,10 @@
 		E0D745CC190FAB4500999C2D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E0D745CE190FAB4500999C2D /* planitTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = planitTests.m; sourceTree = "<group>"; };
 		E0D745DC190FB05B00999C2D /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		E0E20EA5191DD73600B61A52 /* ItineraryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItineraryViewController.h; sourceTree = "<group>"; };
+		E0E20EA6191DD73600B61A52 /* ItineraryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItineraryViewController.m; sourceTree = "<group>"; };
+		E0FD0E96191EB19E007AE809 /* ItineraryItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItineraryItemViewController.h; sourceTree = "<group>"; };
+		E0FD0E97191EB19E007AE809 /* ItineraryItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItineraryItemViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +120,10 @@
 				E0D745BB190FAB4500999C2D /* Images.xcassets */,
 				E0D745B0190FAB4400999C2D /* Supporting Files */,
 				E0D745DC190FB05B00999C2D /* Main.storyboard */,
+				E0E20EA5191DD73600B61A52 /* ItineraryViewController.h */,
+				E0E20EA6191DD73600B61A52 /* ItineraryViewController.m */,
+				E0FD0E96191EB19E007AE809 /* ItineraryItemViewController.h */,
+				E0FD0E97191EB19E007AE809 /* ItineraryItemViewController.m */,
 			);
 			path = planit;
 			sourceTree = "<group>";
@@ -244,6 +254,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E0D745BA190FAB4400999C2D /* AppDelegate.m in Sources */,
+				E0FD0E98191EB19E007AE809 /* ItineraryItemViewController.m in Sources */,
+				E0E20EA8191DD73600B61A52 /* ItineraryViewController.m in Sources */,
 				E0D745B6190FAB4400999C2D /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -367,6 +379,7 @@
 				GCC_PREFIX_HEADER = "planit/planit-Prefix.pch";
 				INFOPLIST_FILE = "planit/planit-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -380,6 +393,7 @@
 				GCC_PREFIX_HEADER = "planit/planit-Prefix.pch";
 				INFOPLIST_FILE = "planit/planit-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -443,6 +457,7 @@
 				E0D745D4190FAB4500999C2D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E0D745D5190FAB4500999C2D /* Build configuration list for PBXNativeTarget "planitTests" */ = {
 			isa = XCConfigurationList;
@@ -451,6 +466,7 @@
 				E0D745D7190FAB4500999C2D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
