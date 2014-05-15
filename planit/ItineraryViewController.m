@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 Anh Truong. All rights reserved.
 //
 
+#import "ItineraryItemTableCell.h"
 #import "ItineraryViewController.h"
 
 @interface ItineraryViewController ()
@@ -31,20 +32,32 @@
         expandedSections = [[NSMutableIndexSet alloc] init];
     }
     dummyData = @[@[@"header", @"child1", @"child2", @"child3"]];
+    [self.navigationItem setTitle:@"View Test"];
     
-    
+    self.navigationItem.rightBarButtonItem = self.editButtonItem;
     // Do any additional setup after loading the view from its nib.
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
+    static NSString *CellIdentifier = @"HeaderCell";
+    if(indexPath.row){
+        CellIdentifier = @"ItemCell";
+        ItineraryItemTableCell *cell = (ItineraryItemTableCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        if (cell == nil) {
+            cell = [[ItineraryItemTableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        }
+        cell.AddressLabel.text = @"1766 Santa Cruz Ave, Palo Alto, CA 94304";
+        cell.TimeLabel.text = @"11:00PM - 12:00PM";
+        cell.NameLabel.text = [[dummyData objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+        return cell;
+    }
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
-    cell.textLabel.text = [[dummyData objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+    //cell.textLabel.text = [[dummyData objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
     /*
     if (!indexPath.row)
     {
@@ -78,6 +91,14 @@
     return 1;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.row) {
+        return 58.0f;
+    }
+    else
+        return 27.0f;
+}
 
 - (void)didReceiveMemoryWarning
 {
