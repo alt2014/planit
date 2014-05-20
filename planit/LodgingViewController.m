@@ -1,18 +1,18 @@
 //
-//  ItineraryItemViewController.m
+//  LodgingViewController.m
 //  planit
 //
-//  Created by Anh Truong on 5/10/14.
+//  Created by Anh Truong on 5/20/14.
 //  Copyright (c) 2014 Anh Truong. All rights reserved.
 //
 
-#import "ItineraryItemViewController.h"
+#import "LodgingViewController.h"
 
-@interface ItineraryItemViewController ()
+@interface LodgingViewController ()
 
 @end
 
-@implementation ItineraryItemViewController
+@implementation LodgingViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

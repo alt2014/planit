@@ -2,7 +2,7 @@
 //  ItineraryItemTableCell.h
 //  planit
 //
-//  Created by Anh Truong on 5/11/14.
+//  Created by Anh Truong on 5/16/14.
 //  Copyright (c) 2014 Anh Truong. All rights reserved.
 //
 
@@ -10,8 +10,8 @@
 
 @interface ItineraryItemTableCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *NameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *AddressLabel;
+@property (weak, nonatomic) IBOutlet UILabel *TimeLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *TypeImage;
-@property (weak, nonatomic) IBOutlet UITextView *TimeLabel;
-@property (weak, nonatomic) IBOutlet UITextView *AddressLabel;
 
 @end

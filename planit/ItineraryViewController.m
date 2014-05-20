@@ -15,6 +15,9 @@
 
 @implementation ItineraryViewController
 
+//should pass in the trip name when the edit button is clicked
+//pass in the event when the event is clicked
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -31,49 +34,43 @@
     {
         expandedSections = [[NSMutableIndexSet alloc] init];
     }
-    dummyData = @[@[@"header", @"child1", @"child2", @"child3"]];
+    NSDictionary *item1 = @{@"type" : @"POI",
+                            @"title" : @"Child1"};
+    NSDictionary *item2 = @{@"type" : @"Transport",
+                            @"title" : @"Child2"};
+    NSDictionary *item3 = @{@"type" : @"Lodging",
+                            @"title" : @"Child3"};
+    NSDictionary *item4 = @{@"type" : @"POI",
+                            @"title" : @"Child4"};
+
+
+    dummyData = @[@[@"header", item1, item2, item3], @[@"header2", item4]];
     [self.navigationItem setTitle:@"View Test"];
-    
-    self.navigationItem.rightBarButtonItem = self.editButtonItem;
     // Do any additional setup after loading the view from its nib.
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"HeaderCell";
-    if(indexPath.row){
-        CellIdentifier = @"ItemCell";
+    if(indexPath.row != 0){
+        NSDictionary *cellData = [[dummyData objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+        NSString *CellIdentifier = [cellData valueForKey:@"type"];
         ItineraryItemTableCell *cell = (ItineraryItemTableCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         if (cell == nil) {
+            
             cell = [[ItineraryItemTableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         }
         cell.AddressLabel.text = @"1766 Santa Cruz Ave, Palo Alto, CA 94304";
         cell.TimeLabel.text = @"11:00PM - 12:00PM";
-        cell.NameLabel.text = [[dummyData objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+        cell.NameLabel.text = [cellData valueForKey:@"title"];
         return cell;
     }
+    
+    static NSString *CellIdentifier = @"HeaderCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
-    
-    //cell.textLabel.text = [[dummyData objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
-    /*
-    if (!indexPath.row)
-    {
-        // first row
-         // only top row showing
-        
-    }
-    else
-    {
-        // all other rows
-        cell.textLabel.text = ;
-        cell.accessoryView = nil;
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    }
-    cell.textLabel.text = @"Hi";
-     */
+    cell.textLabel.text = [[dummyData objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
     return cell;
 }
 

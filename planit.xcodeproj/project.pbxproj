@@ -12,6 +12,10 @@
 		D0F81BBD191D844C00E54ACE /* PEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = D0F81BBC191D844C00E54ACE /* PEvent.m */; };
 		D0F81BC0191D848500E54ACE /* Day.m in Sources */ = {isa = PBXBuildFile; fileRef = D0F81BBF191D848500E54ACE /* Day.m */; };
 		D0F81BC3191D853B00E54ACE /* Trip.m in Sources */ = {isa = PBXBuildFile; fileRef = D0F81BC2191D853B00E54ACE /* Trip.m */; };
+		E00A4EAA192ACE6F00990B7C /* ItineraryEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E00A4EA9192ACE6F00990B7C /* ItineraryEditViewController.m */; };
+		E00A4EAD192BEF9400990B7C /* LodgingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E00A4EAC192BEF9400990B7C /* LodgingViewController.m */; };
+		E0723CA3192630330038AF9D /* ItineraryItemTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E0723CA1192630330038AF9D /* ItineraryItemTableCell.m */; };
+		E0723CA4192630330038AF9D /* ItineraryItemTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0723CA2192630330038AF9D /* ItineraryItemTableCell.xib */; };
 		E08999A01924C41B00D24541 /* ItineraryHeaderTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E089999F1924C41B00D24541 /* ItineraryHeaderTableCell.m */; };
 		E0D745AA190FAB4400999C2D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0D745A9190FAB4400999C2D /* Foundation.framework */; };
 		E0D745AC190FAB4400999C2D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0D745AB190FAB4400999C2D /* CoreGraphics.framework */; };
@@ -27,8 +31,6 @@
 		E0D745CF190FAB4500999C2D /* planitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E0D745CE190FAB4500999C2D /* planitTests.m */; };
 		E0D745DD190FB05B00999C2D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0D745DC190FB05B00999C2D /* Main.storyboard */; };
 		E0E20EA8191DD73600B61A52 /* ItineraryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E0E20EA6191DD73600B61A52 /* ItineraryViewController.m */; };
-		E0FD0E98191EB19E007AE809 /* ItineraryItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E0FD0E97191EB19E007AE809 /* ItineraryItemViewController.m */; };
-		E0FD0EA719200956007AE809 /* ItineraryItemTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E0FD0EA619200956007AE809 /* ItineraryItemTableCell.m */; };
 		E0FD0EAA192016CB007AE809 /* TripViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E0FD0EA9192016CB007AE809 /* TripViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -53,6 +55,13 @@
 		D0F81BBF191D848500E54ACE /* Day.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Day.m; path = Model/Day.m; sourceTree = "<group>"; };
 		D0F81BC1191D853B00E54ACE /* Trip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Trip.h; path = Model/Trip.h; sourceTree = "<group>"; };
 		D0F81BC2191D853B00E54ACE /* Trip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Trip.m; path = Model/Trip.m; sourceTree = "<group>"; };
+		E00A4EA8192ACE6F00990B7C /* ItineraryEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItineraryEditViewController.h; sourceTree = "<group>"; };
+		E00A4EA9192ACE6F00990B7C /* ItineraryEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItineraryEditViewController.m; sourceTree = "<group>"; };
+		E00A4EAB192BEF9400990B7C /* LodgingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LodgingViewController.h; sourceTree = "<group>"; };
+		E00A4EAC192BEF9400990B7C /* LodgingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LodgingViewController.m; sourceTree = "<group>"; };
+		E0723CA0192630330038AF9D /* ItineraryItemTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItineraryItemTableCell.h; sourceTree = "<group>"; };
+		E0723CA1192630330038AF9D /* ItineraryItemTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItineraryItemTableCell.m; sourceTree = "<group>"; };
+		E0723CA2192630330038AF9D /* ItineraryItemTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ItineraryItemTableCell.xib; sourceTree = "<group>"; };
 		E089999E1924C41B00D24541 /* ItineraryHeaderTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItineraryHeaderTableCell.h; sourceTree = "<group>"; };
 		E089999F1924C41B00D24541 /* ItineraryHeaderTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItineraryHeaderTableCell.m; sourceTree = "<group>"; };
 		E0D745A6190FAB4400999C2D /* planit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = planit.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -74,10 +83,6 @@
 		E0D745DC190FB05B00999C2D /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		E0E20EA5191DD73600B61A52 /* ItineraryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItineraryViewController.h; sourceTree = "<group>"; };
 		E0E20EA6191DD73600B61A52 /* ItineraryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItineraryViewController.m; sourceTree = "<group>"; };
-		E0FD0E96191EB19E007AE809 /* ItineraryItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItineraryItemViewController.h; sourceTree = "<group>"; };
-		E0FD0E97191EB19E007AE809 /* ItineraryItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItineraryItemViewController.m; sourceTree = "<group>"; };
-		E0FD0EA519200956007AE809 /* ItineraryItemTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItineraryItemTableCell.h; sourceTree = "<group>"; };
-		E0FD0EA619200956007AE809 /* ItineraryItemTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItineraryItemTableCell.m; sourceTree = "<group>"; };
 		E0FD0EA8192016CA007AE809 /* TripViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TripViewController.h; sourceTree = "<group>"; };
 		E0FD0EA9192016CB007AE809 /* TripViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TripViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -164,14 +169,17 @@
 				E0D745DC190FB05B00999C2D /* Main.storyboard */,
 				E0E20EA5191DD73600B61A52 /* ItineraryViewController.h */,
 				E0E20EA6191DD73600B61A52 /* ItineraryViewController.m */,
-				E0FD0E96191EB19E007AE809 /* ItineraryItemViewController.h */,
-				E0FD0E97191EB19E007AE809 /* ItineraryItemViewController.m */,
-				E0FD0EA519200956007AE809 /* ItineraryItemTableCell.h */,
-				E0FD0EA619200956007AE809 /* ItineraryItemTableCell.m */,
 				E0FD0EA8192016CA007AE809 /* TripViewController.h */,
 				E0FD0EA9192016CB007AE809 /* TripViewController.m */,
 				E089999E1924C41B00D24541 /* ItineraryHeaderTableCell.h */,
 				E089999F1924C41B00D24541 /* ItineraryHeaderTableCell.m */,
+				E0723CA0192630330038AF9D /* ItineraryItemTableCell.h */,
+				E0723CA1192630330038AF9D /* ItineraryItemTableCell.m */,
+				E0723CA2192630330038AF9D /* ItineraryItemTableCell.xib */,
+				E00A4EA8192ACE6F00990B7C /* ItineraryEditViewController.h */,
+				E00A4EA9192ACE6F00990B7C /* ItineraryEditViewController.m */,
+				E00A4EAB192BEF9400990B7C /* LodgingViewController.h */,
+				E00A4EAC192BEF9400990B7C /* LodgingViewController.m */,
 			);
 			path = planit;
 			sourceTree = "<group>";
@@ -281,6 +289,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E0D745DD190FB05B00999C2D /* Main.storyboard in Resources */,
+				E0723CA4192630330038AF9D /* ItineraryItemTableCell.xib in Resources */,
 				E0D745B4190FAB4400999C2D /* InfoPlist.strings in Resources */,
 				E0D745BC190FAB4500999C2D /* Images.xcassets in Resources */,
 			);
@@ -307,10 +316,11 @@
 				E0FD0EAA192016CB007AE809 /* TripViewController.m in Sources */,
 				E0D745BA190FAB4400999C2D /* AppDelegate.m in Sources */,
 				E08999A01924C41B00D24541 /* ItineraryHeaderTableCell.m in Sources */,
-				E0FD0E98191EB19E007AE809 /* ItineraryItemViewController.m in Sources */,
-				E0FD0EA719200956007AE809 /* ItineraryItemTableCell.m in Sources */,
 				E0E20EA8191DD73600B61A52 /* ItineraryViewController.m in Sources */,
+				E00A4EAD192BEF9400990B7C /* LodgingViewController.m in Sources */,
 				E0D745B6190FAB4400999C2D /* main.m in Sources */,
+				E00A4EAA192ACE6F00990B7C /* ItineraryEditViewController.m in Sources */,
+				E0723CA3192630330038AF9D /* ItineraryItemTableCell.m in Sources */,
 				D0F81BBA191D83DE00E54ACE /* Pin.m in Sources */,
 				D0F81BBD191D844C00E54ACE /* PEvent.m in Sources */,
 			);
