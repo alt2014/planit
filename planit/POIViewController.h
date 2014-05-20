@@ -1,5 +1,5 @@
 //
-//  LodgingViewController.h
+//  POIViewController.h
 //  planit
 //
 //  Created by Anh Truong on 5/20/14.
@@ -8,13 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LodgingViewController : UIViewController
+@interface POIViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UILabel *NameLabel;
 @property (weak, nonatomic) IBOutlet UITextView *AddressField;
-@property (weak, nonatomic) IBOutlet UILabel *CheckInLabel;
-@property (weak, nonatomic) IBOutlet UILabel *CheckOutLabel;
-@property (weak, nonatomic) IBOutlet UITextView *PhoneField;
-@property (weak, nonatomic) IBOutlet UILabel *ConfirmationLabel;
+@property (weak, nonatomic) IBOutlet UILabel *HoursLabel;
+@property (weak, nonatomic) IBOutlet UILabel *DateLabel;
 @property (weak, nonatomic) IBOutlet UITextView *NotesField;
 
 @end

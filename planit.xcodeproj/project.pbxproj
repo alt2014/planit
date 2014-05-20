@@ -14,6 +14,11 @@
 		D0F81BC3191D853B00E54ACE /* Trip.m in Sources */ = {isa = PBXBuildFile; fileRef = D0F81BC2191D853B00E54ACE /* Trip.m */; };
 		E00A4EAA192ACE6F00990B7C /* ItineraryEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E00A4EA9192ACE6F00990B7C /* ItineraryEditViewController.m */; };
 		E00A4EAD192BEF9400990B7C /* LodgingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E00A4EAC192BEF9400990B7C /* LodgingViewController.m */; };
+		E00A4EB0192BF83000990B7C /* POIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E00A4EAF192BF83000990B7C /* POIViewController.m */; };
+		E00A4EB3192BFA5300990B7C /* TransportationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E00A4EB2192BFA5300990B7C /* TransportationViewController.m */; };
+		E00A4EB6192C03F000990B7C /* TransportationEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E00A4EB5192C03F000990B7C /* TransportationEditViewController.m */; };
+		E00A4EB9192C040600990B7C /* POIEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E00A4EB8192C040600990B7C /* POIEditViewController.m */; };
+		E00A4EBC192C042500990B7C /* LodgingEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E00A4EBB192C042500990B7C /* LodgingEditViewController.m */; };
 		E0723CA3192630330038AF9D /* ItineraryItemTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E0723CA1192630330038AF9D /* ItineraryItemTableCell.m */; };
 		E0723CA4192630330038AF9D /* ItineraryItemTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0723CA2192630330038AF9D /* ItineraryItemTableCell.xib */; };
 		E08999A01924C41B00D24541 /* ItineraryHeaderTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E089999F1924C41B00D24541 /* ItineraryHeaderTableCell.m */; };
@@ -59,6 +64,16 @@
 		E00A4EA9192ACE6F00990B7C /* ItineraryEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItineraryEditViewController.m; sourceTree = "<group>"; };
 		E00A4EAB192BEF9400990B7C /* LodgingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LodgingViewController.h; sourceTree = "<group>"; };
 		E00A4EAC192BEF9400990B7C /* LodgingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LodgingViewController.m; sourceTree = "<group>"; };
+		E00A4EAE192BF82F00990B7C /* POIViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = POIViewController.h; sourceTree = "<group>"; };
+		E00A4EAF192BF83000990B7C /* POIViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = POIViewController.m; sourceTree = "<group>"; };
+		E00A4EB1192BFA5300990B7C /* TransportationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransportationViewController.h; sourceTree = "<group>"; };
+		E00A4EB2192BFA5300990B7C /* TransportationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransportationViewController.m; sourceTree = "<group>"; };
+		E00A4EB4192C03F000990B7C /* TransportationEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransportationEditViewController.h; sourceTree = "<group>"; };
+		E00A4EB5192C03F000990B7C /* TransportationEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransportationEditViewController.m; sourceTree = "<group>"; };
+		E00A4EB7192C040600990B7C /* POIEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = POIEditViewController.h; sourceTree = "<group>"; };
+		E00A4EB8192C040600990B7C /* POIEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = POIEditViewController.m; sourceTree = "<group>"; };
+		E00A4EBA192C042500990B7C /* LodgingEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LodgingEditViewController.h; sourceTree = "<group>"; };
+		E00A4EBB192C042500990B7C /* LodgingEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LodgingEditViewController.m; sourceTree = "<group>"; };
 		E0723CA0192630330038AF9D /* ItineraryItemTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItineraryItemTableCell.h; sourceTree = "<group>"; };
 		E0723CA1192630330038AF9D /* ItineraryItemTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItineraryItemTableCell.m; sourceTree = "<group>"; };
 		E0723CA2192630330038AF9D /* ItineraryItemTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ItineraryItemTableCell.xib; sourceTree = "<group>"; };
@@ -180,6 +195,16 @@
 				E00A4EA9192ACE6F00990B7C /* ItineraryEditViewController.m */,
 				E00A4EAB192BEF9400990B7C /* LodgingViewController.h */,
 				E00A4EAC192BEF9400990B7C /* LodgingViewController.m */,
+				E00A4EAE192BF82F00990B7C /* POIViewController.h */,
+				E00A4EAF192BF83000990B7C /* POIViewController.m */,
+				E00A4EB1192BFA5300990B7C /* TransportationViewController.h */,
+				E00A4EB2192BFA5300990B7C /* TransportationViewController.m */,
+				E00A4EB4192C03F000990B7C /* TransportationEditViewController.h */,
+				E00A4EB5192C03F000990B7C /* TransportationEditViewController.m */,
+				E00A4EB7192C040600990B7C /* POIEditViewController.h */,
+				E00A4EB8192C040600990B7C /* POIEditViewController.m */,
+				E00A4EBA192C042500990B7C /* LodgingEditViewController.h */,
+				E00A4EBB192C042500990B7C /* LodgingEditViewController.m */,
 			);
 			path = planit;
 			sourceTree = "<group>";
@@ -312,11 +337,16 @@
 			files = (
 				D0F81BC0191D848500E54ACE /* Day.m in Sources */,
 				D0F81BB7191D839A00E54ACE /* Event.m in Sources */,
+				E00A4EB6192C03F000990B7C /* TransportationEditViewController.m in Sources */,
 				D0F81BC3191D853B00E54ACE /* Trip.m in Sources */,
 				E0FD0EAA192016CB007AE809 /* TripViewController.m in Sources */,
 				E0D745BA190FAB4400999C2D /* AppDelegate.m in Sources */,
+				E00A4EB9192C040600990B7C /* POIEditViewController.m in Sources */,
+				E00A4EBC192C042500990B7C /* LodgingEditViewController.m in Sources */,
+				E00A4EB0192BF83000990B7C /* POIViewController.m in Sources */,
 				E08999A01924C41B00D24541 /* ItineraryHeaderTableCell.m in Sources */,
 				E0E20EA8191DD73600B61A52 /* ItineraryViewController.m in Sources */,
+				E00A4EB3192BFA5300990B7C /* TransportationViewController.m in Sources */,
 				E00A4EAD192BEF9400990B7C /* LodgingViewController.m in Sources */,
 				E0D745B6190FAB4400999C2D /* main.m in Sources */,
 				E00A4EAA192ACE6F00990B7C /* ItineraryEditViewController.m in Sources */,
