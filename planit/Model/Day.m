@@ -34,4 +34,14 @@
     return [NSArray arrayWithArray: self.events];
 }
 
+- (id) initWithDate: (NSDate*)date {
+    self = [super init];
+    
+    if (self) {
+        self.date = date;
+    }
+    
+    return self;
+}
+
 @end
