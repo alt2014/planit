@@ -23,6 +23,8 @@
 		E00A4EBC192C042500990B7C /* LodgingEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E00A4EBB192C042500990B7C /* LodgingEditViewController.m */; };
 		E0723CA3192630330038AF9D /* ItineraryItemTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E0723CA1192630330038AF9D /* ItineraryItemTableCell.m */; };
 		E0723CA4192630330038AF9D /* ItineraryItemTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0723CA2192630330038AF9D /* ItineraryItemTableCell.xib */; };
+		E081DC7519373453006D22E9 /* TripTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E081DC7419373453006D22E9 /* TripTableViewCell.m */; };
+		E081DC7819373933006D22E9 /* TripAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E081DC7719373933006D22E9 /* TripAddViewController.m */; };
 		E08396D31934320100DCB972 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E08396D21934320100DCB972 /* SWRevealViewController.m */; };
 		E08396D6193433E900DCB972 /* SideBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E08396D5193433E900DCB972 /* SideBarViewController.m */; };
 		E08999A01924C41B00D24541 /* ItineraryHeaderTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E089999F1924C41B00D24541 /* ItineraryHeaderTableCell.m */; };
@@ -84,6 +86,10 @@
 		E0723CA0192630330038AF9D /* ItineraryItemTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItineraryItemTableCell.h; sourceTree = "<group>"; };
 		E0723CA1192630330038AF9D /* ItineraryItemTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItineraryItemTableCell.m; sourceTree = "<group>"; };
 		E0723CA2192630330038AF9D /* ItineraryItemTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ItineraryItemTableCell.xib; sourceTree = "<group>"; };
+		E081DC7319373453006D22E9 /* TripTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TripTableViewCell.h; sourceTree = "<group>"; };
+		E081DC7419373453006D22E9 /* TripTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TripTableViewCell.m; sourceTree = "<group>"; };
+		E081DC7619373933006D22E9 /* TripAddViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TripAddViewController.h; sourceTree = "<group>"; };
+		E081DC7719373933006D22E9 /* TripAddViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TripAddViewController.m; sourceTree = "<group>"; };
 		E08396D11934320100DCB972 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		E08396D21934320100DCB972 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		E08396D4193433E900DCB972 /* SideBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SideBarViewController.h; sourceTree = "<group>"; };
@@ -205,10 +211,14 @@
 				E0D745BB190FAB4500999C2D /* Images.xcassets */,
 				E0D745B0190FAB4400999C2D /* Supporting Files */,
 				E0D745DC190FB05B00999C2D /* Main.storyboard */,
+				E081DC7319373453006D22E9 /* TripTableViewCell.h */,
+				E081DC7419373453006D22E9 /* TripTableViewCell.m */,
 				E0E20EA5191DD73600B61A52 /* ItineraryViewController.h */,
 				E0E20EA6191DD73600B61A52 /* ItineraryViewController.m */,
 				E0FD0EA8192016CA007AE809 /* TripViewController.h */,
 				E0FD0EA9192016CB007AE809 /* TripViewController.m */,
+				E081DC7619373933006D22E9 /* TripAddViewController.h */,
+				E081DC7719373933006D22E9 /* TripAddViewController.m */,
 				E089999E1924C41B00D24541 /* ItineraryHeaderTableCell.h */,
 				E089999F1924C41B00D24541 /* ItineraryHeaderTableCell.m */,
 				E0723CA0192630330038AF9D /* ItineraryItemTableCell.h */,
@@ -361,6 +371,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E081DC7519373453006D22E9 /* TripTableViewCell.m in Sources */,
 				D0F81BC0191D848500E54ACE /* Day.m in Sources */,
 				E08396D31934320100DCB972 /* SWRevealViewController.m in Sources */,
 				D0F81BB7191D839A00E54ACE /* Event.m in Sources */,
@@ -368,6 +379,7 @@
 				E00A4EB6192C03F000990B7C /* TransportationEditViewController.m in Sources */,
 				D0B2CC231934293300818475 /* Address.m in Sources */,
 				D0F81BC3191D853B00E54ACE /* Trip.m in Sources */,
+				E081DC7819373933006D22E9 /* TripAddViewController.m in Sources */,
 				E0FD0EAA192016CB007AE809 /* TripViewController.m in Sources */,
 				E0D745BA190FAB4400999C2D /* AppDelegate.m in Sources */,
 				E00A4EB9192C040600990B7C /* POIEditViewController.m in Sources */,

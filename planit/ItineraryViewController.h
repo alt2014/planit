@@ -8,10 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
+@class Event;
+
+
+
 @interface ItineraryViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>{
     NSMutableIndexSet *expandedSections;
-    NSArray *dummyData;
     __weak IBOutlet UIBarButtonItem *sidebarButton;
 }
+
+@property  (strong, nonatomic) NSArray *daysInTrip;
+
 
 @end
