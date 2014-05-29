@@ -8,6 +8,8 @@
 
 #import "ItineraryItemTableCell.h"
 #import "ItineraryViewController.h"
+#import "SWRevealViewController.h"
+
 
 @interface ItineraryViewController ()
 
@@ -45,6 +47,14 @@
 
 
     dummyData = @[@[@"header", item1, item2, item3], @[@"header2", item4]];
+    sidebarButton.tintColor = [UIColor colorWithWhite:0.96f alpha:0.2f];
+    
+    // Set the side bar button action. When it's tapped, it'll show up the sidebar.
+    sidebarButton.target = self.revealViewController;
+    sidebarButton.action = @selector(revealToggle:);
+    
+    // Set the gesture
+    [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     [self.navigationItem setTitle:@"View Test"];
     // Do any additional setup after loading the view from its nib.
 }

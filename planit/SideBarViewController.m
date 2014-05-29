@@ -1,30 +1,18 @@
 //
-//  TripViewController.m
+//  SideBarViewController.m
 //  planit
 //
-//  Created by Anh Truong on 5/11/14.
+//  Created by Anh Truong on 5/26/14.
 //  Copyright (c) 2014 Anh Truong. All rights reserved.
 //
 
-#import "TripViewController.h"
-#import "Trip.h"
+#import "SideBarViewController.h"
 
-static NSString *tripCellID = @"TripCell";
-static NSString *datePickerCellID = @"DatePickerCell";
-static NSString *addTripSegueID = @"addTrip";
-
-@interface TripViewController ()
-@property (strong, nonatomic) NSMutableArray *trips;
-@property (strong, nonatomic) NSDateFormatter *dateFormatter;
-
-@property (strong, nonatomic) NSIndexPath *datePickerIndexPath;
-@property (assign) NSInteger pickerCellRowHeight;
-
-- (IBAction)dateChanged:(UIDatePicker *)sender;
+@interface SideBarViewController ()
 
 @end
 
-@implementation TripViewController
+@implementation SideBarViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -42,6 +30,8 @@ static NSString *addTripSegueID = @"addTrip";
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
+    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void)didReceiveMemoryWarning
@@ -56,29 +46,26 @@ static NSString *addTripSegueID = @"addTrip";
 {
 #warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 1;
+    return 0;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
 #warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 1;
+    return 0;
 }
 
-
+/*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TripCell"];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"TripCell"];
-    }
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
     
     // Configure the cell...
     
     return cell;
 }
-
+*/
 
 /*
 // Override to support conditional editing of the table view.

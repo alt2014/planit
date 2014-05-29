@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface POIEditViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UITextField *NameField;
 
 @end
