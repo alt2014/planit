@@ -16,5 +16,7 @@
 - (void)addEvent:(Event*)event;
 - (NSArray*)getEvents;
 
+- (id) initWithDate: (NSDate*)date;
+
 
 @end

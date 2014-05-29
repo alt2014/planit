@@ -7,12 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Address.h"
 
 @interface Event : NSObject
 
 @property (strong, nonatomic) NSString *name;
 @property (strong, nonatomic) NSString *notes;
-@property (strong, nonatomic) NSString *where;
+@property (strong, nonatomic) Address *addr;
 @property (strong, nonatomic) NSString *when;
+@property (strong, nonatomic) NSDate *start;
+@property (strong, nonatomic) NSDate *end;
 
 @end

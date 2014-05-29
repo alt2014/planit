@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D0B2CC231934293300818475 /* Address.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B2CC221934293300818475 /* Address.m */; };
+		D0B2CC251934369500818475 /* TripTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B2CC241934369500818475 /* TripTest.m */; };
 		D0F81BB7191D839A00E54ACE /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = D0F81BB6191D839A00E54ACE /* Event.m */; };
 		D0F81BBA191D83DE00E54ACE /* Pin.m in Sources */ = {isa = PBXBuildFile; fileRef = D0F81BB9191D83DE00E54ACE /* Pin.m */; };
 		D0F81BBD191D844C00E54ACE /* PEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = D0F81BBC191D844C00E54ACE /* PEvent.m */; };
@@ -52,6 +54,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D0B2CC211934293300818475 /* Address.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Address.h; path = Model/Address.h; sourceTree = "<group>"; };
+		D0B2CC221934293300818475 /* Address.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Address.m; path = Model/Address.m; sourceTree = "<group>"; };
+		D0B2CC241934369500818475 /* TripTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TripTest.m; sourceTree = "<group>"; };
 		D0F81BB5191D839A00E54ACE /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Event.h; path = Model/Event.h; sourceTree = "<group>"; };
 		D0F81BB6191D839A00E54ACE /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Event.m; path = Model/Event.m; sourceTree = "<group>"; };
 		D0F81BB8191D83DE00E54ACE /* Pin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Pin.h; path = Model/Pin.h; sourceTree = "<group>"; };
@@ -145,6 +150,8 @@
 				D0F81BBF191D848500E54ACE /* Day.m */,
 				D0F81BC1191D853B00E54ACE /* Trip.h */,
 				D0F81BC2191D853B00E54ACE /* Trip.m */,
+				D0B2CC211934293300818475 /* Address.h */,
+				D0B2CC221934293300818475 /* Address.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -243,6 +250,7 @@
 			children = (
 				E0D745CE190FAB4500999C2D /* planitTests.m */,
 				E0D745C9190FAB4500999C2D /* Supporting Files */,
+				D0B2CC241934369500818475 /* TripTest.m */,
 			);
 			path = planitTests;
 			sourceTree = "<group>";
@@ -358,6 +366,7 @@
 				D0F81BB7191D839A00E54ACE /* Event.m in Sources */,
 				E08396D6193433E900DCB972 /* SideBarViewController.m in Sources */,
 				E00A4EB6192C03F000990B7C /* TransportationEditViewController.m in Sources */,
+				D0B2CC231934293300818475 /* Address.m in Sources */,
 				D0F81BC3191D853B00E54ACE /* Trip.m in Sources */,
 				E0FD0EAA192016CB007AE809 /* TripViewController.m in Sources */,
 				E0D745BA190FAB4400999C2D /* AppDelegate.m in Sources */,
@@ -380,6 +389,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0B2CC251934369500818475 /* TripTest.m in Sources */,
 				E0D745CF190FAB4500999C2D /* planitTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
