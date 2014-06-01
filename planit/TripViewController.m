@@ -7,10 +7,23 @@
 //
 
 #import "TripViewController.h"
+#import "TripAddViewController.h"
+#import "Trip.h"
+#import "TripTableViewCell.h"
+#import "ItineraryViewController.h"
+#import "Event.h"
+#import "Day.h"
+
+static NSString *tripCellID = @"TripCell";
+static NSString *addTripSegueID = @"addTrip";
+static NSString *tripDetailSegueID = @"itineraryDetailView";
+const int dPTag = 1;
 
 @interface TripViewController ()
-
+@property (strong, nonatomic) NSMutableArray *trips;
+@property (strong, nonatomic) NSDateFormatter *dateFormatter;
 @end
+
 
 @implementation TripViewController
 
@@ -26,13 +39,22 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self createDateFormatter];
+    if (!self.trips) {
+        self.trips = [[NSMutableArray alloc] init];
+    }
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
+
+- (void)createDateFormatter {
+    
+    self.dateFormatter = [[NSDateFormatter alloc] init];
+    
+    [self.dateFormatter setDateStyle:NSDateFormatterShortStyle];
+    
+    [self.dateFormatter setTimeStyle:NSDateFormatterNoStyle];
+}
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -44,28 +66,30 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 1;
+    NSInteger numRows = [self.trips count];
+    return numRows;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TripCell"];
+    TripTableViewCell *cell;
+    
+    static NSString *cellIdentifier = @"TripCell";
+    
+    Trip* trip = self.trips[indexPath.row];
+    cell = [self.tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"TripCell"];
+        cell = [[TripTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
-    
-    // Configure the cell...
-    
+    cell.tripNameLabel.text = trip.name;
+    cell.tripStartLabel.text = [self.dateFormatter stringFromDate:trip.start];
+    cell.tripEndLabel.text = [self.dateFormatter stringFromDate:trip.end];
     return cell;
 }
 
@@ -107,16 +131,37 @@
     return YES;
 }
 */
+#pragma mark - delegate methods
 
-/*
+- (void)saveTripDetails:(Trip *)trip {
+    
+    [self.trips addObject:trip];
+    NSArray *indexPaths = @[[NSIndexPath indexPathForRow:[self.trips count]-1 inSection:0]];
+    
+    [self.tableView insertRowsAtIndexPaths:indexPaths
+                          withRowAnimation:UITableViewRowAnimationFade];
+}
+
+
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    if ([[segue identifier] isEqualToString:addTripSegueID]){
+        
+        TripAddViewController *controller = [[[segue destinationViewController] viewControllers] objectAtIndex:0];
+        
+        controller.delegate = self;
+    }
+    if ([[segue identifier] isEqualToString:tripDetailSegueID]){
+        
+        ItineraryViewController *controller = [segue destinationViewController];
+        NSIndexPath *selectedIndexPath = [self.tableView indexPathForSelectedRow];
+        Trip *selectedTrip = [self.trips objectAtIndex:selectedIndexPath.row];
+        controller.daysInTrip = [selectedTrip getDays];
+                
+        controller.navigationItem.title = selectedTrip.name;
+    }
 }
-*/
 
 @end

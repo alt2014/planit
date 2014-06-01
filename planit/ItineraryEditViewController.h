@@ -7,11 +7,22 @@
 //
 
 #import <UIKit/UIKit.h>
+@class Event;
+
+@protocol EditEventsDelegate <NSObject>
+
+- (void)changeItineraryEvent:(NSMutableArray *)event;
+- (void)addItineraryEvent:(Event*)event;
+
+@end
 
 @interface ItineraryEditViewController : UIViewController<UITableViewDelegate, UITableViewDataSource>
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *SaveButton;
+- (IBAction)doneClicked:(UIBarButtonItem *)sender;
+
+@property  (weak, nonatomic) id<EditEventsDelegate> delegate;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *AddTransport;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *AddLodging;
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *AddPOI;
+@property (strong, nonatomic) NSMutableArray *itineraryEvents;
+
 
 @end
