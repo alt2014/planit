@@ -39,7 +39,6 @@
     for (Day *d in self.days) {
         NSDate *curr = d.date;
         
-        
         NSDateComponents *date1Components = [cal components:NSEraCalendarUnit | NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit fromDate:curr];
         
         NSComparisonResult comparison = [[cal dateFromComponents:date1Components] compare:[cal dateFromComponents:date2Components]];
@@ -57,7 +56,7 @@
     NSUInteger unitFlags = NSDayCalendarUnit;
     NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     NSDateComponents *components = [calendar components:unitFlags fromDate:dt1 toDate:dt2 options:0];
-    return [components day] + 1;
+    return [components day];
 }
 
 - (id) initWithName: (NSString*)name
@@ -67,24 +66,21 @@
     
     if (self) {
         self.name = name;
-        self.start = start;
-        self.end = end;
         
-        int daysbetween = [Trip daysBetween:start and:end];
-        
+        int daysbetween = [Trip daysBetween:start and:end] + 1;
         // Set up days array
         for (int i = 0; i < daysbetween; i++) {
             NSDate *curr = [NSDate date];
             
             if (i == 0) {
                 // first day so use start date
-                curr = start;
+                curr = [[NSDate alloc] initWithTimeInterval:0 sinceDate:start];
             } else if (i == daysbetween - 1) {
                 // last day of trip so use end date
-                curr = end;
+                curr = [[NSDate alloc] initWithTimeInterval:0 sinceDate:end];
             } else {
                 // add however many days to the start day
-                curr = [start dateByAddingTimeInterval:NUM_SECONDS_IN_MIN * NUM_MINS_IN_HOUR * NUM_HRS_IN_DAY * i];
+                curr = [start dateByAddingTimeInterval: NUM_SECONDS_IN_MIN * NUM_MINS_IN_HOUR * NUM_HRS_IN_DAY * i];
             }
 
             Day *day = [[Day alloc] initWithDate:curr];
@@ -96,8 +92,105 @@
     return self;
 }
 
+- (NSDate*)start {
+    if ([self.days count]) {
+        Day *d = [self.days firstObject];
+        return d.date;
+    }
+    
+    return nil;
+}
+
+- (NSDate*)end {
+    if ([self.days count]) {
+        Day *d = [self.days lastObject];
+        return d.date;
+    }
+    
+    return nil;
+}
+
 - (NSArray*)getDays {
     return [NSArray arrayWithArray:self.days];
+}
+
+- (void)moveStartDateTo: (NSDate*)date {
+    int daysBetween = [Trip daysBetween:self.start and:date];
+    
+    if (daysBetween == 0) {
+        return;
+    }
+    
+    int daysToAdd = NUM_SECONDS_IN_MIN * NUM_MINS_IN_HOUR * NUM_HRS_IN_DAY * daysBetween;
+    
+    for (int i = 0; i < [self.days count]; i++) {
+        Day *d = [self.days objectAtIndex: i];
+        d.date = [d.date dateByAddingTimeInterval: daysToAdd];
+    }
+}
+
+- (BOOL)changeStartDateTo: (NSDate*)date {
+    int daysBetween = [Trip daysBetween: self.start and: date];
+    NSArray *days = [self getDays];
+    
+    // don't allow changing start day to be after the end date
+    if (daysBetween == 0 || (daysBetween >= [days count] && daysBetween > 0)) {
+        return NO;
+    }
+    
+    NSMutableArray *newArray = [[NSMutableArray alloc] init];
+    
+    int countOfNewDaysAdded = 0;
+    
+    // Add new days to the beginning
+    while (daysBetween < 0) {
+        int daysToAdd = NUM_SECONDS_IN_MIN * NUM_MINS_IN_HOUR * NUM_HRS_IN_DAY * countOfNewDaysAdded;
+        Day *d = [[Day alloc] initWithDate:[NSDate dateWithTimeInterval:daysToAdd sinceDate:date]];
+        [newArray addObject:d];
+        countOfNewDaysAdded++;
+        daysBetween++;
+    }
+    
+    for (int i = daysBetween; i < [days count]; i++) {
+        Day *d = [days objectAtIndex:i];
+        [newArray addObject:d];
+    }
+    
+    self.days = newArray;
+    
+    return YES;
+}
+
+- (BOOL)changeEndDateTo: (NSDate *)date {
+    int daysBetween = [Trip daysBetween:self.end and:date];
+    int daysBeforeStart = [Trip daysBetween:self.start and:date];
+    
+    if (daysBetween == 0 || daysBeforeStart < 0) {
+        return NO;
+    }
+    
+    while (daysBetween < 0) {
+        daysBetween++;
+        [self.days removeLastObject];
+    }
+    
+    for (int i = 0; i < daysBetween; i++) {
+        int daysToAdd = NUM_SECONDS_IN_MIN * NUM_MINS_IN_HOUR * NUM_HRS_IN_DAY * i;
+        Day *d = [[Day alloc] initWithDate:[NSDate dateWithTimeInterval:daysToAdd sinceDate:date]];
+        [self.days addObject:d];
+    }
+    
+    
+    
+    return YES;
+}
+
+- (int)lengthOfTrip {
+    if ([self.days count]) {
+        return [self.days count];
+    }
+    
+    return 0;
 }
 
 @end
