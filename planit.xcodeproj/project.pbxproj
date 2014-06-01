@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D08A7E0C193AFB060082B10A /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D08A7E0A193AFB060082B10A /* Model.xcdatamodeld */; };
+		D08A7E13193B05C10082B10A /* CoreDataTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D08A7E12193B05C10082B10A /* CoreDataTableViewController.m */; };
 		D0B2CC231934293300818475 /* Address.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B2CC221934293300818475 /* Address.m */; };
 		D0B2CC251934369500818475 /* TripTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B2CC241934369500818475 /* TripTest.m */; };
 		D0F81BB7191D839A00E54ACE /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = D0F81BB6191D839A00E54ACE /* Event.m */; };
@@ -56,6 +58,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D08A7E0B193AFB060082B10A /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		D08A7E11193B05C10082B10A /* CoreDataTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataTableViewController.h; sourceTree = "<group>"; };
+		D08A7E12193B05C10082B10A /* CoreDataTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataTableViewController.m; sourceTree = "<group>"; };
 		D0B2CC211934293300818475 /* Address.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Address.h; path = Model/Address.h; sourceTree = "<group>"; };
 		D0B2CC221934293300818475 /* Address.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Address.m; path = Model/Address.m; sourceTree = "<group>"; };
 		D0B2CC241934369500818475 /* TripTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TripTest.m; sourceTree = "<group>"; };
@@ -143,6 +148,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D08A7E0D193AFB0D0082B10A /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				D08A7E11193B05C10082B10A /* CoreDataTableViewController.h */,
+				D08A7E12193B05C10082B10A /* CoreDataTableViewController.m */,
+				D08A7E0A193AFB060082B10A /* Model.xcdatamodeld */,
+			);
+			name = CoreData;
+			sourceTree = "<group>";
+		};
 		D0F81BB4191D537400E54ACE /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -204,6 +219,7 @@
 		E0D745AF190FAB4400999C2D /* planit */ = {
 			isa = PBXGroup;
 			children = (
+				D08A7E0D193AFB0D0082B10A /* CoreData */,
 				E08396D01934317B00DCB972 /* Library */,
 				D0F81BB4191D537400E54ACE /* Model */,
 				E0D745B8190FAB4400999C2D /* AppDelegate.h */,
@@ -380,8 +396,10 @@
 				D0B2CC231934293300818475 /* Address.m in Sources */,
 				D0F81BC3191D853B00E54ACE /* Trip.m in Sources */,
 				E081DC7819373933006D22E9 /* TripAddViewController.m in Sources */,
+				D08A7E13193B05C10082B10A /* CoreDataTableViewController.m in Sources */,
 				E0FD0EAA192016CB007AE809 /* TripViewController.m in Sources */,
 				E0D745BA190FAB4400999C2D /* AppDelegate.m in Sources */,
+				D08A7E0C193AFB060082B10A /* Model.xcdatamodeld in Sources */,
 				E00A4EB9192C040600990B7C /* POIEditViewController.m in Sources */,
 				E00A4EBC192C042500990B7C /* LodgingEditViewController.m in Sources */,
 				E00A4EB0192BF83000990B7C /* POIViewController.m in Sources */,
@@ -607,6 +625,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		D08A7E0A193AFB060082B10A /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				D08A7E0B193AFB060082B10A /* Model.xcdatamodel */,
+			);
+			currentVersion = D08A7E0B193AFB060082B10A /* Model.xcdatamodel */;
+			name = Model.xcdatamodeld;
+			path = ../Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = E0D7459E190FAB4400999C2D /* Project object */;
 }
