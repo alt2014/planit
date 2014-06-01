@@ -126,6 +126,12 @@
     for (int i = 0; i < [self.days count]; i++) {
         Day *d = [self.days objectAtIndex: i];
         d.date = [d.date dateByAddingTimeInterval: daysToAdd];
+        
+        // Update Events too
+        for (Event *e in [d getEvents]) {
+            e.start = [e.start dateByAddingTimeInterval:daysToAdd];
+            e.end = [e.end dateByAddingTimeInterval:daysToAdd];
+        }
     }
 }
 
@@ -138,25 +144,22 @@
         return NO;
     }
     
-    NSMutableArray *newArray = [[NSMutableArray alloc] init];
-    
-    int countOfNewDaysAdded = 0;
+    int countOfNewDaysAdded = -1;
+    NSDate *start = self.start;
     
     // Add new days to the beginning
     while (daysBetween < 0) {
         int daysToAdd = NUM_SECONDS_IN_MIN * NUM_MINS_IN_HOUR * NUM_HRS_IN_DAY * countOfNewDaysAdded;
-        Day *d = [[Day alloc] initWithDate:[NSDate dateWithTimeInterval:daysToAdd sinceDate:date]];
-        [newArray addObject:d];
-        countOfNewDaysAdded++;
+        Day *d = [[Day alloc] initWithDate:[NSDate dateWithTimeInterval:daysToAdd sinceDate: start]];
+        [self.days insertObject:d atIndex:0];
+
+        countOfNewDaysAdded--;
         daysBetween++;
     }
     
-    for (int i = daysBetween; i < [days count]; i++) {
-        Day *d = [days objectAtIndex:i];
-        [newArray addObject:d];
+    for (int i = 0 ; i < daysBetween; i++) {
+        [self.days removeObjectAtIndex:0];
     }
-    
-    self.days = newArray;
     
     return YES;
 }
