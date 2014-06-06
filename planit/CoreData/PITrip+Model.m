@@ -66,20 +66,20 @@
         return nil;
     }
     
-//    NSArray *sorted = [matches sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
-//        if ([obj1 isKindOfClass:[PITrip class]] && [obj2 isKindOfClass:[PITrip class]]) {
-//            PITrip *a = obj1;
-//            PITrip *b = obj2;
-//            NSDate *date1 = [a start];
-//            NSDate *date2 = [b start];
-//            
-//            return [date1 compare:date2];
-//        }
-//        
-//        return NSOrderedSame;
-//    }];
+    NSArray *sorted = [matches sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+        if ([obj1 isKindOfClass:[PITrip class]] && [obj2 isKindOfClass:[PITrip class]]) {
+            PITrip *a = obj1;
+            PITrip *b = obj2;
+            NSDate *date1 = [a start];
+            NSDate *date2 = [b start];
+            
+            return [date1 compare:date2];
+        }
+        
+        return NSOrderedSame;
+    }];
     
-    return matches;
+    return sorted;
 }
 
 
@@ -106,127 +106,127 @@
     return nil;
 }
 
-//- (NSArray*)getDays {
-//    NSMutableArray *array = [NSMutableArray arrayWithArray:[self.days allObjects]];
-//    
-//    NSArray *sorted = [array sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
-//        if ([obj1 isKindOfClass:[PIDay class]] && [obj2 isKindOfClass:[PIDay class]]) {
-//            PIDay *a = obj1;
-//            PIDay *b = obj2;
-//            NSDate *first = a.date;
-//            NSDate *second = b.date;
-//            return [first compare:second];
-//        }
-//        
-//        NSLog(@"Yo man why are there objects that aren't DAYS in this Trip.days array!");
-//        return NSOrderedSame;
-//    }];
-//    
-//    return sorted;
-//}
+- (NSArray*)getDaysArray {
+    NSMutableArray *array = [NSMutableArray arrayWithArray:[self.days allObjects]];
+    
+    NSArray *sorted = [array sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+        if ([obj1 isKindOfClass:[PIDay class]] && [obj2 isKindOfClass:[PIDay class]]) {
+            PIDay *a = obj1;
+            PIDay *b = obj2;
+            NSDate *first = a.date;
+            NSDate *second = b.date;
+            return [first compare:second];
+        }
+        
+        NSLog(@"Yo man why are there objects that aren't DAYS in this Trip.days array!");
+        return NSOrderedSame;
+    }];
+    
+    return sorted;
+}
 
-//- (NSDate*)start {
-//    if ([self.days count]) {
-//        PIDay *d = [[self getDays] firstObject];
-//        return d.date;
-//    }
-//    
-//    return nil;
-//}
-//
-//- (NSDate*)end {
-//    if ([self.days count]) {
-//        PIDay *d = [[self getDays] lastObject];
-//        return d.date;
-//    }
-//    
-//    return nil;
-//}
+- (NSDate*)start {
+    if ([self.days count]) {
+        PIDay *d = [[self getDaysArray] firstObject];
+        return d.date;
+    }
+    
+    return nil;
+}
 
-//- (void)moveStartDateTo: (NSDate*)date {
-//    int daysBetween = [PITrip daysBetween:self.start and:date];
-//    
-//    if (daysBetween == 0) {
-//        return;
-//    }
-//    
-//    int daysToAdd =  SECS_IN_A_DAY * daysBetween;
-//    
-//    NSArray *days = [self getDays];
-//    
-//    for (int i = 0; i < [self.days count]; i++) {
-//        PIDay *d = [days objectAtIndex: i];
-//        d.date = [d.date dateByAddingTimeInterval: daysToAdd];
-//        NSSet *events = d.events;
-//        
-//        // Update Events too
-//        for (PIEvent *e in events) {
-//            e.start = [e.start dateByAddingTimeInterval:daysToAdd];
-//            e.end = [e.end dateByAddingTimeInterval:daysToAdd];
-//        }
-//    }
-//}
-//
-//- (BOOL)changeStartDateTo: (NSDate*)date {
-//    int daysBetween = [PITrip daysBetween: self.start and: date];
-//    NSArray *days = [self getDays];
-//    
-//    // don't allow changing start day to be after the end date
-//    if (daysBetween == 0 || (daysBetween >= [days count] && daysBetween > 0)) {
-//        return NO;
-//    }
-//    
-//    int countOfNewDaysAdded = -1;
-//    NSDate *start = [NSDate dateWithTimeInterval:0 sinceDate:self.start];
-//    NSManagedObjectContext *context = self.managedObjectContext;
-//    
-//    // Add new days to the beginning
-//    while (daysBetween < 0) {
-//        int daysToAdd = SECS_IN_A_DAY * countOfNewDaysAdded;
-//        PIDay *d = [PIDay createDay:[NSDate dateWithTimeInterval:daysToAdd sinceDate: start] inManagedObjectContext: context];
-//        [self addDaysObject:d];
-//        
-//        countOfNewDaysAdded--;
-//        daysBetween++;
-//    }
-//    
-//    for (int i = 0 ; i < daysBetween; i++) {
-//        [context deleteObject:[days objectAtIndex:i]];
-//    }
-//    
-//    return YES;
-//}
-//
-//- (BOOL)changeEndDateTo: (NSDate *)date {
-//    int daysBetween = [PITrip daysBetween:self.end and:date];
-//    int daysBeforeStart = [PITrip daysBetween:self.start and:date];
-//    
-//    if (daysBetween == 0 || daysBeforeStart < 0) {
-//        return NO;
-//    }
-//    
-//    NSArray *days = [self getDays];
-//    NSManagedObjectContext *context = self.managedObjectContext;
-//    
-//    int count = 1;
-//    
-//    while (daysBetween < 0) {
-//        [context deleteObject:[days objectAtIndex:[days count] - count]];
-//        count++;
-//        daysBetween++;
-//    }
-//    
-//    for (int i = 0; i < daysBetween; i++) {
-//        int daysToAdd = SECS_IN_A_DAY * i;
-//        PIDay *d = [PIDay createDay:[NSDate dateWithTimeInterval:daysToAdd sinceDate:date] inManagedObjectContext:self.managedObjectContext];
-//        [self addDaysObject:d];
-//    }
-//    
-//    return YES;
-//}
-//
-//- (int)lengthOfTrip {
-//    return [self.days count];
-//}
+- (NSDate*)end {
+    if ([self.days count]) {
+        PIDay *d = [[self getDaysArray] lastObject];
+        return d.date;
+    }
+    
+    return nil;
+}
+
+- (void)moveStartDateTo: (NSDate*)date {
+    int daysBetween = [PITrip daysBetween:self.start and:date];
+    
+    if (daysBetween == 0) {
+        return;
+    }
+    
+    int daysToAdd =  SECS_IN_A_DAY * daysBetween;
+    
+    NSArray *days = [self getDaysArray];
+    
+    for (int i = 0; i < [self.days count]; i++) {
+        PIDay *d = [days objectAtIndex: i];
+        d.date = [d.date dateByAddingTimeInterval: daysToAdd];
+        NSSet *events = d.events;
+        
+        // Update Events too
+        for (PIEvent *e in events) {
+            e.start = [e.start dateByAddingTimeInterval:daysToAdd];
+            e.end = [e.end dateByAddingTimeInterval:daysToAdd];
+        }
+    }
+}
+
+- (BOOL)changeStartDateTo: (NSDate*)date {
+    int daysBetween = [PITrip daysBetween: self.start and: date];
+    NSArray *days = [self getDaysArray];
+    
+    // don't allow changing start day to be after the end date
+    if (daysBetween == 0 || (daysBetween >= [days count] && daysBetween > 0)) {
+        return NO;
+    }
+    
+    int countOfNewDaysAdded = -1;
+    NSDate *start = [NSDate dateWithTimeInterval:0 sinceDate:self.start];
+    NSManagedObjectContext *context = self.managedObjectContext;
+    
+    // Add new days to the beginning
+    while (daysBetween < 0) {
+        int daysToAdd = SECS_IN_A_DAY * countOfNewDaysAdded;
+        PIDay *d = [PIDay createDay:[NSDate dateWithTimeInterval:daysToAdd sinceDate: start] inManagedObjectContext: context];
+        [self addDaysObject:d];
+        
+        countOfNewDaysAdded--;
+        daysBetween++;
+    }
+    
+    for (int i = 0 ; i < daysBetween; i++) {
+        [context deleteObject:[days objectAtIndex:i]];
+    }
+    
+    return YES;
+}
+
+- (BOOL)changeEndDateTo: (NSDate *)date {
+    int daysBetween = [PITrip daysBetween:self.end and:date];
+    int daysBeforeStart = [PITrip daysBetween:self.start and:date];
+    
+    if (daysBetween == 0 || daysBeforeStart < 0) {
+        return NO;
+    }
+    
+    NSArray *days = [self getDaysArray];
+    NSManagedObjectContext *context = self.managedObjectContext;
+    
+    int count = 1;
+    
+    while (daysBetween < 0) {
+        [context deleteObject:[days objectAtIndex:[days count] - count]];
+        count++;
+        daysBetween++;
+    }
+    
+    for (int i = 0; i < daysBetween; i++) {
+        int daysToAdd = SECS_IN_A_DAY * i;
+        PIDay *d = [PIDay createDay:[NSDate dateWithTimeInterval:daysToAdd sinceDate:date] inManagedObjectContext:self.managedObjectContext];
+        [self addDaysObject:d];
+    }
+    
+    return YES;
+}
+
+- (int)lengthOfTrip {
+    return [self.days count];
+}
 
 @end

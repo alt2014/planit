@@ -24,35 +24,35 @@
 // Returns a Day for the given date
 // Note: For the date comparison, only year, month, and day are compared.
 //       Time is ignored.
-//- (PIDay*)getDayForDate:(NSDate*)date;
-//
-//- (NSArray*)getDays;
-//
-///*
-// Moves down or up the start date and retains event and duration
-// 
-// Example: Trip from 1/1/2011 to 1/4/2011
-// Setting date to 1/5/2011 will change the start and end date to
-// StartDate = 1/5/2011
-// EndDate = 1/8/2011 and events will
-// */
-//- (void)moveStartDateTo:(NSDate*)date;
-//
-///*
-// Changes the start date to a later or earlier time.
-// If the new start date is earlier than the old start date, days will be
-// added to the beginning of the days array.
-// If the new start date is later than the old, days before the new start date
-// will be deleted.
-// */
-//- (BOOL)changeStartDateTo:(NSDate*)date;
-///* Similar to start date */
-//- (BOOL)changeEndDateTo:(NSDate*)date;
-//
-//// Returns the length of the trip in days
-//- (int)lengthOfTrip;
-//
-//- (NSDate*)start;
-//- (NSDate*)end;
+- (PIDay*)getDayForDate:(NSDate*)date;
+
+- (NSArray*)getDaysArray;
+
+/*
+ Moves down or up the start date and retains event and duration
+ 
+ Example: Trip from 1/1/2011 to 1/4/2011
+ Setting date to 1/5/2011 will change the start and end date to
+ StartDate = 1/5/2011
+ EndDate = 1/8/2011 and events will
+ */
+- (void)moveStartDateTo:(NSDate*)date;
+
+/*
+ Changes the start date to a later or earlier time.
+ If the new start date is earlier than the old start date, days will be
+ added to the beginning of the days array.
+ If the new start date is later than the old, days before the new start date
+ will be deleted.
+ */
+- (BOOL)changeStartDateTo:(NSDate*)date;
+/* Similar to start date */
+- (BOOL)changeEndDateTo:(NSDate*)date;
+
+// Returns the length of the trip in days
+- (int)lengthOfTrip;
+
+- (NSDate*)start;
+- (NSDate*)end;
 
 @end
