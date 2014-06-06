@@ -27,6 +27,17 @@
 - (void)addEvent:(Event *)event {
     if (event) {
         [self.events addObject:event];
+        NSArray *sorted = [self.events sortedArrayUsingComparator:^NSComparisonResult(Event *obj1, Event *obj2) {
+            if ([obj1 isKindOfClass:[Event class]] && [obj2 isKindOfClass:[Event class]]) {
+                NSDate *first = obj1.start;
+                NSDate *second = obj2.start;
+                return [first compare:second];
+            }
+            
+            NSLog(@"Yo man why are there objects that ARENT EVENTS in this Day.Events array?!");
+            return NSOrderedSame;
+        }];
+        self.events = [NSMutableArray arrayWithArray:sorted];
     }
 }
 

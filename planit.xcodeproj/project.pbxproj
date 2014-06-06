@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D02FE448194248E900B7151C /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D02FE446194248E900B7151C /* Model.xcdatamodeld */; };
+		D02FE44B1942494700B7151C /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D02FE44A1942494700B7151C /* DataManager.m */; };
+		D02FE46319424A6500B7151C /* PIEvent+Model.m in Sources */ = {isa = PBXBuildFile; fileRef = D02FE46219424A6500B7151C /* PIEvent+Model.m */; };
+		D02FE46619424A7700B7151C /* PIDay+Model.m in Sources */ = {isa = PBXBuildFile; fileRef = D02FE46519424A7700B7151C /* PIDay+Model.m */; };
+		D02FE46919424A8500B7151C /* PITrip+Model.m in Sources */ = {isa = PBXBuildFile; fileRef = D02FE46819424A8500B7151C /* PITrip+Model.m */; };
+		D02FE47519424EF900B7151C /* PIEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = D02FE47419424EF900B7151C /* PIEvent.m */; };
+		D02FE47819424EF900B7151C /* PIDay.m in Sources */ = {isa = PBXBuildFile; fileRef = D02FE47719424EF900B7151C /* PIDay.m */; };
+		D02FE47B19424EF900B7151C /* PITrip.m in Sources */ = {isa = PBXBuildFile; fileRef = D02FE47A19424EF900B7151C /* PITrip.m */; };
 		D0B2CC231934293300818475 /* Address.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B2CC221934293300818475 /* Address.m */; };
 		D0B2CC251934369500818475 /* TripTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D0B2CC241934369500818475 /* TripTest.m */; };
 		D0F81BB7191D839A00E54ACE /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = D0F81BB6191D839A00E54ACE /* Event.m */; };
@@ -60,6 +68,21 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D02FE447194248E900B7151C /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		D02FE4491942494700B7151C /* DataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataManager.h; path = CoreData/DataManager.h; sourceTree = "<group>"; };
+		D02FE44A1942494700B7151C /* DataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataManager.m; path = CoreData/DataManager.m; sourceTree = "<group>"; };
+		D02FE46119424A6500B7151C /* PIEvent+Model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "PIEvent+Model.h"; path = "CoreData/PIEvent+Model.h"; sourceTree = "<group>"; };
+		D02FE46219424A6500B7151C /* PIEvent+Model.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "PIEvent+Model.m"; path = "CoreData/PIEvent+Model.m"; sourceTree = "<group>"; };
+		D02FE46419424A7700B7151C /* PIDay+Model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "PIDay+Model.h"; path = "CoreData/PIDay+Model.h"; sourceTree = "<group>"; };
+		D02FE46519424A7700B7151C /* PIDay+Model.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "PIDay+Model.m"; path = "CoreData/PIDay+Model.m"; sourceTree = "<group>"; };
+		D02FE46719424A8500B7151C /* PITrip+Model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "PITrip+Model.h"; path = "CoreData/PITrip+Model.h"; sourceTree = "<group>"; };
+		D02FE46819424A8500B7151C /* PITrip+Model.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "PITrip+Model.m"; path = "CoreData/PITrip+Model.m"; sourceTree = "<group>"; };
+		D02FE47319424EF900B7151C /* PIEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PIEvent.h; path = CoreData/PIEvent.h; sourceTree = "<group>"; };
+		D02FE47419424EF900B7151C /* PIEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PIEvent.m; path = CoreData/PIEvent.m; sourceTree = "<group>"; };
+		D02FE47619424EF900B7151C /* PIDay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PIDay.h; path = CoreData/PIDay.h; sourceTree = "<group>"; };
+		D02FE47719424EF900B7151C /* PIDay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PIDay.m; path = CoreData/PIDay.m; sourceTree = "<group>"; };
+		D02FE47919424EF900B7151C /* PITrip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PITrip.h; path = CoreData/PITrip.h; sourceTree = "<group>"; };
+		D02FE47A19424EF900B7151C /* PITrip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PITrip.m; path = CoreData/PITrip.m; sourceTree = "<group>"; };
 		D0B2CC211934293300818475 /* Address.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Address.h; path = Model/Address.h; sourceTree = "<group>"; };
 		D0B2CC221934293300818475 /* Address.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Address.m; path = Model/Address.m; sourceTree = "<group>"; };
 		D0B2CC241934369500818475 /* TripTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TripTest.m; sourceTree = "<group>"; };
@@ -149,6 +172,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D08A7E0D193AFB0D0082B10A /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				D02FE47919424EF900B7151C /* PITrip.h */,
+				D02FE47A19424EF900B7151C /* PITrip.m */,
+				D02FE47619424EF900B7151C /* PIDay.h */,
+				D02FE47719424EF900B7151C /* PIDay.m */,
+				D02FE47319424EF900B7151C /* PIEvent.h */,
+				D02FE47419424EF900B7151C /* PIEvent.m */,
+				D02FE46119424A6500B7151C /* PIEvent+Model.h */,
+				D02FE46219424A6500B7151C /* PIEvent+Model.m */,
+				D02FE46419424A7700B7151C /* PIDay+Model.h */,
+				D02FE46519424A7700B7151C /* PIDay+Model.m */,
+				D02FE46719424A8500B7151C /* PITrip+Model.h */,
+				D02FE46819424A8500B7151C /* PITrip+Model.m */,
+				D02FE446194248E900B7151C /* Model.xcdatamodeld */,
+				D02FE4491942494700B7151C /* DataManager.h */,
+				D02FE44A1942494700B7151C /* DataManager.m */,
+			);
+			name = CoreData;
+			sourceTree = "<group>";
+		};
 		D0F81BB4191D537400E54ACE /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -418,15 +463,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				E081DC7519373453006D22E9 /* TripTableViewCell.m in Sources */,
+				D02FE44B1942494700B7151C /* DataManager.m in Sources */,
 				D0F81BC0191D848500E54ACE /* Day.m in Sources */,
 				E08396D31934320100DCB972 /* SWRevealViewController.m in Sources */,
 				D0F81BB7191D839A00E54ACE /* Event.m in Sources */,
 				E08396D6193433E900DCB972 /* SideBarViewController.m in Sources */,
 				D0B2CC231934293300818475 /* Address.m in Sources */,
+				D02FE46619424A7700B7151C /* PIDay+Model.m in Sources */,
+				D02FE46319424A6500B7151C /* PIEvent+Model.m in Sources */,
+				D02FE46919424A8500B7151C /* PITrip+Model.m in Sources */,
 				D0F81BC3191D853B00E54ACE /* Trip.m in Sources */,
+				D02FE47B19424EF900B7151C /* PITrip.m in Sources */,
 				E081DC7819373933006D22E9 /* TripAddViewController.m in Sources */,
+				D02FE47819424EF900B7151C /* PIDay.m in Sources */,
 				E0FD0EAA192016CB007AE809 /* TripViewController.m in Sources */,
+				D02FE47519424EF900B7151C /* PIEvent.m in Sources */,
 				E0D745BA190FAB4400999C2D /* AppDelegate.m in Sources */,
+				D02FE448194248E900B7151C /* Model.xcdatamodeld in Sources */,
 				E00A4EB9192C040600990B7C /* POIEditViewController.m in Sources */,
 				E00A4EB0192BF83000990B7C /* POIViewController.m in Sources */,
 				E08999A01924C41B00D24541 /* ItineraryHeaderTableCell.m in Sources */,
@@ -651,6 +704,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		D02FE446194248E900B7151C /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				D02FE447194248E900B7151C /* Model.xcdatamodel */,
+			);
+			currentVersion = D02FE447194248E900B7151C /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = E0D7459E190FAB4400999C2D /* Project object */;
 }
