@@ -10,8 +10,7 @@
 
 @interface ItineraryItemTableCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *NameLabel;
-@property (weak, nonatomic) IBOutlet UILabel *AddressLabel;
 @property (weak, nonatomic) IBOutlet UILabel *TimeLabel;
-@property (weak, nonatomic) IBOutlet UIImageView *TypeImage;
+@property (weak, nonatomic) IBOutlet UITextView *AddressTextField;
 
 @end

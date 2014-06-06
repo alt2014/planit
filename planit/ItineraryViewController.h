@@ -12,7 +12,7 @@
 
 
 
-@interface ItineraryViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>{
+@interface ItineraryViewController : UIViewController{
     NSMutableIndexSet *expandedSections;
     __weak IBOutlet UIBarButtonItem *sidebarButton;
 }

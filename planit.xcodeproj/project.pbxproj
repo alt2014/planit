@@ -18,9 +18,10 @@
 		E00A4EAD192BEF9400990B7C /* LodgingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E00A4EAC192BEF9400990B7C /* LodgingViewController.m */; };
 		E00A4EB0192BF83000990B7C /* POIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E00A4EAF192BF83000990B7C /* POIViewController.m */; };
 		E00A4EB3192BFA5300990B7C /* TransportationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E00A4EB2192BFA5300990B7C /* TransportationViewController.m */; };
-		E00A4EB6192C03F000990B7C /* TransportationEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E00A4EB5192C03F000990B7C /* TransportationEditViewController.m */; };
 		E00A4EB9192C040600990B7C /* POIEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E00A4EB8192C040600990B7C /* POIEditViewController.m */; };
-		E00A4EBC192C042500990B7C /* LodgingEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E00A4EBB192C042500990B7C /* LodgingEditViewController.m */; };
+		E02CEFF71941E62F00A0C90A /* accomodations53.png in Resources */ = {isa = PBXBuildFile; fileRef = E02CEFF41941E62F00A0C90A /* accomodations53.png */; };
+		E02CEFF81941E62F00A0C90A /* POI53.png in Resources */ = {isa = PBXBuildFile; fileRef = E02CEFF51941E62F00A0C90A /* POI53.png */; };
+		E02CEFF91941E62F00A0C90A /* transportation53.png in Resources */ = {isa = PBXBuildFile; fileRef = E02CEFF61941E62F00A0C90A /* transportation53.png */; };
 		E0723CA3192630330038AF9D /* ItineraryItemTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E0723CA1192630330038AF9D /* ItineraryItemTableCell.m */; };
 		E0723CA4192630330038AF9D /* ItineraryItemTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0723CA2192630330038AF9D /* ItineraryItemTableCell.xib */; };
 		E081DC7519373453006D22E9 /* TripTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E081DC7419373453006D22E9 /* TripTableViewCell.m */; };
@@ -28,6 +29,9 @@
 		E08396D31934320100DCB972 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E08396D21934320100DCB972 /* SWRevealViewController.m */; };
 		E08396D6193433E900DCB972 /* SideBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E08396D5193433E900DCB972 /* SideBarViewController.m */; };
 		E08999A01924C41B00D24541 /* ItineraryHeaderTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E089999F1924C41B00D24541 /* ItineraryHeaderTableCell.m */; };
+		E0B5DE5D1941FBF500438535 /* foreign-exchange30.png in Resources */ = {isa = PBXBuildFile; fileRef = E0B5DE5A1941FBF500438535 /* foreign-exchange30.png */; };
+		E0B5DE5E1941FBF500438535 /* list-icon30.png in Resources */ = {isa = PBXBuildFile; fileRef = E0B5DE5B1941FBF500438535 /* list-icon30.png */; };
+		E0B5DE5F1941FBF500438535 /* weather30.png in Resources */ = {isa = PBXBuildFile; fileRef = E0B5DE5C1941FBF500438535 /* weather30.png */; };
 		E0D745AA190FAB4400999C2D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0D745A9190FAB4400999C2D /* Foundation.framework */; };
 		E0D745AC190FAB4400999C2D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0D745AB190FAB4400999C2D /* CoreGraphics.framework */; };
 		E0D745AE190FAB4400999C2D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0D745AD190FAB4400999C2D /* UIKit.framework */; };
@@ -77,12 +81,11 @@
 		E00A4EAF192BF83000990B7C /* POIViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = POIViewController.m; sourceTree = "<group>"; };
 		E00A4EB1192BFA5300990B7C /* TransportationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransportationViewController.h; sourceTree = "<group>"; };
 		E00A4EB2192BFA5300990B7C /* TransportationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransportationViewController.m; sourceTree = "<group>"; };
-		E00A4EB4192C03F000990B7C /* TransportationEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransportationEditViewController.h; sourceTree = "<group>"; };
-		E00A4EB5192C03F000990B7C /* TransportationEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransportationEditViewController.m; sourceTree = "<group>"; };
 		E00A4EB7192C040600990B7C /* POIEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = POIEditViewController.h; sourceTree = "<group>"; };
 		E00A4EB8192C040600990B7C /* POIEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = POIEditViewController.m; sourceTree = "<group>"; };
-		E00A4EBA192C042500990B7C /* LodgingEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LodgingEditViewController.h; sourceTree = "<group>"; };
-		E00A4EBB192C042500990B7C /* LodgingEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LodgingEditViewController.m; sourceTree = "<group>"; };
+		E02CEFF41941E62F00A0C90A /* accomodations53.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = accomodations53.png; sourceTree = "<group>"; };
+		E02CEFF51941E62F00A0C90A /* POI53.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = POI53.png; sourceTree = "<group>"; };
+		E02CEFF61941E62F00A0C90A /* transportation53.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = transportation53.png; sourceTree = "<group>"; };
 		E0723CA0192630330038AF9D /* ItineraryItemTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItineraryItemTableCell.h; sourceTree = "<group>"; };
 		E0723CA1192630330038AF9D /* ItineraryItemTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItineraryItemTableCell.m; sourceTree = "<group>"; };
 		E0723CA2192630330038AF9D /* ItineraryItemTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ItineraryItemTableCell.xib; sourceTree = "<group>"; };
@@ -96,6 +99,9 @@
 		E08396D5193433E900DCB972 /* SideBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SideBarViewController.m; sourceTree = "<group>"; };
 		E089999E1924C41B00D24541 /* ItineraryHeaderTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItineraryHeaderTableCell.h; sourceTree = "<group>"; };
 		E089999F1924C41B00D24541 /* ItineraryHeaderTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItineraryHeaderTableCell.m; sourceTree = "<group>"; };
+		E0B5DE5A1941FBF500438535 /* foreign-exchange30.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "foreign-exchange30.png"; sourceTree = "<group>"; };
+		E0B5DE5B1941FBF500438535 /* list-icon30.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "list-icon30.png"; sourceTree = "<group>"; };
+		E0B5DE5C1941FBF500438535 /* weather30.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = weather30.png; sourceTree = "<group>"; };
 		E0D745A6190FAB4400999C2D /* planit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = planit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0D745A9190FAB4400999C2D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		E0D745AB190FAB4400999C2D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -162,6 +168,42 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
+		E02CEFEC1941BBC800A0C90A /* View Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				E081DC7419373453006D22E9 /* TripTableViewCell.m */,
+				E081DC7319373453006D22E9 /* TripTableViewCell.h */,
+				E0723CA0192630330038AF9D /* ItineraryItemTableCell.h */,
+				E0723CA2192630330038AF9D /* ItineraryItemTableCell.xib */,
+				E0723CA1192630330038AF9D /* ItineraryItemTableCell.m */,
+				E089999E1924C41B00D24541 /* ItineraryHeaderTableCell.h */,
+				E089999F1924C41B00D24541 /* ItineraryHeaderTableCell.m */,
+			);
+			name = "View Helpers";
+			sourceTree = "<group>";
+		};
+		E02CEFFA1941F06A00A0C90A /* Edit View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				E00A4EA8192ACE6F00990B7C /* ItineraryEditViewController.h */,
+				E00A4EA9192ACE6F00990B7C /* ItineraryEditViewController.m */,
+				E00A4EB7192C040600990B7C /* POIEditViewController.h */,
+				E00A4EB8192C040600990B7C /* POIEditViewController.m */,
+			);
+			name = "Edit View Controllers";
+			sourceTree = "<group>";
+		};
+		E03B8EBB193B0FB800D7A798 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				E0B5DE601941FBFF00438535 /* Menu Icons */,
+				E02CEFF41941E62F00A0C90A /* accomodations53.png */,
+				E02CEFF51941E62F00A0C90A /* POI53.png */,
+				E02CEFF61941E62F00A0C90A /* transportation53.png */,
+			);
+			name = Assets;
+			sourceTree = "<group>";
+		};
 		E08396D01934317B00DCB972 /* Library */ = {
 			isa = PBXGroup;
 			children = (
@@ -169,6 +211,16 @@
 				E08396D21934320100DCB972 /* SWRevealViewController.m */,
 			);
 			name = Library;
+			sourceTree = "<group>";
+		};
+		E0B5DE601941FBFF00438535 /* Menu Icons */ = {
+			isa = PBXGroup;
+			children = (
+				E0B5DE5A1941FBF500438535 /* foreign-exchange30.png */,
+				E0B5DE5B1941FBF500438535 /* list-icon30.png */,
+				E0B5DE5C1941FBF500438535 /* weather30.png */,
+			);
+			name = "Menu Icons";
 			sourceTree = "<group>";
 		};
 		E0D7459D190FAB4400999C2D = {
@@ -204,40 +256,28 @@
 		E0D745AF190FAB4400999C2D /* planit */ = {
 			isa = PBXGroup;
 			children = (
+				E03B8EBB193B0FB800D7A798 /* Assets */,
 				E08396D01934317B00DCB972 /* Library */,
 				D0F81BB4191D537400E54ACE /* Model */,
 				E0D745B8190FAB4400999C2D /* AppDelegate.h */,
 				E0D745B9190FAB4400999C2D /* AppDelegate.m */,
 				E0D745BB190FAB4500999C2D /* Images.xcassets */,
 				E0D745B0190FAB4400999C2D /* Supporting Files */,
+				E02CEFFA1941F06A00A0C90A /* Edit View Controllers */,
+				E02CEFEC1941BBC800A0C90A /* View Helpers */,
 				E0D745DC190FB05B00999C2D /* Main.storyboard */,
-				E081DC7319373453006D22E9 /* TripTableViewCell.h */,
-				E081DC7419373453006D22E9 /* TripTableViewCell.m */,
 				E0E20EA5191DD73600B61A52 /* ItineraryViewController.h */,
 				E0E20EA6191DD73600B61A52 /* ItineraryViewController.m */,
 				E0FD0EA8192016CA007AE809 /* TripViewController.h */,
 				E0FD0EA9192016CB007AE809 /* TripViewController.m */,
 				E081DC7619373933006D22E9 /* TripAddViewController.h */,
 				E081DC7719373933006D22E9 /* TripAddViewController.m */,
-				E089999E1924C41B00D24541 /* ItineraryHeaderTableCell.h */,
-				E089999F1924C41B00D24541 /* ItineraryHeaderTableCell.m */,
-				E0723CA0192630330038AF9D /* ItineraryItemTableCell.h */,
-				E0723CA1192630330038AF9D /* ItineraryItemTableCell.m */,
-				E0723CA2192630330038AF9D /* ItineraryItemTableCell.xib */,
-				E00A4EA8192ACE6F00990B7C /* ItineraryEditViewController.h */,
-				E00A4EA9192ACE6F00990B7C /* ItineraryEditViewController.m */,
 				E00A4EAB192BEF9400990B7C /* LodgingViewController.h */,
 				E00A4EAC192BEF9400990B7C /* LodgingViewController.m */,
 				E00A4EAE192BF82F00990B7C /* POIViewController.h */,
 				E00A4EAF192BF83000990B7C /* POIViewController.m */,
 				E00A4EB1192BFA5300990B7C /* TransportationViewController.h */,
 				E00A4EB2192BFA5300990B7C /* TransportationViewController.m */,
-				E00A4EB4192C03F000990B7C /* TransportationEditViewController.h */,
-				E00A4EB5192C03F000990B7C /* TransportationEditViewController.m */,
-				E00A4EB7192C040600990B7C /* POIEditViewController.h */,
-				E00A4EB8192C040600990B7C /* POIEditViewController.m */,
-				E00A4EBA192C042500990B7C /* LodgingEditViewController.h */,
-				E00A4EBB192C042500990B7C /* LodgingEditViewController.m */,
 				E08396D4193433E900DCB972 /* SideBarViewController.h */,
 				E08396D5193433E900DCB972 /* SideBarViewController.m */,
 			);
@@ -349,10 +389,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E02CEFF71941E62F00A0C90A /* accomodations53.png in Resources */,
 				E0D745DD190FB05B00999C2D /* Main.storyboard in Resources */,
 				E0723CA4192630330038AF9D /* ItineraryItemTableCell.xib in Resources */,
 				E0D745B4190FAB4400999C2D /* InfoPlist.strings in Resources */,
+				E02CEFF81941E62F00A0C90A /* POI53.png in Resources */,
+				E0B5DE5F1941FBF500438535 /* weather30.png in Resources */,
 				E0D745BC190FAB4500999C2D /* Images.xcassets in Resources */,
+				E0B5DE5E1941FBF500438535 /* list-icon30.png in Resources */,
+				E0B5DE5D1941FBF500438535 /* foreign-exchange30.png in Resources */,
+				E02CEFF91941E62F00A0C90A /* transportation53.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -376,14 +422,12 @@
 				E08396D31934320100DCB972 /* SWRevealViewController.m in Sources */,
 				D0F81BB7191D839A00E54ACE /* Event.m in Sources */,
 				E08396D6193433E900DCB972 /* SideBarViewController.m in Sources */,
-				E00A4EB6192C03F000990B7C /* TransportationEditViewController.m in Sources */,
 				D0B2CC231934293300818475 /* Address.m in Sources */,
 				D0F81BC3191D853B00E54ACE /* Trip.m in Sources */,
 				E081DC7819373933006D22E9 /* TripAddViewController.m in Sources */,
 				E0FD0EAA192016CB007AE809 /* TripViewController.m in Sources */,
 				E0D745BA190FAB4400999C2D /* AppDelegate.m in Sources */,
 				E00A4EB9192C040600990B7C /* POIEditViewController.m in Sources */,
-				E00A4EBC192C042500990B7C /* LodgingEditViewController.m in Sources */,
 				E00A4EB0192BF83000990B7C /* POIViewController.m in Sources */,
 				E08999A01924C41B00D24541 /* ItineraryHeaderTableCell.m in Sources */,
 				E0E20EA8191DD73600B61A52 /* ItineraryViewController.m in Sources */,

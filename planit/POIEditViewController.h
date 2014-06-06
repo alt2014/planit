@@ -9,7 +9,17 @@
 #import <UIKit/UIKit.h>
 @class Event;
 
+@protocol AddEventDelegate <NSObject>
+
+- (void)saveEventDetails:(Event *)eventn isNewEvent:(BOOL)isNewEvent;
+
+@end
+
 @interface POIEditViewController : UITableViewController
+@property (strong, nonatomic) Event *event;
+@property (strong, nonatomic) NSDateFormatter *dateFormatter;
+@property (strong, nonatomic) NSDateFormatter *timeFormatter;
+@property  (weak, nonatomic) id<AddEventDelegate> delegate;
 - (IBAction)cancelClicked:(UIBarButtonItem *)sender;
 - (IBAction)saveClicked:(UIBarButtonItem *)sender;
 @property (strong, nonatomic) Event *POIEvent;

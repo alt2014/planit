@@ -7,6 +7,8 @@
 //
 
 #import "POIViewController.h"
+#import "Event.h"
+
 
 @interface POIViewController ()
 
@@ -26,7 +28,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     // Do any additional setup after loading the view.
+}
+
+- (void)setLabels
+{
+    self.NameLabel.text = self.event.name;    
 }
 
 - (void)didReceiveMemoryWarning

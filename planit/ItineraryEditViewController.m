@@ -9,11 +9,18 @@
 #import "ItineraryEditViewController.h"
 #import "Event.h"
 #import "ItineraryItemTableCell.h"
+#import "POIEditViewController.h"
+#import "Day.h"
+#import "ItineraryHeaderTableCell.h"
+
+#define eventCellHeight 82;
+#define headerCellHeight 27;
 
 @interface ItineraryEditViewController ()
-@property (strong, nonatomic) NSDateFormatter *dateFormatter;
 @end
 static NSString *addPOISegueID = @"addPOISegue";
+static NSString *editPOISegueID = @"editPOISegue";
+
 NSMutableIndexSet *expandedSections;
 @implementation ItineraryEditViewController
 
@@ -29,16 +36,6 @@ NSMutableIndexSet *expandedSections;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self createDateFormatter];
-}
-
-- (void)createDateFormatter {
-    
-    self.dateFormatter = [[NSDateFormatter alloc] init];
-    
-    [self.dateFormatter setDateStyle:NSDateFormatterShortStyle];
-    
-    [self.dateFormatter setTimeStyle:NSDateFormatterNoStyle];
 }
 
 - (void)didReceiveMemoryWarning
@@ -47,120 +44,129 @@ NSMutableIndexSet *expandedSections;
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark-TableView Data Source
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if(indexPath.row != 0){
-        Event *cellData = [[self.itineraryEvents objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
-        //hardcoded, change to adapt to more events
-        NSString *CellIdentifier = [cellData valueForKey:@"POI"];
-        ItineraryItemTableCell *cell = (ItineraryItemTableCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-        if (cell == nil) {
-            cell = [[ItineraryItemTableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-        }
-        cell.AddressLabel.text = cellData.addr.asString;
-        //insert time formatter
-        NSString *startTime = [self.dateFormatter stringFromDate:cellData.start];
-        NSString *endTime = [self.dateFormatter stringFromDate:cellData.end];
-        NSMutableString *timeStr = [NSMutableString new];
-        [timeStr appendString:startTime];
-        [timeStr appendString:@" - "];
-        [timeStr appendString:endTime];
         
-        cell.TimeLabel.text = timeStr;
-        cell.NameLabel.text = cellData.name;
-        return cell;
+        //hardcoded, change to adapt to more events
+        NSString *CellIdentifier = @"POI";
+        return [self eventCellForIndexPath:indexPath cellIdentifier:CellIdentifier];
+        
     }
-    
-    static NSString *CellIdentifier = @"HeaderCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    return [self headerCellForSection:indexPath.section];
+}
+
+- (UITableViewCell *)eventCellForIndexPath:(NSIndexPath *)indexPath cellIdentifier:(NSString *)cellIdentifier
+{
+    Event *cellData = [[[self.listOfDays objectAtIndex:indexPath.section] getEvents] objectAtIndex:indexPath.row];
+    ItineraryItemTableCell *cell = (ItineraryItemTableCell *)[self.tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell = [[ItineraryItemTableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
-    cell.textLabel.text = [[self.itineraryEvents objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+    cell.AddressTextField.text = cellData.addr.asString;
+    //insert time formatter
+    NSString *startTime = [self.timeFormatter stringFromDate:cellData.start];
+    NSString *endTime = [self.timeFormatter stringFromDate:cellData.end];
+    NSMutableString *timeStr = [NSMutableString new];
+    [timeStr appendString:startTime];
+    [timeStr appendString:@" - "];
+    [timeStr appendString:endTime];
+    
+    cell.TimeLabel.text = timeStr;
+    cell.NameLabel.text = cellData.name;
+    return cell;
+    
+}
+
+- (UITableViewCell *)headerCellForSection:(NSInteger)section
+{
+    static NSString *CellIdentifier = @"HeaderCell";
+    ItineraryHeaderTableCell *cell = (ItineraryHeaderTableCell *)[self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[ItineraryHeaderTableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }
+    NSDate *headerDate = [[self.listOfDays objectAtIndex:section] date];
+    cell.DateLabel.text = [self.dateFormatter stringFromDate: headerDate];
     return cell;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    // Return the number of sections based on how many days there are
-    return [self.itineraryEvents count];
+    return [self.listOfDays count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if ([expandedSections containsIndex:section]) {
-        return [[self.itineraryEvents objectAtIndex:section] count];
-    }
-    return 1;
+    return [[self.listOfDays[section] getEvents] count] + 1;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row) {
-        return 58.0f;
+        return eventCellHeight;
     }
     else
-        return 27.0f;
+        return headerCellHeight;
 }
 
+
+
+#pragma mark-Table View Delegate Methods
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (!indexPath.row)
-    {
-        // only first row toggles exapand/collapse
-        [tableView deselectRowAtIndexPath:indexPath animated:YES];
-        
-        NSInteger section = indexPath.section;
-        BOOL currentlyExpanded = [expandedSections containsIndex:section];
-        NSInteger rows;
-        
-        NSMutableArray *tmpArray = [NSMutableArray array];
-        
-        if (currentlyExpanded)
+    
+}
+
+#pragma mark - delegateMethods
+- (void)saveEventDetails:(Event *)event isNewEvent:(BOOL)isNewEvent {
+    if (isNewEvent) {
+        for(int i = 0; i < [self.listOfDays count];  i++)
         {
-            rows = [self tableView:tableView numberOfRowsInSection:section];
-            [expandedSections removeIndex:section];
+            Day *day = self.listOfDays[i];
+            NSDate *ddate = day.date;
+            NSDate *eDate = event.when;
+            NSDateComponents *dayComponents = [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:ddate];
+            NSDateComponents *eventComponents = [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:eDate];
             
+            if ([dayComponents month] == [eventComponents month] && [dayComponents day] == [eventComponents day] && [dayComponents year] == [eventComponents year]) {
+                [day addEvent:event];
+                //[self.itineraryEvents[i] addObject:event];
+                NSArray *indexPaths = @[[NSIndexPath indexPathForRow:[[self.listOfDays[i] getEvents] count] inSection:i]];
+                [self.tableView insertRowsAtIndexPaths:indexPaths
+                      withRowAnimation:UITableViewRowAnimationFade];
+                break;
+            }
         }
-        else
-        {
-            [expandedSections addIndex:section];
-            rows = [self tableView:tableView numberOfRowsInSection:section];
-        }
-        
-        for (int i=1; i<rows; i++)
-        {
-            NSIndexPath *tmpIndexPath = [NSIndexPath indexPathForRow:i
-                                                           inSection:section];
-            [tmpArray addObject:tmpIndexPath];
-        }
-        
-        if (currentlyExpanded)
-        {
-            [tableView deleteRowsAtIndexPaths:tmpArray
-                             withRowAnimation:UITableViewRowAnimationTop];
-            
-        }
-        else
-        {
-            [tableView insertRowsAtIndexPaths:tmpArray
-                             withRowAnimation:UITableViewRowAnimationTop];
-            
-        }
-    }
+    } else
+        [self.tableView reloadData];
 }
 
 
-/*
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    if ([[segue identifier] isEqualToString:addPOISegueID]){
+        
+        POIEditViewController *controller = [[[segue destinationViewController] viewControllers] objectAtIndex:0];
+        controller.dateFormatter = self.dateFormatter;
+        controller.timeFormatter = self.timeFormatter;
+        controller.delegate = self;
+    }
+    
+    if ([[segue identifier] isEqualToString:editPOISegueID]){
+        
+        POIEditViewController *controller = [[[segue destinationViewController] viewControllers] objectAtIndex:0];
+        controller.dateFormatter = self.dateFormatter;
+        controller.timeFormatter = self.timeFormatter;
+        NSIndexPath *selectedIndexPath = [self.tableView indexPathForSelectedRow];
+        Event *selectedEvent = [[self.itineraryEvents objectAtIndex:selectedIndexPath.section] objectAtIndex:selectedIndexPath.row];
+        controller.event = selectedEvent;
+        controller.delegate = self;
+    }
 }
-*/
 
 
 - (IBAction)doneClicked:(UIBarButtonItem *)sender {

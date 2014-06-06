@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface ItineraryHeaderTableCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UITextView *DateLabel;
+@property (weak, nonatomic) IBOutlet UILabel *DateLabel;
 
 @end
