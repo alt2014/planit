@@ -13,6 +13,8 @@
 @class CurrencyCommunicator;
 
 @interface CurrencyManager : NSObject<CurrencyCommunicatorDelegate>
+
 @property (strong, nonatomic) CurrencyCommunicator *communicator;
 @property (weak, nonatomic) id<CurrencyManagerDelegate> delegate;
+
 @end

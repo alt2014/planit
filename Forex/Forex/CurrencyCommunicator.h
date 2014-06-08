@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Currency.h"
 
 @protocol CurrencyCommunicatorDelegate;
 
@@ -14,6 +15,6 @@
 
 @property (weak, nonatomic) id<CurrencyCommunicatorDelegate> delegate;
 // Figure out what to pass in here - a currency class var?
-- (void)getCurrentCurrencyRates;
+- (void)getCurrentCurrencyRates:(Currency*)exchangeRate;
 
 @end

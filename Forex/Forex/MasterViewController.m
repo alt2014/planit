@@ -35,8 +35,14 @@
     _manager.communicator = [[CurrencyCommunicator alloc] init];
     _manager.communicator.delegate = _manager;
     _manager.delegate = self;
-
-    [_manager.communicator getCurrentCurrencyRates];
+    
+    Currency *exchangeRate = [[Currency alloc] init];
+    
+    // TEST CODE - DELETE WHEN DONE!
+    [exchangeRate setValue:@"CNY" forKey:@"countryCode1"];
+    [exchangeRate setValue:@"GBP" forKey:@"countryCode2"];
+    
+    [_manager.communicator getCurrentCurrencyRates:exchangeRate];
     
 	// Do any additional setup after loading the view, typically from a nib.
     self.navigationItem.leftBarButtonItem = self.editButtonItem;

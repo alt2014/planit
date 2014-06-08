@@ -11,6 +11,6 @@
 
 @interface CurrencyConverter : NSObject
 
-+ (Currency *) currencyRatesFromJSON:(NSData *)objectNotation error:(NSError **)error;
++ (Currency *) currencyRatesFromJSON:(NSData *)objectNotation error:(NSError **)error countries:(Currency*)exchangeRate;
 
 @end

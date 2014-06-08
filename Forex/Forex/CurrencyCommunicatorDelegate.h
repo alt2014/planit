@@ -10,7 +10,7 @@
 
 @protocol CurrencyCommunicatorDelegate <NSObject>
 
-- (void)receivedCurrencyJSON:(NSData *)objectNotation;
+- (void)receivedCurrencyJSON:(NSData *)objectNotation countries:(Currency*)exchangeRate;
 - (void)fetchingCurrencyFailedWithError:(NSError *)error;
 
 @end

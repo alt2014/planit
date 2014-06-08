@@ -13,7 +13,7 @@
 
 @implementation CurrencyCommunicator
 
-- (void)getCurrentCurrencyRates
+- (void)getCurrentCurrencyRates:(Currency*)exchangeRate
 {
     NSString *urlAsString = [NSString stringWithFormat:@"https://openexchangerates.org/api/latest.json?app_id=%@", API_KEY];
     NSURL *url = [[NSURL alloc] initWithString:urlAsString];
@@ -25,7 +25,7 @@
         if (error) {
             [self.delegate fetchingCurrencyFailedWithError:error];
         } else {
-            [self.delegate receivedCurrencyJSON:data];
+            [self.delegate receivedCurrencyJSON:data countries:exchangeRate];
         }
     }];
 }

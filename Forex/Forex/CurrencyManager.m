@@ -14,10 +14,10 @@
 
 #pragma mark - CurrencyCommunicatorDelegate
 
-- (void)receivedCurrencyJSON:(NSData *)objectNotation
+- (void)receivedCurrencyJSON:(NSData *)objectNotation countries:(Currency*)exchangeRate
 {
     NSError *error = nil;
-    Currency *currencyRates = [CurrencyConverter currencyRatesFromJSON:objectNotation error:&error];
+    Currency *currencyRates = [CurrencyConverter currencyRatesFromJSON:objectNotation error:&error countries:exchangeRate];
     
     if (error != nil) {
         [self.delegate fetchingCurrencyFailedWithError:error];
