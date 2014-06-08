@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1BA3493C19443692007ADF3E /* Currency.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BA3492319443692007ADF3E /* Currency.m */; };
+		1BA3493F19443692007ADF3E /* CurrencyCommunicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BA3492A19443692007ADF3E /* CurrencyCommunicator.m */; };
+		1BA3494019443692007ADF3E /* CurrencyConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BA3492D19443692007ADF3E /* CurrencyConverter.m */; };
+		1BA3494119443692007ADF3E /* CurrencyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BA3492F19443692007ADF3E /* CurrencyManager.m */; };
+		1BA3494719443692007ADF3E /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BA3493A19443692007ADF3E /* MasterViewController.m */; };
+		1BA3494819443692007ADF3E /* ReadMe.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1BA3493B19443692007ADF3E /* ReadMe.txt */; };
 		D02FE448194248E900B7151C /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D02FE446194248E900B7151C /* Model.xcdatamodeld */; };
 		D02FE44B1942494700B7151C /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D02FE44A1942494700B7151C /* DataManager.m */; };
 		D02FE46319424A6500B7151C /* PIEvent+Model.m in Sources */ = {isa = PBXBuildFile; fileRef = D02FE46219424A6500B7151C /* PIEvent+Model.m */; };
@@ -68,6 +74,19 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1BA3492219443692007ADF3E /* Currency.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Currency.h; path = Forex/Currency.h; sourceTree = SOURCE_ROOT; };
+		1BA3492319443692007ADF3E /* Currency.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Currency.m; path = Forex/Currency.m; sourceTree = SOURCE_ROOT; };
+		1BA3492919443692007ADF3E /* CurrencyCommunicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrencyCommunicator.h; sourceTree = "<group>"; };
+		1BA3492A19443692007ADF3E /* CurrencyCommunicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrencyCommunicator.m; sourceTree = "<group>"; };
+		1BA3492B19443692007ADF3E /* CurrencyCommunicatorDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrencyCommunicatorDelegate.h; sourceTree = "<group>"; };
+		1BA3492C19443692007ADF3E /* CurrencyConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrencyConverter.h; sourceTree = "<group>"; };
+		1BA3492D19443692007ADF3E /* CurrencyConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrencyConverter.m; sourceTree = "<group>"; };
+		1BA3492E19443692007ADF3E /* CurrencyManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrencyManager.h; sourceTree = "<group>"; };
+		1BA3492F19443692007ADF3E /* CurrencyManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrencyManager.m; sourceTree = "<group>"; };
+		1BA3493019443692007ADF3E /* CurrencyManagerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrencyManagerDelegate.h; sourceTree = "<group>"; };
+		1BA3493919443692007ADF3E /* MasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MasterViewController.h; sourceTree = "<group>"; };
+		1BA3493A19443692007ADF3E /* MasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
+		1BA3493B19443692007ADF3E /* ReadMe.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ReadMe.txt; sourceTree = "<group>"; };
 		D02FE447194248E900B7151C /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		D02FE4491942494700B7151C /* DataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataManager.h; path = CoreData/DataManager.h; sourceTree = "<group>"; };
 		D02FE44A1942494700B7151C /* DataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataManager.m; path = CoreData/DataManager.m; sourceTree = "<group>"; };
@@ -172,6 +191,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1BA3492119443687007ADF3E /* Forex */ = {
+			isa = PBXGroup;
+			children = (
+				1BA3492219443692007ADF3E /* Currency.h */,
+				1BA3492319443692007ADF3E /* Currency.m */,
+				1BA3492419443692007ADF3E /* Forex */,
+			);
+			name = Forex;
+			sourceTree = "<group>";
+		};
+		1BA3492419443692007ADF3E /* Forex */ = {
+			isa = PBXGroup;
+			children = (
+				1BA3492919443692007ADF3E /* CurrencyCommunicator.h */,
+				1BA3492A19443692007ADF3E /* CurrencyCommunicator.m */,
+				1BA3492B19443692007ADF3E /* CurrencyCommunicatorDelegate.h */,
+				1BA3492C19443692007ADF3E /* CurrencyConverter.h */,
+				1BA3492D19443692007ADF3E /* CurrencyConverter.m */,
+				1BA3492E19443692007ADF3E /* CurrencyManager.h */,
+				1BA3492F19443692007ADF3E /* CurrencyManager.m */,
+				1BA3493019443692007ADF3E /* CurrencyManagerDelegate.h */,
+				1BA3493919443692007ADF3E /* MasterViewController.h */,
+				1BA3493A19443692007ADF3E /* MasterViewController.m */,
+				1BA3493B19443692007ADF3E /* ReadMe.txt */,
+			);
+			name = Forex;
+			path = Forex/Forex;
+			sourceTree = SOURCE_ROOT;
+		};
 		D08A7E0D193AFB0D0082B10A /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
@@ -418,6 +466,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = E0D7459D190FAB4400999C2D;
 			productRefGroup = E0D745A7190FAB4400999C2D /* Products */;
@@ -468,6 +517,7 @@
 				D0F81BC0191D848500E54ACE /* Day.m in Sources */,
 				E08396D31934320100DCB972 /* SWRevealViewController.m in Sources */,
 				D0F81BB7191D839A00E54ACE /* Event.m in Sources */,
+				1BA3493F19443692007ADF3E /* CurrencyCommunicator.m in Sources */,
 				E08396D6193433E900DCB972 /* SideBarViewController.m in Sources */,
 				D0B2CC231934293300818475 /* Address.m in Sources */,
 				D02FE46619424A7700B7151C /* PIDay+Model.m in Sources */,
@@ -478,15 +528,19 @@
 				E081DC7819373933006D22E9 /* TripAddViewController.m in Sources */,
 				D02FE47819424EF900B7151C /* PIDay.m in Sources */,
 				E0FD0EAA192016CB007AE809 /* TripViewController.m in Sources */,
+				1BA3493C19443692007ADF3E /* Currency.m in Sources */,
 				D02FE47519424EF900B7151C /* PIEvent.m in Sources */,
 				E0D745BA190FAB4400999C2D /* AppDelegate.m in Sources */,
 				D02FE448194248E900B7151C /* Model.xcdatamodeld in Sources */,
 				E00A4EB9192C040600990B7C /* POIEditViewController.m in Sources */,
 				E00A4EB0192BF83000990B7C /* POIViewController.m in Sources */,
 				E08999A01924C41B00D24541 /* ItineraryHeaderTableCell.m in Sources */,
+				1BA3494719443692007ADF3E /* MasterViewController.m in Sources */,
+				1BA3494119443692007ADF3E /* CurrencyManager.m in Sources */,
 				E0E20EA8191DD73600B61A52 /* ItineraryViewController.m in Sources */,
 				E00A4EB3192BFA5300990B7C /* TransportationViewController.m in Sources */,
 				E00A4EAD192BEF9400990B7C /* LodgingViewController.m in Sources */,
+				1BA3494019443692007ADF3E /* CurrencyConverter.m in Sources */,
 				E0D745B6190FAB4400999C2D /* main.m in Sources */,
 				E00A4EAA192ACE6F00990B7C /* ItineraryEditViewController.m in Sources */,
 				E0723CA3192630330038AF9D /* ItineraryItemTableCell.m in Sources */,

@@ -19,6 +19,8 @@
 	<dict>
 		<key>1EDD2F56-18EC-48E3-92A1-D930AEE7E87D</key>
 		<string>../..</string>
+		<key>CD88398F-7605-4FBF-8E35-3CF6B0B97205</key>
+		<string>../../Forex</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/alt2014/planit.git</string>
