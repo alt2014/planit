@@ -157,7 +157,6 @@
 -(void)dateLabelSelectHandler:(BOOL)pickerIsShowing pickerName:(NSString *)pickerName {
     if (pickerIsShowing) {
         [self hideDatePickerCell:pickerName];
-        //hide the picker
     } else {
         [self showDatePickerCell:pickerName];
     }
@@ -301,22 +300,8 @@
     }
     [self.delegate updateTableView];
     [self dismissViewControllerAnimated:YES completion:NULL];
-    //save it and then call the delegate to reload itself
-    /*    Address *addr = [[Address alloc] initWithStreet:self.streetField.text city:self.cityField.text state:NULL country:self.countryField.text postal:[self.postalCodeField.text integerValue]];
-     
-     self.event.name = self.nameField.text;
-     //self.event.when = self.selectedWhen;
-     self.event.start = self.selectedStart;
-     self.event.end = self.selectedEnd;
-     self.event.addr = addr;
-     self.event.notes = self.notesTextView.text;
-     
-     [self.delegate saveEventDetails:self.event isNewEvent:self.isNewEvent];
-     
-     [self dismissViewControllerAnimated:YES completion:NULL]; */
 }
 
-#pragma mark - does to be edited
 - (IBAction)cancelClicked:(UIBarButtonItem *)sender {
     [self dismissViewControllerAnimated:YES completion:NULL];
 }

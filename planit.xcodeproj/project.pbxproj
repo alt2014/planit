@@ -33,6 +33,7 @@
 		E00A4EB0192BF83000990B7C /* POIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E00A4EAF192BF83000990B7C /* POIViewController.m */; };
 		E00A4EB3192BFA5300990B7C /* TransportationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E00A4EB2192BFA5300990B7C /* TransportationViewController.m */; };
 		E00A4EB9192C040600990B7C /* POIEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E00A4EB8192C040600990B7C /* POIEditViewController.m */; };
+		E02C05521945126400F65EA4 /* ForExTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E02C05511945126400F65EA4 /* ForExTableViewController.m */; };
 		E02CEFF71941E62F00A0C90A /* accomodations53.png in Resources */ = {isa = PBXBuildFile; fileRef = E02CEFF41941E62F00A0C90A /* accomodations53.png */; };
 		E02CEFF81941E62F00A0C90A /* POI53.png in Resources */ = {isa = PBXBuildFile; fileRef = E02CEFF51941E62F00A0C90A /* POI53.png */; };
 		E02CEFF91941E62F00A0C90A /* transportation53.png in Resources */ = {isa = PBXBuildFile; fileRef = E02CEFF61941E62F00A0C90A /* transportation53.png */; };
@@ -76,17 +77,17 @@
 /* Begin PBXFileReference section */
 		1BA3492219443692007ADF3E /* Currency.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Currency.h; path = Forex/Currency.h; sourceTree = SOURCE_ROOT; };
 		1BA3492319443692007ADF3E /* Currency.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Currency.m; path = Forex/Currency.m; sourceTree = SOURCE_ROOT; };
-		1BA3492919443692007ADF3E /* CurrencyCommunicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrencyCommunicator.h; sourceTree = "<group>"; };
-		1BA3492A19443692007ADF3E /* CurrencyCommunicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrencyCommunicator.m; sourceTree = "<group>"; };
-		1BA3492B19443692007ADF3E /* CurrencyCommunicatorDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrencyCommunicatorDelegate.h; sourceTree = "<group>"; };
-		1BA3492C19443692007ADF3E /* CurrencyConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrencyConverter.h; sourceTree = "<group>"; };
-		1BA3492D19443692007ADF3E /* CurrencyConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrencyConverter.m; sourceTree = "<group>"; };
-		1BA3492E19443692007ADF3E /* CurrencyManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrencyManager.h; sourceTree = "<group>"; };
-		1BA3492F19443692007ADF3E /* CurrencyManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrencyManager.m; sourceTree = "<group>"; };
-		1BA3493019443692007ADF3E /* CurrencyManagerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrencyManagerDelegate.h; sourceTree = "<group>"; };
-		1BA3493919443692007ADF3E /* MasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MasterViewController.h; sourceTree = "<group>"; };
-		1BA3493A19443692007ADF3E /* MasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
-		1BA3493B19443692007ADF3E /* ReadMe.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ReadMe.txt; sourceTree = "<group>"; };
+		1BA3492919443692007ADF3E /* CurrencyCommunicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CurrencyCommunicator.h; path = ../Forex/Forex/CurrencyCommunicator.h; sourceTree = "<group>"; };
+		1BA3492A19443692007ADF3E /* CurrencyCommunicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CurrencyCommunicator.m; path = ../Forex/Forex/CurrencyCommunicator.m; sourceTree = "<group>"; };
+		1BA3492B19443692007ADF3E /* CurrencyCommunicatorDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CurrencyCommunicatorDelegate.h; path = ../Forex/Forex/CurrencyCommunicatorDelegate.h; sourceTree = "<group>"; };
+		1BA3492C19443692007ADF3E /* CurrencyConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CurrencyConverter.h; path = ../Forex/Forex/CurrencyConverter.h; sourceTree = "<group>"; };
+		1BA3492D19443692007ADF3E /* CurrencyConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CurrencyConverter.m; path = ../Forex/Forex/CurrencyConverter.m; sourceTree = "<group>"; };
+		1BA3492E19443692007ADF3E /* CurrencyManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CurrencyManager.h; path = ../Forex/Forex/CurrencyManager.h; sourceTree = "<group>"; };
+		1BA3492F19443692007ADF3E /* CurrencyManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CurrencyManager.m; path = ../Forex/Forex/CurrencyManager.m; sourceTree = "<group>"; };
+		1BA3493019443692007ADF3E /* CurrencyManagerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CurrencyManagerDelegate.h; path = ../Forex/Forex/CurrencyManagerDelegate.h; sourceTree = "<group>"; };
+		1BA3493919443692007ADF3E /* MasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MasterViewController.h; path = ../Forex/Forex/MasterViewController.h; sourceTree = "<group>"; };
+		1BA3493A19443692007ADF3E /* MasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MasterViewController.m; path = ../Forex/Forex/MasterViewController.m; sourceTree = "<group>"; };
+		1BA3493B19443692007ADF3E /* ReadMe.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = ReadMe.txt; path = ../Forex/Forex/ReadMe.txt; sourceTree = "<group>"; };
 		D02FE447194248E900B7151C /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		D02FE4491942494700B7151C /* DataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataManager.h; path = CoreData/DataManager.h; sourceTree = "<group>"; };
 		D02FE44A1942494700B7151C /* DataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataManager.m; path = CoreData/DataManager.m; sourceTree = "<group>"; };
@@ -125,6 +126,8 @@
 		E00A4EB2192BFA5300990B7C /* TransportationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransportationViewController.m; sourceTree = "<group>"; };
 		E00A4EB7192C040600990B7C /* POIEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = POIEditViewController.h; sourceTree = "<group>"; };
 		E00A4EB8192C040600990B7C /* POIEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = POIEditViewController.m; sourceTree = "<group>"; };
+		E02C05501945126400F65EA4 /* ForExTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForExTableViewController.h; sourceTree = "<group>"; };
+		E02C05511945126400F65EA4 /* ForExTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForExTableViewController.m; sourceTree = "<group>"; };
 		E02CEFF41941E62F00A0C90A /* accomodations53.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = accomodations53.png; sourceTree = "<group>"; };
 		E02CEFF51941E62F00A0C90A /* POI53.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = POI53.png; sourceTree = "<group>"; };
 		E02CEFF61941E62F00A0C90A /* transportation53.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = transportation53.png; sourceTree = "<group>"; };
@@ -191,21 +194,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1BA3492119443687007ADF3E /* Forex */ = {
+		1BA3492119443687007ADF3E /* Forex Model */ = {
 			isa = PBXGroup;
 			children = (
 				1BA3492219443692007ADF3E /* Currency.h */,
 				1BA3492319443692007ADF3E /* Currency.m */,
-				1BA3492419443692007ADF3E /* Forex */,
-			);
-			name = Forex;
-			sourceTree = "<group>";
-		};
-		1BA3492419443692007ADF3E /* Forex */ = {
-			isa = PBXGroup;
-			children = (
 				1BA3492919443692007ADF3E /* CurrencyCommunicator.h */,
 				1BA3492A19443692007ADF3E /* CurrencyCommunicator.m */,
+				1BA3493B19443692007ADF3E /* ReadMe.txt */,
 				1BA3492B19443692007ADF3E /* CurrencyCommunicatorDelegate.h */,
 				1BA3492C19443692007ADF3E /* CurrencyConverter.h */,
 				1BA3492D19443692007ADF3E /* CurrencyConverter.m */,
@@ -214,11 +210,9 @@
 				1BA3493019443692007ADF3E /* CurrencyManagerDelegate.h */,
 				1BA3493919443692007ADF3E /* MasterViewController.h */,
 				1BA3493A19443692007ADF3E /* MasterViewController.m */,
-				1BA3493B19443692007ADF3E /* ReadMe.txt */,
 			);
-			name = Forex;
-			path = Forex/Forex;
-			sourceTree = SOURCE_ROOT;
+			name = "Forex Model";
+			sourceTree = "<group>";
 		};
 		D08A7E0D193AFB0D0082B10A /* CoreData */ = {
 			isa = PBXGroup;
@@ -259,6 +253,15 @@
 				D0B2CC221934293300818475 /* Address.m */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		E02C054F194511F200F65EA4 /* Feature View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				E02C05501945126400F65EA4 /* ForExTableViewController.h */,
+				E02C05511945126400F65EA4 /* ForExTableViewController.m */,
+			);
+			name = "Feature View Controllers";
 			sourceTree = "<group>";
 		};
 		E02CEFEC1941BBC800A0C90A /* View Helpers */ = {
@@ -352,6 +355,7 @@
 			isa = PBXGroup;
 			children = (
 				E03B8EBB193B0FB800D7A798 /* Assets */,
+				1BA3492119443687007ADF3E /* Forex Model */,
 				D08A7E0D193AFB0D0082B10A /* CoreData */,
 				E08396D01934317B00DCB972 /* Library */,
 				D0F81BB4191D537400E54ACE /* Model */,
@@ -361,6 +365,7 @@
 				E0D745B0190FAB4400999C2D /* Supporting Files */,
 				E02CEFFA1941F06A00A0C90A /* Edit View Controllers */,
 				E02CEFEC1941BBC800A0C90A /* View Helpers */,
+				E02C054F194511F200F65EA4 /* Feature View Controllers */,
 				E0D745DC190FB05B00999C2D /* Main.storyboard */,
 				E0E20EA5191DD73600B61A52 /* ItineraryViewController.h */,
 				E0E20EA6191DD73600B61A52 /* ItineraryViewController.m */,
@@ -490,6 +495,7 @@
 				E0D745B4190FAB4400999C2D /* InfoPlist.strings in Resources */,
 				E02CEFF81941E62F00A0C90A /* POI53.png in Resources */,
 				E0B5DE5F1941FBF500438535 /* weather30.png in Resources */,
+				1BA3494819443692007ADF3E /* ReadMe.txt in Resources */,
 				E0D745BC190FAB4500999C2D /* Images.xcassets in Resources */,
 				E0B5DE5E1941FBF500438535 /* list-icon30.png in Resources */,
 				E0B5DE5D1941FBF500438535 /* foreign-exchange30.png in Resources */,
@@ -544,6 +550,7 @@
 				E0D745B6190FAB4400999C2D /* main.m in Sources */,
 				E00A4EAA192ACE6F00990B7C /* ItineraryEditViewController.m in Sources */,
 				E0723CA3192630330038AF9D /* ItineraryItemTableCell.m in Sources */,
+				E02C05521945126400F65EA4 /* ForExTableViewController.m in Sources */,
 				D0F81BBA191D83DE00E54ACE /* Pin.m in Sources */,
 				D0F81BBD191D844C00E54ACE /* PEvent.m in Sources */,
 			);
