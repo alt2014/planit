@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5064" systemVersion="13D65" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="PIDay" representedClassName="PIDay" syncable="YES">
+        <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="uid" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="events" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="PIEvent" inverseName="day" inverseEntity="PIEvent" syncable="YES"/>
+        <relationship name="trip" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PITrip" inverseName="days" inverseEntity="PITrip" syncable="YES"/>
+    </entity>
+    <entity name="PIEvent" representedClassName="PIEvent" syncable="YES">
+        <attribute name="addr" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="end" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="notes" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="start" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="uid" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="day" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PIDay" inverseName="events" inverseEntity="PIDay" syncable="YES"/>
+    </entity>
+    <entity name="PITrip" representedClassName="PITrip" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="notes" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="uid" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="days" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="PIDay" inverseName="trip" inverseEntity="PIDay" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="PITrip" positionX="-450" positionY="-72" width="128" height="103"/>
+        <element name="PIEvent" positionX="-54" positionY="-9" width="128" height="148"/>
+        <element name="PIDay" positionX="-252" positionY="146" width="128" height="103"/>
+    </elements>
+</model>

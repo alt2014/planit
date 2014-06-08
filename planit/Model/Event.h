@@ -14,8 +14,7 @@
 @property (strong, nonatomic) NSString *name;
 @property (strong, nonatomic) NSString *notes;
 @property (strong, nonatomic) Address *addr;
-@property (strong, nonatomic) NSString *when;
-@property (strong, nonatomic) NSDate *start;
-@property (strong, nonatomic) NSDate *end;
+@property (strong, nonatomic) NSDate *start; // start time
+@property (strong, nonatomic) NSDate *end; // end time
 
 @end
