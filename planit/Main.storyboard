@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<<<<<<< HEAD
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="cP5-cU-GOY">
-=======
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Qtl-1i-M2R">
->>>>>>> FETCH_HEAD
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -17,12 +13,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <searchBar key="tableFooterView" contentMode="redraw" id="IAW-mN-nLz">
-                            <rect key="frame" x="0.0" y="66" width="320" height="44"/>
+                            <rect key="frame" x="0.0" y="87" width="320" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <textInputTraits key="textInputTraits"/>
-                            <connections>
-                                <outlet property="delegate" destination="cP5-cU-GOY" id="kBQ-oO-shO"/>
-                            </connections>
                         </searchBar>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TripCell" rowHeight="65" id="fxk-uR-CX4" customClass="TripTableViewCell">
@@ -81,23 +74,6 @@
                             <outlet property="delegate" destination="lLE-2a-osK" id="Zjw-y6-acU"/>
                         </connections>
                     </tableView>
-<<<<<<< HEAD
-                    <connections>
-                        <outlet property="searchBar" destination="IAW-mN-nLz" id="zKx-Vk-vTc"/>
-                        <outlet property="searchDisplayController" destination="KNX-nT-dHf" id="DRv-zR-h0T"/>
-                    </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="sts-3f-CTi" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <searchDisplayController id="KNX-nT-dHf">
-                    <connections>
-                        <outlet property="delegate" destination="cP5-cU-GOY" id="pP9-MY-AtI"/>
-                        <outlet property="searchBar" destination="IAW-mN-nLz" id="4uj-C8-h5U"/>
-                        <outlet property="searchContentsController" destination="cP5-cU-GOY" id="Cpz-Xl-GNJ"/>
-                        <outlet property="searchResultsDataSource" destination="cP5-cU-GOY" id="9GZ-4W-PXO"/>
-                        <outlet property="searchResultsDelegate" destination="cP5-cU-GOY" id="nIt-h7-c1A"/>
-                    </connections>
-                </searchDisplayController>
-=======
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Title" id="gcP-gY-u1J">
                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="VWf-Cm-Erm">
@@ -109,7 +85,6 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yh2-H9-Ut6" userLabel="First Responder" sceneMemberID="firstResponder"/>
->>>>>>> FETCH_HEAD
             </objects>
             <point key="canvasLocation" x="282" y="-317"/>
         </scene>
