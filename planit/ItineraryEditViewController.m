@@ -139,7 +139,6 @@ static NSString *editPOISegueID = @"editPOISegue";
         controller.timeFormatter = self.timeFormatter;
         controller.trip = self.trip;
         controller.delegate = self;
-        //maybe pass
     }
     
     if ([[segue identifier] isEqualToString:editPOISegueID]){
@@ -148,8 +147,9 @@ static NSString *editPOISegueID = @"editPOISegue";
         controller.dateFormatter = self.dateFormatter;
         controller.timeFormatter = self.timeFormatter;
         NSIndexPath *selectedIndexPath = [self.tableView indexPathForSelectedRow];
-        PIEvent *selectedEvent = [[[[self.trip getDaysArray] objectAtIndex:selectedIndexPath.section] getEventsArray] objectAtIndex:selectedIndexPath.row];
+        PIEvent *selectedEvent = [[[[self.trip getDaysArray] objectAtIndex:selectedIndexPath.section] getEventsArray] objectAtIndex:selectedIndexPath.row - 1];
         controller.event = selectedEvent;
+        controller.trip = self.trip;
         controller.delegate = self;
     }
 }
