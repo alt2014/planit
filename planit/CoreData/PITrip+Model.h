@@ -54,5 +54,6 @@
 
 - (NSDate*)start;
 - (NSDate*)end;
++ (NSArray*)sortTrips:(NSArray*)trips;
 
 @end

@@ -13,6 +13,6 @@
 + (PIDay*)createDay:(NSDate*)day inManagedObjectContext:(NSManagedObjectContext*)context;
 
 - (void)addEvent:(PIEvent*)event;
-- (NSArray*)getEvents;
+- (NSArray*)getEventsArray;
 
 @end

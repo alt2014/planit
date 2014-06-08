@@ -7,7 +7,8 @@
 //
 
 #import "TripAddViewController.h"
-#import "Trip.h"
+#import "PITrip+Model.h"
+#import "DataManager.h"
 
 #define startPickerIndex 2
 #define endPickerIndex 4
@@ -232,9 +233,17 @@
 
 
 - (IBAction)savePressed:(UIBarButtonItem *)sender {
-    Trip *t = [[Trip alloc] initWithName:self.nameTextField.text start:self.selectedStart end:self.selectedEnd];
-    
-    [self.delegate saveTripDetails:t];
+    NSMutableDictionary *trip = [[NSMutableDictionary alloc] init];
+    NSDate *start = self.selectedStart;
+    NSDate *end = self.selectedEnd;
+    [trip setObject:self.nameTextField.text forKey:T_NAME_KEY];
+    [trip setObject:start   forKey:T_START_KEY];
+    [trip setObject:end forKey:T_END_KEY];
+    [trip setObject:@"with some freindss" forKey:T_NOTES_KEY];
+    NSManagedObjectContext *context = [DataManager getManagedObjectContext];
+    PITrip *t = [PITrip createTripFromDictionary:trip inManagedObjectContext:context];
+    [self.delegate updateTableDataSource];
+    //[self.delegate saveTripDetails:t];
     
     [self dismissViewControllerAnimated:YES completion:NULL];
 }

@@ -8,11 +8,10 @@
 
 #import "TripViewController.h"
 #import "TripAddViewController.h"
-#import "Trip.h"
 #import "TripTableViewCell.h"
 #import "ItineraryViewController.h"
-#import "Event.h"
-#import "Day.h"
+#import "DataManager.h"
+#import "PITrip+Model.h"
 
 static NSString *tripCellID = @"TripCell";
 static NSString *addTripSegueID = @"addTrip";
@@ -27,6 +26,13 @@ const int dPTag = 1;
 
 @implementation TripViewController
 
+- (NSMutableArray*)trips {
+    if (!_trips) {
+        _trips = [[NSMutableArray alloc] init];
+    }
+    return _trips;
+}
+
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -40,9 +46,37 @@ const int dPTag = 1;
 {
     [super viewDidLoad];
     [self createDateFormatter];
-    if (!self.trips) {
-        self.trips = [[NSMutableArray alloc] init];
-    }
+    
+    DataManager *dm = [[DataManager alloc] init];
+    [dm loadTrips:^(BOOL success, NSArray *trips) {
+        NSLog(@"Hahaha");
+        if (success) {
+            NSLog(@"Yay");
+            // document created/loaded safely
+            self.trips = [NSMutableArray arrayWithArray:trips];
+            [self.tableView reloadData];
+//            if ([self.trips count] < 1) {
+//                NSMutableDictionary *trip = [[NSMutableDictionary alloc] init];
+//                NSDate *start = [NSDate date];
+//                NSDate *end = [NSDate dateWithTimeInterval:60*60*24*3 sinceDate:start];
+//                [trip setObject:@"Cabo" forKey:T_NAME_KEY];
+//                [trip setObject:start   forKey:T_START_KEY];
+//                [trip setObject:end forKey:T_END_KEY];
+//                [trip setObject:@"with some freindss" forKey:T_NOTES_KEY];
+//                NSManagedObjectContext *context = [DataManager getManagedObjectContext];
+//                PITrip *t = [PITrip createTripFromDictionary:trip inManagedObjectContext:context];
+//                
+//                NSError *error;
+//                [context save:&error];
+//                
+//                NSLog(@"%@", t);
+// self.trips = [NSMutableArray arrayWithArray:[dm getTrips]];
+//            }
+        } else {
+            NSLog(@"ADSKFLSADNFKLDASNF");
+            NSLog(@"Error");
+        }
+    }];
     
 }
 
@@ -82,7 +116,7 @@ const int dPTag = 1;
     
     static NSString *cellIdentifier = @"TripCell";
     
-    Trip* trip = self.trips[indexPath.row];
+    PITrip* trip = self.trips[indexPath.row];
     cell = [self.tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (cell == nil) {
         cell = [[TripTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
@@ -133,13 +167,10 @@ const int dPTag = 1;
 */
 #pragma mark - delegate methods
 
-- (void)saveTripDetails:(Trip *)trip {
-    
-    [self.trips addObject:trip];
-    NSArray *indexPaths = @[[NSIndexPath indexPathForRow:[self.trips count]-1 inSection:0]];
-    
-    [self.tableView insertRowsAtIndexPaths:indexPaths
-                          withRowAnimation:UITableViewRowAnimationFade];
+- (void)updateTableDataSource {
+    DataManager *dm = [[DataManager alloc] init];
+    self.trips = [NSMutableArray arrayWithArray:[dm getTrips]];
+    [self.tableView reloadData];
 }
 
 
@@ -153,12 +184,13 @@ const int dPTag = 1;
         
         controller.delegate = self;
     }
+    
     if ([[segue identifier] isEqualToString:tripDetailSegueID]){
         
         ItineraryViewController *controller = [segue destinationViewController];
         NSIndexPath *selectedIndexPath = [self.tableView indexPathForSelectedRow];
-        Trip *selectedTrip = [self.trips objectAtIndex:selectedIndexPath.row];
-        controller.daysInTrip = [selectedTrip getDays];
+        PITrip *selectedTrip = [self.trips objectAtIndex:selectedIndexPath.row];
+        controller.trip = selectedTrip;
                 
         controller.navigationItem.title = selectedTrip.name;
     }

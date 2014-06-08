@@ -7,18 +7,25 @@
 //
 
 #import "POIEditViewController.h"
-#import "Event.h"
-#import "Address.h"
+#import "PIEvent.h"
+#import "PIDay+Model.h"
+#import "PIEvent+Model.h"
+#import "PIDay.h"
+#import "PITrip.h"
+#import "PITrip+Model.h"
+#import "DataManager.h"
 
-#define whenPickerIndex 2
-#define startPickerIndex 5
-#define endPickerIndex 7
-#define addrIndex 3
-#define notesIndex 8
+#define nameAddrCellHeight 68
+#define dayPickerIndex 2
+#define startPickerIndex 4
+#define endPickerIndex 6
+//#define addrIndex 3
+#define notesIndex 7
 #define datePickerCellHeight 164
-
+#define dateLabelCellHeight 34
+#define notesCellHeight 364
 @interface POIEditViewController ()
-@property (assign) BOOL whenPickerIsShowing;
+@property (assign) BOOL dayPickerIsShowing;
 @property (assign) BOOL startPickerIsShowing;
 @property (assign) BOOL endPickerIsShowing;
 @property (assign) BOOL isNewEvent;
@@ -43,45 +50,61 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    if (!self.event){
-        self.event = [[Event alloc] init];
-        self.isNewEvent = YES;
-    } else
-        self.isNewEvent = NO;
+    self.isNewEvent = self.event ? NO : YES;
     [self initFields];
     [self signUpForKeyboardNotifications];
-    [self hideDatePickerCell:self.startDatePicker pickerIsShowing:self.startPickerIsShowing];
-    [self hideDatePickerCell:self.endDatePicker pickerIsShowing:self.endPickerIsShowing];
-    [self hideDatePickerCell:self.whenDatePicker pickerIsShowing:self.whenPickerIsShowing];
+    [self hideDatePickerCell:@"start"];
+    [self hideDatePickerCell:@"end"];
+    [self hideDatePickerCell:@"when"];
     
     // Do any additional setup after loading the view.
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - Helper methods
 
 - (void)initFields {
-    if (self.event.name) {
+    //regardless of whether or not there's event exists
+    //force min day to be strart of trip and max day to be end of trip
+    //send in the trip
+    self.whenDatePicker.minimumDate = self.trip.start;
+    self.whenDatePicker.maximumDate = self.trip.end;
+    
+    //if the event is blank
+    if (!self.event) {
+        self.whenDatePicker.date = self.trip.start;
+        self.startDatePicker.date = [self createNSDate:01 day:01 year:2015 hour:12 minute:00];
+        self.endDatePicker.date = [NSDate dateWithTimeInterval:60 sinceDate:self.startDatePicker.date];
+    } else {
         self.nameField.text = self.event.name;
-    }
-    if (self.event.notes) {
         self.notesTextView.text = self.event.notes;
+        self.whenDatePicker.date = self.event.day.date;
+        self.startDatePicker.date = self.event.start;
+        self.endDatePicker.date = self.event.end;
+        self.locationField.text = self.event.addr;
     }
     
-    if (self.event.addr) {
-        self.streetField.text = self.event.addr.street;
-        self.cityField.text = self.event.addr.city;
-        self.postalCodeField.text = [NSString stringWithFormat: @"%d", (int)self.event.addr.postal];        self.countryField.text = self.event.addr.country;
-    }
-    //if the event exists, then prefill in all values
-    NSDate *defaultDate = [NSDate date]; //eventually make this the trip start date
+    self.selectedWhen = self.whenDatePicker.date;
+    self.whenLabel.text = [self.dateFormatter stringFromDate:self.selectedWhen];
+    self.selectedStart = self.startDatePicker.date;
+    self.startLabel.text = [self.timeFormatter stringFromDate:self.selectedStart];
+    self.selectedEnd = self.endDatePicker.date;
+    self.endLabel.text = [self.timeFormatter stringFromDate:self.selectedEnd];
+}
 
-    self.startLabel.text = self.event.start ? [self.timeFormatter stringFromDate:self.event.start] : [self.timeFormatter stringFromDate:defaultDate];
-    self.endLabel.text = self.event.end ? [self.timeFormatter stringFromDate:self.event.end] : [self.timeFormatter stringFromDate:defaultDate];
-    self.whenLabel.text = self.event.when ? [self.timeFormatter stringFromDate:self.event.when] : [self.dateFormatter stringFromDate:defaultDate];
-    self.selectedStart = self.event.start ? self.event.start : defaultDate;
-    self.selectedEnd = self.event.end? self.event.end : defaultDate;
-    //make when the first day of the trip
-    self.selectedWhen = self.event.when ? self.event.when : defaultDate;
+- (NSDate *)createNSDate:(NSInteger)month day:(NSInteger)day year:(NSInteger)year hour:(NSInteger)hour minute:(NSInteger)minute {
+    NSDateComponents *comps = [[NSDateComponents alloc] init];
+    [comps setDay:day];
+    [comps setMonth:month];
+    [comps setYear:year];
+    [comps setHour:hour];
+    [comps setMinute:minute];
+    return [[NSCalendar currentCalendar] dateFromComponents:comps];
 }
 
 - (void)signUpForKeyboardNotifications {
@@ -92,19 +115,18 @@
 
 - (void)keyboardWillShow {
     
-    if (self.endPickerIsShowing || self.startPickerIsShowing || self.whenPickerIsShowing){
+    if (self.endPickerIsShowing || self.startPickerIsShowing || self.dayPickerIsShowing){
         
-        [self hideDatePickerCell:self.startDatePicker pickerIsShowing:self.startPickerIsShowing];
-        [self hideDatePickerCell:self.endDatePicker pickerIsShowing:self.endPickerIsShowing];
-        [self hideDatePickerCell:self.whenDatePicker pickerIsShowing:self.whenPickerIsShowing];
+        [self hideDatePickerCell:@"start"];
+        [self hideDatePickerCell:@"end"];
+        [self hideDatePickerCell:@"when"];
     }
 }
 
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (NSDate *)dateFromDayAndTime:(NSDate *)day time:(NSDate *)time {
+    NSDateComponents *dayComponents = [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:day];
+    NSDateComponents *timeComponents = [[NSCalendar currentCalendar] components:NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond fromDate:time];
+    return [self createNSDate:dayComponents.month day:dayComponents.day year:dayComponents.year hour:timeComponents.hour minute:timeComponents.minute];
 }
 
 #pragma mark - Table view data source
@@ -112,60 +134,47 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    CGFloat height = self.tableView.rowHeight;
+    CGFloat height = dateLabelCellHeight;
     
     if (indexPath.row == startPickerIndex){
         height = self.startPickerIsShowing ? datePickerCellHeight : 0.0f;
     } else if(indexPath.row == endPickerIndex){
         height = self.endPickerIsShowing ? datePickerCellHeight : 0.0f;
-    } else if (indexPath.row == whenPickerIndex){
-        height = self.whenPickerIsShowing ? datePickerCellHeight : 0.0f;
+    } else if (indexPath.row == dayPickerIndex){
+        height = self.dayPickerIsShowing ? datePickerCellHeight : 0.0f;
     }
     
-    if (indexPath.row == addrIndex || indexPath.row == notesIndex) {
-        height = datePickerCellHeight;
+    if (indexPath.row == notesIndex) {
+        return notesCellHeight;
     }
+    
+    if (indexPath.row == 0)
+        return nameAddrCellHeight;
     
     return height;
 }
 
--(void)dateLabelSelectHandler:(BOOL)pickerIsShowing datePicker:(UIDatePicker *)datePicker {
+-(void)dateLabelSelectHandler:(BOOL)pickerIsShowing pickerName:(NSString *)pickerName {
     if (pickerIsShowing) {
-        [self hideDatePickerCell:datePicker pickerIsShowing:pickerIsShowing];
+        [self hideDatePickerCell:pickerName];
         //hide the picker
     } else {
-        [self showDatePickerCell:datePicker pickerIsShowing:pickerIsShowing];
+        [self showDatePickerCell:pickerName];
     }
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if (indexPath.row == startPickerIndex - 1)
-        [self dateLabelSelectHandler:self.startPickerIsShowing datePicker:self.startDatePicker];
+        [self dateLabelSelectHandler:self.startPickerIsShowing pickerName:@"start"];
     if (indexPath.row == endPickerIndex - 1)
-        [self dateLabelSelectHandler:self.startPickerIsShowing datePicker:self.endDatePicker];
-    
-    if (indexPath.row == whenPickerIndex - 1){
-        [self dateLabelSelectHandler:self.startPickerIsShowing datePicker:self.whenDatePicker];
+        [self dateLabelSelectHandler:self.endPickerIsShowing pickerName:@"end"];
+    if (indexPath.row == dayPickerIndex - 1){
+        [self dateLabelSelectHandler:self.dayPickerIsShowing pickerName:@"when"];
     }
     
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
-
--(void) showDatePickerCell:(UIDatePicker *)datePicker pickerIsShowing:(BOOL)pickerIsShowing
-{
-    pickerIsShowing = YES;
-    [self.tableView beginUpdates];
-    [self.tableView endUpdates];
-    datePicker.hidden = NO;
-    datePicker.alpha = 0.0f;
-    [UIView animateWithDuration:0.25 animations:^{
-        datePicker.alpha = 1.0f;
-    }];
-}
-
-/*
- 
 
 - (void)showDatePickerCell:(NSString *)which {
     if ([which isEqualToString:@"start"]) {
@@ -173,7 +182,7 @@
     } else if([which isEqualToString:@"end"]){
         self.endPickerIsShowing = YES;
     } else
-        self.whenPickerIsShowing = YES;
+        self.dayPickerIsShowing = YES;
     
     [self.tableView beginUpdates];
     
@@ -199,29 +208,14 @@
         }];
     }
 }
- */
 
-- (void)hideDatePickerCell:(UIDatePicker *)datePicker pickerIsShowing:(BOOL) pickerIsShowing
-{
-    pickerIsShowing = NO;
-    [self.tableView beginUpdates];
-    [self.tableView endUpdates];
-    [UIView animateWithDuration:0.25
-                     animations:^{
-                         datePicker.alpha = 0.0f;
-                     }
-                     completion:^(BOOL finished){
-                         datePicker.hidden = YES;
-                     }];
-}
-/*
 - (void)hideDatePickerCell:(NSString *)which {
     if ([which isEqualToString:@"start"])
         self.startPickerIsShowing = NO;
     else if ([which isEqualToString:@"end"])
         self.endPickerIsShowing = NO;
     else
-        self.whenPickerIsShowing = NO;
+        self.dayPickerIsShowing = NO;
     
     [self.tableView beginUpdates];
     [self.tableView endUpdates];
@@ -251,7 +245,7 @@
                              self.whenDatePicker.hidden = YES;
                          }];
 }
-*/
+
 
 #pragma mark - UITextFieldDelegate methods
 
@@ -262,26 +256,19 @@
 }
 
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
+#pragma mark - IBAction Listeners
 - (IBAction)whenDatePickerChanged:(UIDatePicker *)sender {
     self.whenLabel.text =  [self.dateFormatter stringFromDate:sender.date];
-    
     self.selectedWhen = sender.date;
 }
 
 - (IBAction)startDatePickerChanged:(UIDatePicker *)sender {
     self.startLabel.text = [self.timeFormatter stringFromDate:sender.date];
     self.selectedStart = sender.date;
+    self.endDatePicker.minimumDate = [NSDate dateWithTimeInterval:60 sinceDate:sender.date];
+    self.endDatePicker.date = self.endDatePicker.minimumDate;
+    self.endLabel.text = [self.timeFormatter stringFromDate:self.endDatePicker.date];
+    self.selectedEnd = self.endDatePicker.date;
 }
 
 - (IBAction)endDatePickerChanged:(UIDatePicker *)sender {
@@ -289,22 +276,46 @@
     self.selectedEnd = sender.date;
 }
 
-- (IBAction)cancelClicked:(UIBarButtonItem *)sender {
+- (IBAction)saveClicked:(UIBarButtonItem *)sender {
+    NSDate *start = [self dateFromDayAndTime:self.selectedWhen time:self.selectedStart];
+    NSDate *end = [self dateFromDayAndTime:self.selectedWhen time:self.selectedEnd];
+    if (self.event) {
+        self.event.name = self.nameField.text;
+        self.event.addr = self.locationField.text;
+        self.event.notes = self.notesTextView.text;
+        //get the NSdate from the when day components and times
+        self.event.start = start;
+        self.event.end = end;
+    } else {
+        NSMutableDictionary *eventDetails = [[NSMutableDictionary alloc] init];
+        //NSDate *start = self.selectedStart;
+        //NSDate *end = self.selectedEnd;
+        [eventDetails setObject:self.nameField.text forKey:T_NAME_KEY];
+        [eventDetails setObject:start   forKey:T_START_KEY];
+        [eventDetails setObject:end forKey:T_END_KEY];
+        [eventDetails setObject:self.notesTextView.text forKey:T_NOTES_KEY];
+        NSManagedObjectContext *context = [DataManager getManagedObjectContext];
+        PIEvent *e = [PIEvent createEvent:eventDetails inManagedObjectContext:context];
+    }
+    [self.delegate updateTableView];
     [self dismissViewControllerAnimated:YES completion:NULL];
+    //save it and then call the delegate to reload itself
+    /*    Address *addr = [[Address alloc] initWithStreet:self.streetField.text city:self.cityField.text state:NULL country:self.countryField.text postal:[self.postalCodeField.text integerValue]];
+     
+     self.event.name = self.nameField.text;
+     //self.event.when = self.selectedWhen;
+     self.event.start = self.selectedStart;
+     self.event.end = self.selectedEnd;
+     self.event.addr = addr;
+     self.event.notes = self.notesTextView.text;
+     
+     [self.delegate saveEventDetails:self.event isNewEvent:self.isNewEvent];
+     
+     [self dismissViewControllerAnimated:YES completion:NULL]; */
 }
 
-- (IBAction)saveClicked:(UIBarButtonItem *)sender {
-    Address *addr = [[Address alloc] initWithStreet:self.streetField.text city:self.cityField.text state:NULL country:self.countryField.text postal:[self.postalCodeField.text integerValue]];
-    
-    self.event.name = self.nameField.text;
-    self.event.when = self.selectedWhen;
-    self.event.start = self.selectedStart;
-    self.event.end = self.selectedEnd;
-    self.event.addr = addr;
-    self.event.notes = self.notesTextView.text;
-    
-    [self.delegate saveEventDetails:self.event isNewEvent:self.isNewEvent];
-    
+#pragma mark - does to be edited
+- (IBAction)cancelClicked:(UIBarButtonItem *)sender {
     [self dismissViewControllerAnimated:YES completion:NULL];
 }
 @end

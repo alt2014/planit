@@ -7,25 +7,29 @@
 //
 
 #import "DataManager.h"
-#import "PITrip+Model.h"
 
 @implementation DataManager
 
 static UIManagedDocument *managedDocument;
 static NSManagedObjectContext *managedObjectContext;
+static NSMutableSet *trips;
 
 + (NSManagedObjectContext*)getManagedObjectContext {
     return managedObjectContext;
 }
 
+- (NSArray*)getTrips {
+    return [PITrip sortTrips:[trips allObjects]];
+}
+
 - (void)documentIsReady:(void (^) (BOOL success, NSArray *trips))block success:(BOOL)success {
     if (success) {
         managedObjectContext = managedDocument.managedObjectContext;
-        NSArray *trips = [PITrip fetchTripsInContext:managedObjectContext];
+        trips = [NSMutableSet setWithArray:[PITrip fetchTripsInContext:managedObjectContext]];
         if (!trips) {
             block(NO, nil);
         } else {
-            block(success, trips);
+            block(success, [self getTrips]);
         }
     } else {
         block(success, nil);
@@ -69,6 +73,10 @@ static NSManagedObjectContext *managedObjectContext;
     CFStringRef uuidStringRef = CFUUIDCreateString(NULL, uuidRef);
     CFRelease(uuidRef);
     return (__bridge NSString *)uuidStringRef;
+}
+
+- (void)addTrip:(PITrip*)trip {
+    [trips addObject:trip];
 }
 
 @end

@@ -11,7 +11,7 @@
 
 @protocol AddTripDelegate <NSObject>
 
-- (void)saveTripDetails:(Trip *)trip;
+- (void)updateTableDataSource;
 
 @end
 

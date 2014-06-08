@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@class Event;
+@class PITrip;
 
 
 
@@ -17,7 +17,6 @@
     __weak IBOutlet UIBarButtonItem *sidebarButton;
 }
 
-@property  (strong, nonatomic) NSArray *daysInTrip;
-
+@property (strong, nonatomic) PITrip *trip;
 
 @end

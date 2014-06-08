@@ -17,15 +17,19 @@
     result.uid = [DataManager uuid];
     result.date = day;
     
+    [context save:NULL];
+    
     return result;
 }
 
 - (void)addEvent:(PIEvent *)event {
     [self addEventsObject:event];
+    [self.managedObjectContext save:NULL];
 }
 
-- (NSArray*)getEvents {
+- (NSArray*)getEventsArray {
     NSArray *array = [NSArray arrayWithArray:[self.events allObjects]];
+    
     NSArray *sorted = [array sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
         if ([obj1 isKindOfClass:[PIEvent class]] && [obj2 isKindOfClass:[PIEvent class]]) {
             PIEvent *a = obj1;

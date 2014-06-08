@@ -17,7 +17,7 @@
 @property (nonatomic, retain) NSString * notes;
 @property (nonatomic, retain) NSDate * start;
 @property (nonatomic, retain) NSDate * end;
-@property (nonatomic, retain) id addr;
+@property (nonatomic, retain) NSString * addr;
 @property (nonatomic, retain) NSString * uid;
 @property (nonatomic, retain) PIDay *day;
 

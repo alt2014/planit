@@ -7,6 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "PITrip.h"
+#import "PITrip+Model.h"
 
 @interface DataManager : NSObject
 
@@ -16,5 +18,8 @@
 + (NSString *)uuid;
 
 + (NSManagedObjectContext*)getManagedObjectContext;
+
+- (NSArray*)getTrips;
+- (void)addTrip:(PITrip*)trip;
 
 @end

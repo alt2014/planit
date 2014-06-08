@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-@class Event;
+@class PITrip;
+@protocol updateTableDelegate <NSObject>
+- (void)updateTableView;
+
+//- (void)saveEventDetails:(Event *)eventn isNewEvent:(BOOL)isNewEvent;
+@end
 
 @interface ItineraryEditViewController : UIViewController<UITableViewDelegate, UITableViewDataSource>
 - (IBAction)doneClicked:(UIBarButtonItem *)sender;
@@ -15,12 +20,11 @@
 
 @property (strong, nonatomic) NSDateFormatter *dateFormatter;
 @property (strong, nonatomic) NSDateFormatter *timeFormatter;
-
+@property  (weak, nonatomic) id<updateTableDelegate> delegate;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *AddTransport;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *AddLodging;
-@property (strong, nonatomic) NSMutableArray *itineraryEvents;
-@property (strong, nonatomic) NSArray *listOfDays;
+@property (strong, nonatomic) PITrip *trip;
 
 
 @end

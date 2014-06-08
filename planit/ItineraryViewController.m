@@ -10,10 +10,14 @@
 #import "ItineraryHeaderTableCell.h"
 #import "ItineraryViewController.h"
 #import "SWRevealViewController.h"
-#import "Event.h"
-#import "Day.h"
+#import "PIEvent.h"
+#import "PIDay.h"
 #import "ItineraryEditViewController.h"
 #import "POIViewController.h"
+#import "DataManager.h"
+#import "PITrip+Model.h"
+#import "PITrip.h"
+#import "PIDay+Model.h"
 
 #define eventCellHeight 82;
 #define headerCellHeight 27;
@@ -22,7 +26,6 @@
 @property (strong, nonatomic) NSDateFormatter *dateFormatter;
 @property (strong, nonatomic) NSDateFormatter *timeFormatter;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-
 @property (strong, nonatomic) NSMutableArray *itineraryEvents;
 
 @end
@@ -81,25 +84,6 @@ static NSString *poiDetailSegueID = @"pOIDetailSegue";
     [self.timeFormatter setDateStyle:NSDateFormatterNoStyle];
 }
 
-- (void)initTripDetails {
-    if (!self.itineraryEvents) {
-        self.itineraryEvents = [[NSMutableArray alloc] init];
-        for (int i = 0; i < [self.daysInTrip count]; i++) {
-            NSMutableArray *dayDataArr = [[NSMutableArray alloc] init];
-            Day *currDay = self.daysInTrip[i];
-            [dayDataArr addObject:[self.dateFormatter stringFromDate:currDay.date]];
-            NSArray *dayEvents = [currDay getEvents];
-            for (int e = 0; e < [dayEvents count]; e++) {
-                Event *currEvent = dayEvents[e];
-                [dayDataArr addObject:currEvent];
-            }
-            //this can get real messy, real fast, have to save back to this
-            [self.itineraryEvents addObject:dayDataArr];
-        }
-        
-    }
-}
-
 #pragma mark - Table View Data Source
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -116,12 +100,13 @@ static NSString *poiDetailSegueID = @"pOIDetailSegue";
 
 - (UITableViewCell *)eventCellForIndexPath:(NSIndexPath *)indexPath cellIdentifier:(NSString *)cellIdentifier
 {
-    Event *cellData = [[[self.daysInTrip objectAtIndex:indexPath.section] getEvents] objectAtIndex:indexPath.row];
+    PIEvent *cellData = [[[[self.trip getDaysArray] objectAtIndex:indexPath.section] getEventsArray] objectAtIndex:indexPath.row];
+    
     ItineraryItemTableCell *cell = (ItineraryItemTableCell *)[self.tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (cell == nil) {
         cell = [[ItineraryItemTableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
-    cell.AddressTextField.text = cellData.addr.asString;
+    cell.AddressTextField.text = @"change to an actual address later";
     //insert time formatter
     NSString *startTime = [self.timeFormatter stringFromDate:cellData.start];
     NSString *endTime = [self.timeFormatter stringFromDate:cellData.end];
@@ -143,20 +128,21 @@ static NSString *poiDetailSegueID = @"pOIDetailSegue";
     if (cell == nil) {
         cell = [[ItineraryHeaderTableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
-    NSDate *headerDate = [[self.daysInTrip objectAtIndex:section] date];
+    NSDate *headerDate = [[[self.trip getDaysArray] objectAtIndex:section] date];
     cell.DateLabel.text = [self.dateFormatter stringFromDate: headerDate];
     return cell;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return [self.daysInTrip count];
+    return [[self.trip getDaysArray] count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if ([expandedSections containsIndex:section]) {
-        return [[self.daysInTrip[section] getEvents] count] + 1;
+        PIDay *day = [[self.trip getDaysArray] objectAtIndex:section];
+        return [[day getEventsArray] count] + 1;
     }
     return 1;
 }
@@ -213,6 +199,9 @@ static NSString *poiDetailSegueID = @"pOIDetailSegue";
     }
 }
 
+-(void) updateTableView {
+    [self.tableView reloadData];
+}
 #pragma mark - Navigation
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -220,10 +209,10 @@ static NSString *poiDetailSegueID = @"pOIDetailSegue";
     if ([[segue identifier] isEqualToString:itineraryEditSegueID]){
         
         ItineraryEditViewController *controller = [[[segue destinationViewController] viewControllers] objectAtIndex:0];
-        controller.itineraryEvents = self.itineraryEvents;
-        controller.listOfDays = self.daysInTrip;
+        controller.trip = self.trip;
         controller.dateFormatter = self.dateFormatter;
         controller.timeFormatter = self.timeFormatter;
+        controller.delegate = self;
     }
     
     if ([[segue identifier] isEqualToString:poiDetailSegueID]) {

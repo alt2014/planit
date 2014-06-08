@@ -230,6 +230,8 @@
 		E02CEFFA1941F06A00A0C90A /* Edit View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				E081DC7619373933006D22E9 /* TripAddViewController.h */,
+				E081DC7719373933006D22E9 /* TripAddViewController.m */,
 				E00A4EA8192ACE6F00990B7C /* ItineraryEditViewController.h */,
 				E00A4EA9192ACE6F00990B7C /* ItineraryEditViewController.m */,
 				E00A4EB7192C040600990B7C /* POIEditViewController.h */,
@@ -302,6 +304,7 @@
 			isa = PBXGroup;
 			children = (
 				E03B8EBB193B0FB800D7A798 /* Assets */,
+				D08A7E0D193AFB0D0082B10A /* CoreData */,
 				E08396D01934317B00DCB972 /* Library */,
 				D0F81BB4191D537400E54ACE /* Model */,
 				E0D745B8190FAB4400999C2D /* AppDelegate.h */,
@@ -315,8 +318,6 @@
 				E0E20EA6191DD73600B61A52 /* ItineraryViewController.m */,
 				E0FD0EA8192016CA007AE809 /* TripViewController.h */,
 				E0FD0EA9192016CB007AE809 /* TripViewController.m */,
-				E081DC7619373933006D22E9 /* TripAddViewController.h */,
-				E081DC7719373933006D22E9 /* TripAddViewController.m */,
 				E00A4EAB192BEF9400990B7C /* LodgingViewController.h */,
 				E00A4EAC192BEF9400990B7C /* LodgingViewController.m */,
 				E00A4EAE192BF82F00990B7C /* POIViewController.h */,

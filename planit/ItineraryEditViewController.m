@@ -7,10 +7,12 @@
 //
 
 #import "ItineraryEditViewController.h"
-#import "Event.h"
+#import "PIEvent.h"
 #import "ItineraryItemTableCell.h"
 #import "POIEditViewController.h"
-#import "Day.h"
+#import "PIDay.h"
+#import "PITrip+Model.h"
+#import "PIDay+Model.h"
 #import "ItineraryHeaderTableCell.h"
 
 #define eventCellHeight 82;
@@ -60,12 +62,13 @@ NSMutableIndexSet *expandedSections;
 
 - (UITableViewCell *)eventCellForIndexPath:(NSIndexPath *)indexPath cellIdentifier:(NSString *)cellIdentifier
 {
-    Event *cellData = [[[self.listOfDays objectAtIndex:indexPath.section] getEvents] objectAtIndex:indexPath.row];
+    PIEvent *cellData = [[[[self.trip getDaysArray] objectAtIndex:indexPath.section] getEventsArray] objectAtIndex:indexPath.row];
+    
     ItineraryItemTableCell *cell = (ItineraryItemTableCell *)[self.tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (cell == nil) {
         cell = [[ItineraryItemTableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
-    cell.AddressTextField.text = cellData.addr.asString;
+    cell.AddressTextField.text = @"change to an actual address later";
     //insert time formatter
     NSString *startTime = [self.timeFormatter stringFromDate:cellData.start];
     NSString *endTime = [self.timeFormatter stringFromDate:cellData.end];
@@ -87,20 +90,25 @@ NSMutableIndexSet *expandedSections;
     if (cell == nil) {
         cell = [[ItineraryHeaderTableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
-    NSDate *headerDate = [[self.listOfDays objectAtIndex:section] date];
+    NSDate *headerDate = [[[self.trip getDaysArray] objectAtIndex:section] date];
     cell.DateLabel.text = [self.dateFormatter stringFromDate: headerDate];
     return cell;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return [self.listOfDays count];
+    return [[self.trip getDaysArray] count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [[self.listOfDays[section] getEvents] count] + 1;
+    if ([expandedSections containsIndex:section]) {
+        PIDay *day = [[self.trip getDaysArray] objectAtIndex:section];
+        return [[day getEventsArray] count] + 1;
+    }
+    return 1;
 }
+
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -111,8 +119,6 @@ NSMutableIndexSet *expandedSections;
         return headerCellHeight;
 }
 
-
-
 #pragma mark-Table View Delegate Methods
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -120,7 +126,10 @@ NSMutableIndexSet *expandedSections;
 }
 
 #pragma mark - delegateMethods
-- (void)saveEventDetails:(Event *)event isNewEvent:(BOOL)isNewEvent {
+- (void)updateTableView {
+    [self.tableView reloadData];
+    //add a delegate method here to update the itinerary view table view too
+    /*
     if (isNewEvent) {
         for(int i = 0; i < [self.listOfDays count];  i++)
         {
@@ -141,6 +150,7 @@ NSMutableIndexSet *expandedSections;
         }
     } else
         [self.tableView reloadData];
+     */
 }
 
 
@@ -153,7 +163,9 @@ NSMutableIndexSet *expandedSections;
         POIEditViewController *controller = [[[segue destinationViewController] viewControllers] objectAtIndex:0];
         controller.dateFormatter = self.dateFormatter;
         controller.timeFormatter = self.timeFormatter;
+        controller.trip = self.trip;
         controller.delegate = self;
+        //maybe pass
     }
     
     if ([[segue identifier] isEqualToString:editPOISegueID]){
@@ -162,7 +174,7 @@ NSMutableIndexSet *expandedSections;
         controller.dateFormatter = self.dateFormatter;
         controller.timeFormatter = self.timeFormatter;
         NSIndexPath *selectedIndexPath = [self.tableView indexPathForSelectedRow];
-        Event *selectedEvent = [[self.itineraryEvents objectAtIndex:selectedIndexPath.section] objectAtIndex:selectedIndexPath.row];
+        PIEvent *selectedEvent = [[[[self.trip getDaysArray] objectAtIndex:selectedIndexPath.section] getEventsArray] objectAtIndex:selectedIndexPath.row];
         controller.event = selectedEvent;
         controller.delegate = self;
     }
@@ -170,6 +182,7 @@ NSMutableIndexSet *expandedSections;
 
 
 - (IBAction)doneClicked:(UIBarButtonItem *)sender {
+    [self.delegate updateTableView];
     [self dismissViewControllerAnimated:YES completion:NULL];
 }
 @end

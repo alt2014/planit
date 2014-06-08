@@ -46,6 +46,11 @@
         [result addDaysObject:day];
     }
     
+    [context save:NULL];
+    
+    DataManager *dm = [[DataManager alloc] init];
+    [dm addTrip:result];
+    
     return result;
 }
 
@@ -54,6 +59,21 @@
     NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     NSDateComponents *components = [calendar components:unitFlags fromDate:dt1 toDate:dt2 options:0];
     return [components day];
+}
+
++ (NSArray*)sortTrips:(NSArray*)trips {
+    return [trips sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+        if ([obj1 isKindOfClass:[PITrip class]] && [obj2 isKindOfClass:[PITrip class]]) {
+            PITrip *a = obj1;
+            PITrip *b = obj2;
+            NSDate *date1 = [a start];
+            NSDate *date2 = [b start];
+            
+            return [date1 compare:date2];
+        }
+        
+        return NSOrderedSame;
+    }];
 }
 
 + (NSArray*)fetchTripsInContext:(NSManagedObjectContext *)context {
@@ -66,19 +86,7 @@
         return nil;
     }
     
-    NSArray *sorted = [matches sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
-        if ([obj1 isKindOfClass:[PITrip class]] && [obj2 isKindOfClass:[PITrip class]]) {
-            PITrip *a = obj1;
-            PITrip *b = obj2;
-            NSDate *date1 = [a start];
-            NSDate *date2 = [b start];
-            
-            return [date1 compare:date2];
-        }
-        
-        return NSOrderedSame;
-    }];
-    
+    NSArray *sorted = [self sortTrips:matches];
     return sorted;
 }
 
