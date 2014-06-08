@@ -5,18 +5,28 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
+<<<<<<< HEAD
 	<string>AA9A3A04-A189-4D2F-B677-21307F7FB82F</string>
+=======
+	<string>1C417829-D5A6-46F1-BFF1-F0320BCBFD0D</string>
+>>>>>>> FETCH_HEAD
 	<key>IDESourceControlProjectName</key>
 	<string>planit</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
+<<<<<<< HEAD
 		<key>69426EEE-50B4-4475-922F-4021CBA64E08</key>
 		<string>https://github.com/alt2014/planit.git</string>
+=======
+		<key>EF8E0851-4E9E-42DD-8296-7F3320048FAA</key>
+		<string>ssh://github.com/alt2014/planit.git</string>
+>>>>>>> FETCH_HEAD
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>planit.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
+<<<<<<< HEAD
 		<key>69426EEE-50B4-4475-922F-4021CBA64E08</key>
 		<string>../..</string>
 	</dict>
@@ -26,13 +36,28 @@
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
 	<string>69426EEE-50B4-4475-922F-4021CBA64E08</string>
+=======
+		<key>EF8E0851-4E9E-42DD-8296-7F3320048FAA</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://github.com/alt2014/planit.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>EF8E0851-4E9E-42DD-8296-7F3320048FAA</string>
+>>>>>>> FETCH_HEAD
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
+<<<<<<< HEAD
 			<string>69426EEE-50B4-4475-922F-4021CBA64E08</string>
+=======
+			<string>EF8E0851-4E9E-42DD-8296-7F3320048FAA</string>
+>>>>>>> FETCH_HEAD
 			<key>IDESourceControlWCCName</key>
 			<string>planit</string>
 		</dict>
