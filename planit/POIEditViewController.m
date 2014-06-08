@@ -290,12 +290,14 @@
         NSMutableDictionary *eventDetails = [[NSMutableDictionary alloc] init];
         //NSDate *start = self.selectedStart;
         //NSDate *end = self.selectedEnd;
-        [eventDetails setObject:self.nameField.text forKey:T_NAME_KEY];
-        [eventDetails setObject:start   forKey:T_START_KEY];
-        [eventDetails setObject:end forKey:T_END_KEY];
-        [eventDetails setObject:self.notesTextView.text forKey:T_NOTES_KEY];
+        [eventDetails setObject:self.nameField.text forKey:E_NAME_KEY];
+        [eventDetails setObject:start   forKey:E_START_KEY];
+        [eventDetails setObject:end forKey:E_END_KEY];
+        [eventDetails setObject:self.notesTextView.text forKey:E_NOTES_KEY];
+        [eventDetails setObject:self.locationField.text forKey:E_ADDR_KEY];
         NSManagedObjectContext *context = [DataManager getManagedObjectContext];
         PIEvent *e = [PIEvent createEvent:eventDetails inManagedObjectContext:context];
+        [[self.trip getDayForDate:self.selectedWhen] addEvent:e];
     }
     [self.delegate updateTableView];
     [self dismissViewControllerAnimated:YES completion:NULL];

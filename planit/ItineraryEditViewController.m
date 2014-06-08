@@ -23,7 +23,6 @@
 static NSString *addPOISegueID = @"addPOISegue";
 static NSString *editPOISegueID = @"editPOISegue";
 
-NSMutableIndexSet *expandedSections;
 @implementation ItineraryEditViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -62,13 +61,13 @@ NSMutableIndexSet *expandedSections;
 
 - (UITableViewCell *)eventCellForIndexPath:(NSIndexPath *)indexPath cellIdentifier:(NSString *)cellIdentifier
 {
-    PIEvent *cellData = [[[[self.trip getDaysArray] objectAtIndex:indexPath.section] getEventsArray] objectAtIndex:indexPath.row];
+    PIEvent *cellData = [[[[self.trip getDaysArray] objectAtIndex:indexPath.section] getEventsArray] objectAtIndex:indexPath.row - 1];
     
     ItineraryItemTableCell *cell = (ItineraryItemTableCell *)[self.tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (cell == nil) {
         cell = [[ItineraryItemTableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
-    cell.AddressTextField.text = @"change to an actual address later";
+    cell.AddressTextField.text = cellData.addr;
     //insert time formatter
     NSString *startTime = [self.timeFormatter stringFromDate:cellData.start];
     NSString *endTime = [self.timeFormatter stringFromDate:cellData.end];
@@ -102,11 +101,9 @@ NSMutableIndexSet *expandedSections;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if ([expandedSections containsIndex:section]) {
-        PIDay *day = [[self.trip getDaysArray] objectAtIndex:section];
-        return [[day getEventsArray] count] + 1;
-    }
-    return 1;
+    PIDay *day = [[self.trip getDaysArray] objectAtIndex:section];
+    return [[day getEventsArray] count] + 1;
+    
 }
 
 
@@ -128,29 +125,6 @@ NSMutableIndexSet *expandedSections;
 #pragma mark - delegateMethods
 - (void)updateTableView {
     [self.tableView reloadData];
-    //add a delegate method here to update the itinerary view table view too
-    /*
-    if (isNewEvent) {
-        for(int i = 0; i < [self.listOfDays count];  i++)
-        {
-            Day *day = self.listOfDays[i];
-            NSDate *ddate = day.date;
-            NSDate *eDate = event.when;
-            NSDateComponents *dayComponents = [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:ddate];
-            NSDateComponents *eventComponents = [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:eDate];
-            
-            if ([dayComponents month] == [eventComponents month] && [dayComponents day] == [eventComponents day] && [dayComponents year] == [eventComponents year]) {
-                [day addEvent:event];
-                //[self.itineraryEvents[i] addObject:event];
-                NSArray *indexPaths = @[[NSIndexPath indexPathForRow:[[self.listOfDays[i] getEvents] count] inSection:i]];
-                [self.tableView insertRowsAtIndexPaths:indexPaths
-                      withRowAnimation:UITableViewRowAnimationFade];
-                break;
-            }
-        }
-    } else
-        [self.tableView reloadData];
-     */
 }
 
 

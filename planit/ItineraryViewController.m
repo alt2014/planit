@@ -100,13 +100,13 @@ static NSString *poiDetailSegueID = @"pOIDetailSegue";
 
 - (UITableViewCell *)eventCellForIndexPath:(NSIndexPath *)indexPath cellIdentifier:(NSString *)cellIdentifier
 {
-    PIEvent *cellData = [[[[self.trip getDaysArray] objectAtIndex:indexPath.section] getEventsArray] objectAtIndex:indexPath.row];
+    PIEvent *cellData = [[[[self.trip getDaysArray] objectAtIndex:indexPath.section] getEventsArray] objectAtIndex:indexPath.row - 1];
     
     ItineraryItemTableCell *cell = (ItineraryItemTableCell *)[self.tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (cell == nil) {
         cell = [[ItineraryItemTableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
-    cell.AddressTextField.text = @"change to an actual address later";
+    cell.AddressTextField.text = cellData.addr;
     //insert time formatter
     NSString *startTime = [self.timeFormatter stringFromDate:cellData.start];
     NSString *endTime = [self.timeFormatter stringFromDate:cellData.end];
