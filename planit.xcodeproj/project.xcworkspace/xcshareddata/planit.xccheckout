@@ -21,6 +21,8 @@
 		<string>../../../planit-master/Forex</string>
 		<key>7ED24026-211F-4FA5-BE90-B4DB7F20CC9C</key>
 		<string>../..</string>
+		<key>CD88398F-7605-4FBF-8E35-3CF6B0B97205</key>
+		<string>../../Forex</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/alt2014/planit.git</string>
@@ -34,7 +36,7 @@
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>10948C20-3B44-4E71-8265-9011B5E770AC</string>
+			<string>CD88398F-7605-4FBF-8E35-3CF6B0B97205</string>
 			<key>IDESourceControlWCCName</key>
 			<string>Forex</string>
 		</dict>
