@@ -142,7 +142,11 @@ static NSString *lodgingDetailSegueID = @"lodgingDetailSegue";
         cell = [[ItineraryHeaderTableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     NSDate *headerDate = [[[self.trip getDaysArray] objectAtIndex:section] date];
-    cell.DateLabel.text = [self.dateFormatter stringFromDate: headerDate];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setFormatterBehavior:NSDateFormatterBehavior10_4];
+    [dateFormatter setDateFormat:@"EEEE MMMM d, YYYY"];
+    NSString *date = [dateFormatter stringFromDate:headerDate];
+    cell.DateLabel.text = date;
     return cell;
 }
 
