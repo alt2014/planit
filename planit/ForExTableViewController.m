@@ -10,6 +10,7 @@
 #import "Currency.h"
 #import "CurrencyManager.h"
 #import "CurrencyCommunicator.h"
+#import "SWRevealViewController.h"
 #define numSections 2
 #define fromCountryRow 1
 #define fromPickerRow 2
@@ -56,6 +57,8 @@ CurrencyManager *_manager;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    _sidebarButton.target = self.revealViewController;
+    _sidebarButton.action = @selector(revealToggle:);
     _manager = [[CurrencyManager alloc] init];
     _manager.communicator = [[CurrencyCommunicator alloc] init];
     _manager.communicator.delegate = _manager;

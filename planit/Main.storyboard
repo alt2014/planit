@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Qtl-1i-M2R">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Qtl-1i-M2R">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -71,6 +71,7 @@
                     </tableView>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Title" id="gcP-gY-u1J">
+                        <barButtonItem key="leftBarButtonItem" image="menu.png" id="ZOY-VO-4sQ"/>
                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="VWf-Cm-Erm">
                             <connections>
                                 <segue destination="gQH-F1-fpT" kind="modal" identifier="addTrip" id="8f8-uc-W0B"/>
@@ -78,6 +79,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="sideBarButton" destination="ZOY-VO-4sQ" id="kBP-VU-jCq"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yh2-H9-Ut6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -885,7 +889,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             </objects>
             <point key="canvasLocation" x="-204" y="-1009"/>
         </scene>
-        <!--For Ex Table View Controller-->
+        <!--For Ex Table View Controller - Title-->
         <scene sceneID="FwL-qi-ciL">
             <objects>
                 <tableViewController id="K2J-NY-j4x" customClass="ForExTableViewController" sceneMemberID="viewController">
@@ -1051,11 +1055,21 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                             <outlet property="delegate" destination="K2J-NY-j4x" id="Dog-oU-5Nn"/>
                         </connections>
                     </tableView>
+                    <toolbarItems>
+                        <barButtonItem image="menu.png" id="6lX-o3-f3Y"/>
+                    </toolbarItems>
+                    <navigationItem key="navigationItem" title="Title" id="VeB-ww-re5">
+                        <connections>
+                            <outlet property="leftBarButtonItem" destination="6lX-o3-f3Y" id="4nx-Eu-Y4I"/>
+                        </connections>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="fromAmountField" destination="nXU-mV-FW8" id="2yx-pE-LXA"/>
                         <outlet property="fromCountryLabel" destination="uVv-e8-sn2" id="4mv-xF-xMx"/>
                         <outlet property="fromCurrLabel" destination="dZt-ef-9pb" id="DRH-3L-34W"/>
                         <outlet property="fromPicker" destination="fyp-nX-SAI" id="JO8-fR-sz3"/>
+                        <outlet property="sidebarButton" destination="6lX-o3-f3Y" id="X8e-EG-1wu"/>
                         <outlet property="toAmountField" destination="Yfp-M3-AwP" id="ltZ-jF-EmP"/>
                         <outlet property="toCountryLabel" destination="bCE-e8-Vkt" id="vmD-pQ-Af4"/>
                         <outlet property="toCurrLabel" destination="sv4-ya-JXh" id="Jrg-V3-Dpz"/>
@@ -1405,7 +1419,9 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         </connections>
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="8oj-Q4-QOB">
-                        <barButtonItem key="leftBarButtonItem" title="Item" id="kPx-9Y-DTa"/>
+                        <barButtonItem key="leftBarButtonItem" image="menu.png" id="kPx-9Y-DTa">
+                            <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="compose" id="lUP-Uz-7In">
                             <connections>
                                 <segue destination="GIF-Mc-LfC" kind="modal" identifier="itineraryEditSegue" id="3L8-Mv-dG8"/>
@@ -1424,7 +1440,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             </objects>
             <point key="canvasLocation" x="772" y="-997"/>
         </scene>
-        <!--Weather View Controller-->
+        <!--Weather View Controller - Title-->
         <scene sceneID="xpF-dh-jsZ">
             <objects>
                 <viewController id="2tv-h0-1JS" customClass="WeatherViewController" sceneMemberID="viewController">
@@ -1538,13 +1554,22 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GWF-a6-nH8">
-                                <rect key="frame" x="0.0" y="91" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="73" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <toolbarItems>
+                        <barButtonItem image="menu.png" id="XgR-uL-IIn"/>
+                    </toolbarItems>
+                    <navigationItem key="navigationItem" title="Title" id="mcb-w9-iKf">
+                        <connections>
+                            <outlet property="leftBarButtonItem" destination="XgR-uL-IIn" id="pBb-h7-ADq"/>
+                        </connections>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="day1" destination="GJ8-yo-SY2" id="a7E-dH-K2y"/>
                         <outlet property="day2" destination="TAy-Pj-e5f" id="T1T-j8-8Uj"/>
@@ -1560,6 +1585,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <outlet property="primaryL" destination="uWQ-mk-Lqc" id="4MN-e4-hdl"/>
                         <outlet property="primaryWeatherLabel" destination="U6r-Ca-VBl" id="jJa-VT-cXC"/>
                         <outlet property="searchBar" destination="GWF-a6-nH8" id="9ip-9X-Dle"/>
+                        <outlet property="sidebarButton" destination="XgR-uL-IIn" id="20H-da-GF5"/>
                         <outlet property="temperatureControl" destination="aOo-lb-CcM" id="m1P-lC-JnP"/>
                     </connections>
                 </viewController>
@@ -2620,11 +2646,12 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         </scene>
     </scenes>
     <resources>
-        <image name="Assets/POI53.png" width="16" height="16"/>
+        <image name="Assets/POI53.png" width="28" height="20"/>
         <image name="POI53.png" width="53" height="53"/>
         <image name="accomodations53.png" width="53" height="53"/>
         <image name="foreign-exchange30.png" width="30" height="30"/>
         <image name="list-icon30.png" width="30" height="30"/>
+        <image name="menu.png" width="28" height="20"/>
         <image name="transportation53.png" width="53" height="53"/>
         <image name="weather30.png" width="30" height="30"/>
     </resources>
