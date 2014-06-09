@@ -5,15 +5,15 @@
 //  Created by Anh Truong on 6/8/14.
 //  Copyright (c) 2014 Anh Truong. All rights reserved.
 //
-#define numRows 13
+#define numRows 12
 #define datePickerCellHeight 168
 #define deleteRowHeight 39
 #define notesRowHeight 67
 #define firstCellHeight 68
 #define startPickerRow 7
 #define endPickerRow 9
-#define notesRow 11
-#define deleteRow 12
+#define notesRow 10
+#define deleteRow 11
 #define standardRowHeight 44
 
 #import "TransportationEditViewController.h"
@@ -32,6 +32,7 @@
 @property (assign) BOOL startPickerIsShowing;
 @property (assign) BOOL endPickerIsShowing;
 @property (strong, nonatomic) NSDate *selectedStart;
+@property (weak, nonatomic) IBOutlet UITextField *nameField;
 @property (strong, nonatomic) NSDate *selectedEnd;
 @property (strong, nonatomic) UITextField *activeTextField;
 @property (weak, nonatomic) IBOutlet UITextField *routeNumberField;
@@ -46,6 +47,7 @@
 - (IBAction)startDatePickerChanged:(UIDatePicker *)sender;
 @property (weak, nonatomic) IBOutlet UIDatePicker *endDatePicker;
 - (IBAction)endDatePickerChanged:(UIDatePicker *)sender;
+@property (strong, nonatomic) NSDateFormatter *dateTimeFormatter;
 @end
 
 @implementation TransportationEditViewController
@@ -62,6 +64,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.dateTimeFormatter = [[NSDateFormatter alloc] init];
+    [self.dateTimeFormatter setDateStyle:NSDateFormatterShortStyle];
+    [self.dateTimeFormatter setTimeStyle:NSDateFormatterShortStyle];
     [self initFields];
     [self signUpForKeyboardNotifications];
     [self hideDatePickerCell:@"start"];
@@ -86,7 +91,8 @@
         self.startDatePicker.date = self.startDatePicker.minimumDate;
         self.endDatePicker.date = [NSDate dateWithTimeInterval:60 sinceDate:self.startDatePicker.date];
     } else {
-        self.routeNumberField.text = self.event.name;
+        self.nameField.text = self.event.name;
+        self.routeNumberField.text = ((PITransportation *)self.event).routeNumber;
         self.NotesField.text = self.event.notes;
         self.startDatePicker.date = self.event.start;
         self.endDatePicker.date = self.event.end;
@@ -97,9 +103,9 @@
     }
     
     self.selectedStart = self.startDatePicker.date;
-    self.startLabel.text = [self.timeFormatter stringFromDate:self.selectedStart];
+    self.startLabel.text = [self.dateTimeFormatter stringFromDate:self.selectedStart];
     self.selectedEnd = self.endDatePicker.date;
-    self.endLabel.text = [self.timeFormatter stringFromDate:self.selectedEnd];
+    self.endLabel.text = [self.dateTimeFormatter stringFromDate:self.selectedEnd];
 }
 
 - (NSDate *)createNSDate:(NSInteger)month day:(NSInteger)day year:(NSInteger)year hour:(NSInteger)hour minute:(NSInteger)minute {
@@ -258,29 +264,30 @@
 #pragma mark - Table view delegate
 
 - (IBAction)startDatePickerChanged:(UIDatePicker *)sender {
-    self.startLabel.text = [self.timeFormatter stringFromDate:sender.date];
+    self.startLabel.text = [self.dateTimeFormatter stringFromDate:sender.date];
     self.selectedStart = sender.date;
     if (self.selectedEnd < self.selectedStart) {
         self.endDatePicker.minimumDate = [NSDate dateWithTimeInterval:60 sinceDate:sender.date];
         self.endDatePicker.date = self.endDatePicker.minimumDate;
-        self.endLabel.text = [self.timeFormatter stringFromDate:self.endDatePicker.date];
+        self.endLabel.text = [self.dateTimeFormatter stringFromDate:self.endDatePicker.date];
         self.selectedEnd = self.endDatePicker.date;
 
     }
 }
 
 - (IBAction)endDatePickerChanged:(UIDatePicker *)sender {
-    self.endLabel.text = [self.timeFormatter stringFromDate:sender.date];
+    self.endLabel.text = [self.dateTimeFormatter stringFromDate:sender.date];
     self.selectedEnd = sender.date;
 }
 - (IBAction)cancelClicked:(UIBarButtonItem *)sender {
     [self dismissViewControllerAnimated:YES completion:NULL];
 }
 
-- (IBAction)createNewEvent
+- (void)createNewEvent
 {
     NSMutableDictionary *eventDetails = [[NSMutableDictionary alloc] init];
-    [eventDetails setObject:self.routeNumberField.text forKey:E_NAME_KEY];
+    [eventDetails setObject:self.nameField.text forKey:E_NAME_KEY];
+    
     [eventDetails setObject:self.selectedStart   forKey:E_START_KEY];
     [eventDetails setObject:self.selectedEnd forKey:E_END_KEY];
     [eventDetails setObject:self.NotesField.text forKey:E_NOTES_KEY];
@@ -288,7 +295,7 @@
     [eventDetails setObject:self.ArrivalLocField.text forKey:ET_ARRIVAL_KEY];
     [eventDetails setObject:self.phoneNumberField.text forKey:E_PHONE_KEY];
     [eventDetails setObject:self.confirmationNumberField.text forKey:ET_CONFIRMATION_KEY];
-    [eventDetails setObject:@"" forKey:ET_DEPARTURE_KEY];
+    [eventDetails setObject:self.routeNumberField.text forKey:ET_ROUTE_KEY];
     
     NSManagedObjectContext *context = [DataManager getManagedObjectContext];
     PITransportation *t = [PITransportation createTransportation:eventDetails inManagedObjectContext:context];
@@ -302,7 +309,7 @@
 
     if (self.event) {
         [self.event.day removeEventsObject:self.event];
-        self.event.name = self.routeNumberField.text;
+        self.event.name = self.nameField.text;
         self.event.addr = self.departureLocField.text;
         self.event.notes = self.NotesField.text;
         self.event.start = self.selectedStart;
@@ -310,6 +317,7 @@
         self.event.phone = self.phoneNumberField.text;
         ((PITransportation *)self.event).arrivalLocation = self.ArrivalLocField.text;
         ((PITransportation *)self.event).confirmationNumber = self.confirmationNumberField.text;
+        ((PITransportation *)self.event).routeNumber = self.routeNumberField.text;
         [[self.trip getDayForDate:self.event.start] addEvent:self.event];
     } else {
         [self createNewEvent];
