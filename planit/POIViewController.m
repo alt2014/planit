@@ -7,10 +7,16 @@
 //
 
 #import "POIViewController.h"
-#import "Event.h"
+#import "PIEvent.h"
 
 
 @interface POIViewController ()
+@property (weak, nonatomic) IBOutlet UILabel *eventName;
+@property (weak, nonatomic) IBOutlet UILabel *startLabel;
+@property (weak, nonatomic) IBOutlet UILabel *endLabel;
+@property (weak, nonatomic) IBOutlet UITextView *addressLabel;
+@property (weak, nonatomic) IBOutlet UITextView *notesField;
+@property (weak, nonatomic) IBOutlet UILabel *phoneLabel;
 
 @end
 
@@ -28,13 +34,28 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self setLabels];
     
     // Do any additional setup after loading the view.
 }
 
 - (void)setLabels
 {
-    self.NameLabel.text = self.event.name;    
+    self.eventName.text = self.event.name;
+   
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setFormatterBehavior:NSDateFormatterBehavior10_4];
+    [dateFormatter setDateFormat:@"MMM dd h:mm a"];
+    NSString *dateStart = [dateFormatter stringFromDate:self.event.start];
+    self.startLabel.text = dateStart;
+    
+    NSString *dateEnd = [dateFormatter stringFromDate:self.event.end];
+    self.endLabel.text = dateEnd;
+    
+    self.addressLabel.text = self.event.addr;
+    self.phoneLabel.text = self.event.phone;
+    self.notesField.text = self.event.notes;
+    
 }
 
 - (void)didReceiveMemoryWarning

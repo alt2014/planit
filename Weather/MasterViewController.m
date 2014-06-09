@@ -5,7 +5,7 @@
 //  Created by John Wu on 6/8/14.
 //  Copyright (c) 2014 planit. All rights reserved.
 //
-
+/*
 #import "MasterViewController.h"
 #import "GeoLocation.h"
 #import "DetailViewController.h"
@@ -122,4 +122,4 @@
     }
 }*/
 
-@end
+//@end*/

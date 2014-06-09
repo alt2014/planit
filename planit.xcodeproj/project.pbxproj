@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		1B8B113219459C0C0056612B /* DailyForecast.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B8B112C19459C0C0056612B /* DailyForecast.m */; };
 		1B8B113319459C0C0056612B /* GeoLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B8B112E19459C0C0056612B /* GeoLocation.m */; };
-		1B8B113419459C0C0056612B /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B8B112F19459C0C0056612B /* MasterViewController.m */; };
 		1B8B113519459C0C0056612B /* WeatherForecast.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B8B113119459C0C0056612B /* WeatherForecast.m */; };
 		1BA3493C19443692007ADF3E /* Currency.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BA3492319443692007ADF3E /* Currency.m */; };
 		1BA3493F19443692007ADF3E /* CurrencyCommunicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BA3492A19443692007ADF3E /* CurrencyCommunicator.m */; };
@@ -86,7 +85,6 @@
 		1B8B112C19459C0C0056612B /* DailyForecast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DailyForecast.m; path = Weather/DailyForecast.m; sourceTree = SOURCE_ROOT; };
 		1B8B112D19459C0C0056612B /* GeoLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GeoLocation.h; path = Weather/GeoLocation.h; sourceTree = SOURCE_ROOT; };
 		1B8B112E19459C0C0056612B /* GeoLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GeoLocation.m; path = Weather/GeoLocation.m; sourceTree = SOURCE_ROOT; };
-		1B8B112F19459C0C0056612B /* MasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MasterViewController.m; path = Weather/MasterViewController.m; sourceTree = SOURCE_ROOT; };
 		1B8B113019459C0C0056612B /* WeatherForecast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WeatherForecast.h; path = Weather/WeatherForecast.h; sourceTree = SOURCE_ROOT; };
 		1B8B113119459C0C0056612B /* WeatherForecast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WeatherForecast.m; path = Weather/WeatherForecast.m; sourceTree = SOURCE_ROOT; };
 		1BA3492219443692007ADF3E /* Currency.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Currency.h; path = Forex/Currency.h; sourceTree = SOURCE_ROOT; };
@@ -221,7 +219,6 @@
 				1B8B112C19459C0C0056612B /* DailyForecast.m */,
 				1B8B112D19459C0C0056612B /* GeoLocation.h */,
 				1B8B112E19459C0C0056612B /* GeoLocation.m */,
-				1B8B112F19459C0C0056612B /* MasterViewController.m */,
 				1B8B113019459C0C0056612B /* WeatherForecast.h */,
 				1B8B113119459C0C0056612B /* WeatherForecast.m */,
 			);
@@ -568,7 +565,6 @@
 				D0F81BB7191D839A00E54ACE /* Event.m in Sources */,
 				1BA3493F19443692007ADF3E /* CurrencyCommunicator.m in Sources */,
 				E0DCE048194575B7002609B2 /* PITransportation.m in Sources */,
-				1B8B113419459C0C0056612B /* MasterViewController.m in Sources */,
 				E08396D6193433E900DCB972 /* SideBarViewController.m in Sources */,
 				D0B2CC231934293300818475 /* Address.m in Sources */,
 				D02FE46619424A7700B7151C /* PIDay+Model.m in Sources */,

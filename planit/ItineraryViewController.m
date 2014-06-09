@@ -14,7 +14,9 @@
 #import "PIDay.h"
 #import "ItineraryEditViewController.h"
 #import "POIViewController.h"
+#import "TransportationViewController.h"
 #import "DataManager.h"
+#import "PITransportation.h"
 #import "PITrip+Model.h"
 #import "PITrip.h"
 #import "PIDay+Model.h"
@@ -33,6 +35,7 @@
 @implementation ItineraryViewController
 static NSString *itineraryEditSegueID = @"itineraryEditSegue";
 static NSString *poiDetailSegueID = @"pOIDetailSegue";
+static NSString *transportationDetailSegueID = @"transportationDetailSegue";
 
 //should pass in the trip name when the edit button is clicked
 //pass in the event when the event is clicked
@@ -218,13 +221,18 @@ static NSString *poiDetailSegueID = @"pOIDetailSegue";
     if ([[segue identifier] isEqualToString:poiDetailSegueID]) {
         POIViewController *controller = [segue destinationViewController];
         NSIndexPath *selectedIndexPath = [self.tableView indexPathForSelectedRow];
-        Event *selectedEvent = [[self.itineraryEvents objectAtIndex:selectedIndexPath.section] objectAtIndex:selectedIndexPath.row];
+        PIEvent *selectedEvent = [[[[self.trip getDaysArray] objectAtIndex:selectedIndexPath.section] getEventsArray] objectAtIndex:selectedIndexPath.row - 1];
         controller.event = selectedEvent;
         controller.timeFormatter = self.timeFormatter;
         controller.dateFormatter = self.dateFormatter;
         //add an event to the controller
     }
-    
+    if ([[segue identifier] isEqualToString:transportationDetailSegueID]) {
+        TransportationViewController *controller = [segue destinationViewController];
+        NSIndexPath *selectedIndexPath = [self.tableView indexPathForSelectedRow];
+        PITransportation *selectedEvent = [[[[self.trip getDaysArray] objectAtIndex:selectedIndexPath.section] getEventsArray] objectAtIndex:selectedIndexPath.row - 1];
+        controller.event = selectedEvent;
+    }
     /*
     if ([[segue identifier] isEqualToString:tripDetailSegueID]){
         

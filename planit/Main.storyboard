@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Qtl-1i-M2R">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Qtl-1i-M2R">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -949,6 +949,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                             <outlet property="AddressTextField" destination="EcB-2R-ya5" id="7Qc-lo-3vO"/>
                                             <outlet property="NameLabel" destination="8mp-Il-lfZ" id="1fd-oY-2fw"/>
                                             <outlet property="TimeLabel" destination="Uvu-pz-3tl" id="vjx-Ed-m9c"/>
+                                            <segue destination="QXB-de-ega" kind="push" identifier="pOIDetailSegue" id="hAa-3K-Cbx"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Transport" rowHeight="82" id="V2x-Vd-itC" customClass="ItineraryItemTableCell">
@@ -993,7 +994,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                         <connections>
                                             <outlet property="NameLabel" destination="rZg-Zk-TOn" id="YJS-YC-vHH"/>
                                             <outlet property="TimeLabel" destination="Dyl-Oa-fkB" id="Op4-2U-9p2"/>
-                                            <segue destination="0wL-88-zba" kind="push" id="qqa-IF-pet"/>
+                                            <segue destination="0wL-88-zba" kind="push" identifier="transportationDetailSegue" id="qqa-IF-pet"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Lodging" rowHeight="82" id="mqr-ep-Oap" customClass="ItineraryItemTableCell">
@@ -1095,61 +1096,73 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tam-of-l4e">
-                                <rect key="frame" x="25" y="130" width="36" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Date and Time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tam-of-l4e">
+                                <rect key="frame" x="25" y="129" width="91" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" name="selectedMenuItemColor" catalog="System" colorSpace="catalog"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Date Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pLg-SE-pXZ">
-                                <rect key="frame" x="25" y="148" width="253" height="27"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Address" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q3D-xD-t1r">
-                                <rect key="frame" x="25" y="183" width="50" height="21"/>
+                                <rect key="frame" x="25" y="188" width="50" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" name="selectedMenuItemColor" catalog="System" colorSpace="catalog"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Hours of Operation" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oQO-Kr-nLQ">
-                                <rect key="frame" x="25" y="281" width="115" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                <color key="textColor" name="selectedMenuItemColor" catalog="System" colorSpace="catalog"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Hours Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bFs-Q3-K0j">
-                                <rect key="frame" x="25" y="298" width="253" height="27"/>
+                            <label opaque="NO" clipsSubviews="YES" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Start Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bFs-Q3-K0j">
+                                <rect key="frame" x="25" y="153" width="253" height="27"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Notes" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Kb-Bm-8Yo">
-                                <rect key="frame" x="25" y="333" width="115" height="21"/>
+                                <rect key="frame" x="25" y="313" width="115" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="Address Label" translatesAutoresizingMaskIntoConstraints="NO" id="B7U-Z9-4YZ">
-                                <rect key="frame" x="20" y="204" width="258" height="77"/>
+                                <rect key="frame" x="20" y="211" width="258" height="54"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <dataDetectorType key="dataDetectorTypes" address="YES"/>
                             </textView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="NotesField" translatesAutoresizingMaskIntoConstraints="NO" id="p2x-Mq-NhD">
-                                <rect key="frame" x="20" y="362" width="240" height="128"/>
+                                <rect key="frame" x="20" y="331" width="240" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="to" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hhb-5L-Ge2">
+                                <rect key="frame" x="148" y="156" width="16" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="End Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gmL-dq-IlV">
+                                <rect key="frame" x="169" y="156" width="173" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Phone Number" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ikE-eD-6GD">
+                                <rect key="frame" x="25" y="268" width="91" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" name="selectedMenuItemColor" catalog="System" colorSpace="catalog"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Phone Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e5g-qH-IDt">
+                                <rect key="frame" x="25" y="284" width="96" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -1157,16 +1170,17 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <barButtonItem key="rightBarButtonItem" title="Edit" id="X1Z-Em-9PQ"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="AddressField" destination="B7U-Z9-4YZ" id="uSU-rH-1zc"/>
-                        <outlet property="DateLabel" destination="pLg-SE-pXZ" id="TVN-fT-9ia"/>
-                        <outlet property="HoursLabel" destination="bFs-Q3-K0j" id="VOZ-ih-cuz"/>
-                        <outlet property="NameLabel" destination="y0t-gt-AA9" id="Qya-rm-SkT"/>
-                        <outlet property="NotesField" destination="p2x-Mq-NhD" id="7Om-ra-0el"/>
+                        <outlet property="addressLabel" destination="B7U-Z9-4YZ" id="yJJ-tY-99e"/>
+                        <outlet property="endLabel" destination="gmL-dq-IlV" id="KDx-6n-e61"/>
+                        <outlet property="eventName" destination="y0t-gt-AA9" id="brj-Nt-MBC"/>
+                        <outlet property="notesField" destination="p2x-Mq-NhD" id="M5z-pd-n4n"/>
+                        <outlet property="phoneLabel" destination="e5g-qH-IDt" id="unh-9i-zpv"/>
+                        <outlet property="startLabel" destination="bFs-Q3-K0j" id="IEg-0s-v0s"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y4M-9R-xsl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1247" y="637"/>
+            <point key="canvasLocation" x="1242" y="-867"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="I4h-H9-Org">
@@ -1674,6 +1688,15 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <outlet property="NameLabel" destination="pv4-dp-7Pr" id="dPd-mq-Yr4"/>
                         <outlet property="NotesField" destination="6Gr-dU-xfr" id="1B0-9s-eJo"/>
                         <outlet property="RouteNumberLabel" destination="OcW-Z0-fIx" id="hor-Lz-JOa"/>
+                        <outlet property="arrivalLocationLabel" destination="IOW-Mr-5ir" id="zfH-5I-Y5A"/>
+                        <outlet property="arrivalTimeLabel" destination="AFs-lT-5nJ" id="nBB-aa-2B0"/>
+                        <outlet property="confirmationNumberLabel" destination="t22-Es-jnU" id="00z-u5-QSu"/>
+                        <outlet property="dateLabel" destination="Krr-m0-52s" id="79E-S6-5Dm"/>
+                        <outlet property="departureLocationLabel" destination="Uia-NQ-xzq" id="Wr0-55-2u6"/>
+                        <outlet property="departureTimeLabel" destination="OAN-Xu-g5K" id="8cM-2F-ZmV"/>
+                        <outlet property="notesField" destination="6Gr-dU-xfr" id="oM1-KO-7zU"/>
+                        <outlet property="routeLabel" destination="OcW-Z0-fIx" id="Bot-zU-TeX"/>
+                        <outlet property="travelEventLabel" destination="pv4-dp-7Pr" id="ZUu-6f-Wp4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DuR-mb-bOU" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2207,7 +2230,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="LAb-mW-mXg"/>
+        <segue reference="LkV-mQ-02W"/>
         <segue reference="rxy-pz-WX9"/>
-        <segue reference="qg4-Lr-WQw"/>
     </inferredMetricsTieBreakers>
 </document>

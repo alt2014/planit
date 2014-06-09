@@ -8,16 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@class Event;
+@class PIEvent;
 
 @interface POIViewController : UIViewController
-@property (weak, nonatomic) Event *event;
+@property (weak, nonatomic) PIEvent *event;
 @property (strong, nonatomic) NSDateFormatter *dateFormatter;
 @property (strong, nonatomic) NSDateFormatter *timeFormatter;
-@property (weak, nonatomic) IBOutlet UILabel *NameLabel;
-@property (weak, nonatomic) IBOutlet UITextView *AddressField;
-@property (weak, nonatomic) IBOutlet UILabel *HoursLabel;
-@property (weak, nonatomic) IBOutlet UILabel *DateLabel;
-@property (weak, nonatomic) IBOutlet UITextView *NotesField;
 
 @end
