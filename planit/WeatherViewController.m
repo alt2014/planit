@@ -9,7 +9,7 @@
 #import "WeatherViewController.h"
 #import "WeatherForecast.h"
 #import "GeoLocation.h"
-
+#import "SWRevealViewController.h"
 @interface WeatherViewController ()
 
 @property (strong, nonatomic) CLLocationManager *locationManager;
@@ -205,6 +205,11 @@ BOOL usingFahrenheit;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    _sidebarButton.target = self.revealViewController;
+    _sidebarButton.action = @selector(revealToggle:);
+    
+    // Set the gesture
+    [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     // Do any additional setup after loading the view.
     [self loadWeatherManager];
     

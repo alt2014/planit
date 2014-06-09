@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface TripViewController : UITableViewController
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *sideBarButton;
 
 @end

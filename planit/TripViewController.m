@@ -13,6 +13,7 @@
 #import "DataManager.h"
 #import "PITrip+Model.h"
 #import "GeoLocation.h"
+#import "SWRevealViewController.h"
 
 static NSString *tripCellID = @"TripCell";
 static NSString *addTripSegueID = @"addTrip";
@@ -47,6 +48,14 @@ const int dPTag = 1;
 {
     [super viewDidLoad];
     [self createDateFormatter];
+    if (self.revealViewController) {
+        _sideBarButton.target = self.revealViewController;
+        _sideBarButton.action = @selector(revealToggle:);
+    } else {
+        _sideBarButton.tintColor = [UIColor colorWithWhite:0.1f alpha:0.0f];
+
+    }
+    
     
     DataManager *dm = [[DataManager alloc] init];
     
@@ -59,7 +68,7 @@ const int dPTag = 1;
             NSLog(@"Error");
         }
     }];
-    
+    self.trips = [NSMutableArray arrayWithArray:[dm getTrips]];
 }
 
 - (void)createDateFormatter {
@@ -110,43 +119,6 @@ const int dPTag = 1;
 }
 
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 #pragma mark - delegate methods
 
 - (void)updateTableDataSource {
@@ -159,7 +131,7 @@ const int dPTag = 1;
 #pragma mark - Navigation
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    
+
     if ([[segue identifier] isEqualToString:addTripSegueID]){
         
         TripAddViewController *controller = [[[segue destinationViewController] viewControllers] objectAtIndex:0];

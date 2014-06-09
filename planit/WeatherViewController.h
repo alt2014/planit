@@ -10,4 +10,5 @@
 #import <CoreLocation/CoreLocation.h>
 
 @interface WeatherViewController : UIViewController <CLLocationManagerDelegate, UISearchBarDelegate>
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *sidebarButton;
 @end
