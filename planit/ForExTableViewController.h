@@ -11,5 +11,5 @@
 @interface ForExTableViewController : UITableViewController<UIPickerViewDataSource,UIPickerViewDelegate>
 - (IBAction)fromAmountDidChange:(UITextField *)sender;
 @property (weak, nonatomic) IBOutlet UITextField *toAmountField;
-
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *sidebarButton;
 @end

@@ -87,6 +87,7 @@
 		E02CEFF71941E62F00A0C90A /* accomodations53.png in Resources */ = {isa = PBXBuildFile; fileRef = E02CEFF41941E62F00A0C90A /* accomodations53.png */; };
 		E02CEFF81941E62F00A0C90A /* POI53.png in Resources */ = {isa = PBXBuildFile; fileRef = E02CEFF51941E62F00A0C90A /* POI53.png */; };
 		E02CEFF91941E62F00A0C90A /* transportation53.png in Resources */ = {isa = PBXBuildFile; fileRef = E02CEFF61941E62F00A0C90A /* transportation53.png */; };
+		E06A7EAC1945F18800D6367C /* menu.png in Resources */ = {isa = PBXBuildFile; fileRef = E06A7EAB1945F18800D6367C /* menu.png */; };
 		E0723CA3192630330038AF9D /* ItineraryItemTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E0723CA1192630330038AF9D /* ItineraryItemTableCell.m */; };
 		E0723CA4192630330038AF9D /* ItineraryItemTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0723CA2192630330038AF9D /* ItineraryItemTableCell.xib */; };
 		E081DC7519373453006D22E9 /* TripTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E081DC7419373453006D22E9 /* TripTableViewCell.m */; };
@@ -240,6 +241,7 @@
 		E02CEFF41941E62F00A0C90A /* accomodations53.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = accomodations53.png; sourceTree = "<group>"; };
 		E02CEFF51941E62F00A0C90A /* POI53.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = POI53.png; sourceTree = "<group>"; };
 		E02CEFF61941E62F00A0C90A /* transportation53.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = transportation53.png; sourceTree = "<group>"; };
+		E06A7EAB1945F18800D6367C /* menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu.png; sourceTree = "<group>"; };
 		E0723CA0192630330038AF9D /* ItineraryItemTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItineraryItemTableCell.h; sourceTree = "<group>"; };
 		E0723CA1192630330038AF9D /* ItineraryItemTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItineraryItemTableCell.m; sourceTree = "<group>"; };
 		E0723CA2192630330038AF9D /* ItineraryItemTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ItineraryItemTableCell.xib; sourceTree = "<group>"; };
@@ -455,6 +457,8 @@
 		E02C054F194511F200F65EA4 /* Feature View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				D0FCA5A11945AB7B00C530EA /* WeatherViewController.h */,
+				D0FCA5A21945AB7B00C530EA /* WeatherViewController.m */,
 				E02C05501945126400F65EA4 /* ForExTableViewController.h */,
 				E02C05511945126400F65EA4 /* ForExTableViewController.m */,
 			);
@@ -516,6 +520,7 @@
 		E0B5DE601941FBFF00438535 /* Menu Icons */ = {
 			isa = PBXGroup;
 			children = (
+				E06A7EAB1945F18800D6367C /* menu.png */,
 				E0B5DE5A1941FBF500438535 /* foreign-exchange30.png */,
 				E0B5DE5B1941FBF500438535 /* list-icon30.png */,
 				E0B5DE5C1941FBF500438535 /* weather30.png */,
@@ -571,8 +576,6 @@
 				E02CEFEC1941BBC800A0C90A /* View Helpers */,
 				E02C054F194511F200F65EA4 /* Feature View Controllers */,
 				E0D745DC190FB05B00999C2D /* Main.storyboard */,
-				D0FCA5A11945AB7B00C530EA /* WeatherViewController.h */,
-				D0FCA5A21945AB7B00C530EA /* WeatherViewController.m */,
 				E0E20EA5191DD73600B61A52 /* ItineraryViewController.h */,
 				E0E20EA6191DD73600B61A52 /* ItineraryViewController.m */,
 				E0FD0EA8192016CA007AE809 /* TripViewController.h */,
@@ -698,6 +701,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E06A7EAC1945F18800D6367C /* menu.png in Resources */,
 				D08577A21945CD26009C1974 /* nt_cloudy.gif in Resources */,
 				E02CEFF71941E62F00A0C90A /* accomodations53.png in Resources */,
 				D08577B51945CD26009C1974 /* snow.gif in Resources */,
