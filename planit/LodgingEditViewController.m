@@ -7,7 +7,7 @@
 //
 
 #define numRows 12
-#define datePickerCellHeight 168
+#define datePickerCellHeight 170
 #define deleteRowHeight 39
 #define notesRowHeight 67
 #define firstCellHeight 68
@@ -46,6 +46,7 @@
 - (IBAction)startDatePickerChanged:(UIDatePicker *)sender;
 @property (weak, nonatomic) IBOutlet UIDatePicker *endDatePicker;
 - (IBAction)endDatePickerChanged:(UIDatePicker *)sender;
+@property (strong, nonatomic) NSDateFormatter *dateTimeFormatter;
 @end
 
 @implementation LodgingEditViewController
@@ -62,6 +63,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.dateTimeFormatter = [[NSDateFormatter alloc] init];
+    [self.dateTimeFormatter setDateStyle:NSDateFormatterShortStyle];
+    [self.dateTimeFormatter setTimeStyle:NSDateFormatterShortStyle];
     [self initFields];
     [self signUpForKeyboardNotifications];
     [self hideDatePickerCell:@"start"];
@@ -96,9 +100,9 @@
     }
     
     self.selectedStart = self.startDatePicker.date;
-    self.startLabel.text = [self.timeFormatter stringFromDate:self.selectedStart];
+    self.startLabel.text = [self.dateTimeFormatter stringFromDate:self.selectedStart];
     self.selectedEnd = self.endDatePicker.date;
-    self.endLabel.text = [self.timeFormatter stringFromDate:self.selectedEnd];
+    self.endLabel.text = [self.dateTimeFormatter stringFromDate:self.selectedEnd];
 }
 
 - (NSDate *)createNSDate:(NSInteger)month day:(NSInteger)day year:(NSInteger)year hour:(NSInteger)hour minute:(NSInteger)minute {
@@ -256,19 +260,19 @@
 #pragma mark - Table view delegate
 
 - (IBAction)startDatePickerChanged:(UIDatePicker *)sender {
-    self.startLabel.text = [self.timeFormatter stringFromDate:sender.date];
+    self.startLabel.text = [self.dateTimeFormatter stringFromDate:sender.date];
     self.selectedStart = sender.date;
     if (self.selectedEnd < self.selectedStart) {
         self.endDatePicker.minimumDate = [NSDate dateWithTimeInterval:60 sinceDate:sender.date];
         self.endDatePicker.date = self.endDatePicker.minimumDate;
-        self.endLabel.text = [self.timeFormatter stringFromDate:self.endDatePicker.date];
+        self.endLabel.text = [self.dateTimeFormatter stringFromDate:self.endDatePicker.date];
         self.selectedEnd = self.endDatePicker.date;
         
     }
 }
 
 - (IBAction)endDatePickerChanged:(UIDatePicker *)sender {
-    self.endLabel.text = [self.timeFormatter stringFromDate:sender.date];
+    self.endLabel.text = [self.dateTimeFormatter stringFromDate:sender.date];
     self.selectedEnd = sender.date;
 }
 - (IBAction)cancelClicked:(UIBarButtonItem *)sender {
