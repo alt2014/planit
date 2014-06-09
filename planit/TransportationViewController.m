@@ -7,8 +7,18 @@
 //
 
 #import "TransportationViewController.h"
+#import "PITransportation.h"
 
 @interface TransportationViewController ()
+@property (weak, nonatomic) IBOutlet UILabel *transportationName;
+@property (weak, nonatomic) IBOutlet UILabel *routeNumber;
+@property (weak, nonatomic) IBOutlet UILabel *confirmationNumber;
+@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
+@property (weak, nonatomic) IBOutlet UILabel *location;
+//@property (weak, nonatomic) IBOutlet UITextView *arrivalLocation;
+@property (weak, nonatomic) IBOutlet UILabel *time;
+
+@property (weak, nonatomic) IBOutlet UITextView *notesField;
 
 @end
 
@@ -26,7 +36,32 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self setLabels];
     // Do any additional setup after loading the view.
+}
+
+- (void)setLabels
+{
+    self.transportationName.text = self.event.name;
+    self.routeNumber.text = self.event.routeNumber;
+    self.confirmationNumber.text = self.event.confirmationNumber;
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setFormatterBehavior:NSDateFormatterBehavior10_4];
+    [dateFormatter setDateFormat:@"MMM dd, YYYY"];
+    NSString *date = [dateFormatter stringFromDate:self.event.start];
+    self.dateLabel.text = date;
+    
+    [dateFormatter setDateFormat:@"hh:mm a"];
+    NSString *startTime = [dateFormatter stringFromDate:self.event.start];
+    NSString *endTime = [dateFormatter stringFromDate:self.event.end];
+    NSString *time = [NSString stringWithFormat:@"%@ to %@", startTime, endTime];
+    self.time.text = time;
+    NSLog(@"Departure Location: %@", self.event.addr);
+    NSString *tripLocations = [NSString stringWithFormat:@"%@ to %@", self.event.addr, self.event.arrivalLocation];
+    self.location.text = tripLocations;
+    
+    self.notesField.text = self.event.notes;
 }
 
 - (void)didReceiveMemoryWarning

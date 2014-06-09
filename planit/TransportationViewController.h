@@ -7,16 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PITransportation.h"
+
+@class PITransportation;
 
 @interface TransportationViewController : UIViewController
-@property (weak, nonatomic) IBOutlet UILabel *NameLabel;
-@property (weak, nonatomic) IBOutlet UILabel *RouteNumberLabel;
-@property (weak, nonatomic) IBOutlet UILabel *ConfirmationLabel;
-@property (weak, nonatomic) IBOutlet UILabel *DateLabel;
-@property (weak, nonatomic) IBOutlet UITextView *DepartAddrField;
-@property (weak, nonatomic) IBOutlet UITextView *ArriveAddrField;
-@property (weak, nonatomic) IBOutlet UILabel *DepartTimeLabel;
-@property (weak, nonatomic) IBOutlet UILabel *ArriveTimeLabel;
-@property (weak, nonatomic) IBOutlet UITextView *NotesField;
+
+@property (weak, nonatomic) PITransportation *event;
 
 @end
