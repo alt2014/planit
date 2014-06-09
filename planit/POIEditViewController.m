@@ -24,6 +24,7 @@
 #define datePickerCellHeight 164
 #define dateLabelCellHeight 34
 #define notesCellHeight 364
+#define deleteRow 111
 @interface POIEditViewController ()
 @property (assign) BOOL dayPickerIsShowing;
 @property (assign) BOOL startPickerIsShowing;
@@ -187,8 +188,13 @@
     if (indexPath.row == dayPickerIndex - 1){
         [self dateLabelSelectHandler:self.dayPickerIsShowing pickerName:@"when"];
     }
-    
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if (indexPath.row == deleteRow){
+        [self.event.day removeEventsObject:self.event];
+        [self.delegate updateTableView];
+        [self dismissViewControllerAnimated:YES completion:NULL];
+    }
+    
 }
 
 - (void)showDatePickerCell:(NSString *)which {
@@ -295,16 +301,15 @@
     NSDate *start = [self dateFromDayAndTime:self.selectedWhen time:self.selectedStart];
     NSDate *end = [self dateFromDayAndTime:self.selectedWhen time:self.selectedEnd];
     if (self.event) {
+        [self.event.day removeEventsObject:self.event];
         self.event.name = self.nameField.text;
         self.event.addr = self.locationField.text;
         self.event.notes = self.notesTextView.text;
-        //get the NSdate from the when day components and times
         self.event.start = start;
         self.event.end = end;
+        [[self.trip getDayForDate:self.event.start] addEvent:self.event];
     } else {
         NSMutableDictionary *eventDetails = [[NSMutableDictionary alloc] init];
-        //NSDate *start = self.selectedStart;
-        //NSDate *end = self.selectedEnd;
         [eventDetails setObject:self.nameField.text forKey:E_NAME_KEY];
         [eventDetails setObject:start   forKey:E_START_KEY];
         [eventDetails setObject:end forKey:E_END_KEY];
