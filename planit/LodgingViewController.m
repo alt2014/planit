@@ -7,8 +7,16 @@
 //
 
 #import "LodgingViewController.h"
+#import "PILodging.h"
 
 @interface LodgingViewController ()
+@property (weak, nonatomic) IBOutlet UILabel *lodgingName;
+@property (weak, nonatomic) IBOutlet UILabel *checkInTime;
+@property (weak, nonatomic) IBOutlet UILabel *checkOutTime;
+@property (weak, nonatomic) IBOutlet UITextView *addressLabel;
+@property (weak, nonatomic) IBOutlet UITextView *phoneLabel;
+@property (weak, nonatomic) IBOutlet UILabel *confirmationNumberLabel;
+@property (weak, nonatomic) IBOutlet UITextView *notesField;
 
 @end
 
@@ -26,9 +34,27 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self displayLabels];
     // Do any additional setup after loading the view.
 }
-
+- (void)displayLabels
+{
+    self.lodgingName.text = self.event.name;
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setFormatterBehavior:NSDateFormatterBehavior10_4];
+    [dateFormatter setDateFormat:@"MMM dd at h:mm a"];
+    NSString *dateStart = [dateFormatter stringFromDate:self.event.start];
+    self.checkInTime.text = dateStart;
+    NSString *dateEnd = [dateFormatter stringFromDate:self.event.end];
+    self.checkOutTime.text = dateEnd;
+    
+    self.addressLabel.text = self.event.addr;
+    self.phoneLabel.text = self.event.phone;
+    self.confirmationNumberLabel.text = self.event.confirmationNumber;
+    self.notesField.text = self.event.notes;
+    
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

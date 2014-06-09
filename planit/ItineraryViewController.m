@@ -12,10 +12,12 @@
 #import "SWRevealViewController.h"
 #import "PIEvent.h"
 #import "PITransportation.h"
+#import "PILodging.h"
 #import "PIDay.h"
 #import "ItineraryEditViewController.h"
 #import "POIViewController.h"
 #import "TransportationViewController.h"
+#import "LodgingViewController.h"
 #import "DataManager.h"
 #import "PITrip+Model.h"
 #import "PITrip.h"
@@ -37,6 +39,7 @@
 static NSString *itineraryEditSegueID = @"itineraryEditSegue";
 static NSString *poiDetailSegueID = @"pOIDetailSegue";
 static NSString *transportationDetailSegueID = @"transportationDetailSegue";
+static NSString *lodgingDetailSegueID = @"lodgingDetailSegue";
 
 //should pass in the trip name when the edit button is clicked
 //pass in the event when the event is clicked
@@ -239,6 +242,15 @@ static NSString *transportationDetailSegueID = @"transportationDetailSegue";
         TransportationViewController *controller = [segue destinationViewController];
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         PITransportation *selectedEvent = [[[[self.trip getDaysArray] objectAtIndex:indexPath.section] getEventsArray] objectAtIndex:indexPath.row - 1];;
+        controller.event = selectedEvent;
+        
+        //add an event to the controller
+    }
+    
+    if ([[segue identifier] isEqualToString:lodgingDetailSegueID]) {
+        LodgingViewController *controller = [segue destinationViewController];
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        PILodging *selectedEvent = [[[[self.trip getDaysArray] objectAtIndex:indexPath.section] getEventsArray] objectAtIndex:indexPath.row - 1];;
         controller.event = selectedEvent;
         
         //add an event to the controller

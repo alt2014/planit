@@ -14,7 +14,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TripCell" rowHeight="65" id="fxk-uR-CX4" customClass="TripTableViewCell">
-                                <rect key="frame" x="0.0" y="22" width="320" height="65"/>
+                                <rect key="frame" x="0.0" y="86" width="320" height="65"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fxk-uR-CX4" id="MT1-LL-MEe">
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="64"/>
@@ -1221,7 +1221,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="HeaderCell" rowHeight="25" id="vqu-ys-hU1" customClass="ItineraryHeaderTableCell">
-                                        <rect key="frame" x="0.0" y="22" width="320" height="25"/>
+                                        <rect key="frame" x="0.0" y="86" width="320" height="25"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vqu-ys-hU1" id="kE1-ct-cff">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="24"/>
@@ -1247,7 +1247,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="POI" rowHeight="82" id="1H2-qH-QAh" customClass="ItineraryItemTableCell">
-                                        <rect key="frame" x="0.0" y="47" width="320" height="82"/>
+                                        <rect key="frame" x="0.0" y="111" width="320" height="82"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1H2-qH-QAh" id="3mQ-1N-QDX">
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="81"/>
@@ -1298,7 +1298,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Transport" rowHeight="82" id="V2x-Vd-itC" customClass="ItineraryItemTableCell">
-                                        <rect key="frame" x="0.0" y="129" width="320" height="82"/>
+                                        <rect key="frame" x="0.0" y="193" width="320" height="82"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="V2x-Vd-itC" id="fqo-Fd-l4i">
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="81"/>
@@ -1343,7 +1343,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Lodging" rowHeight="82" id="mqr-ep-Oap" customClass="ItineraryItemTableCell">
-                                        <rect key="frame" x="0.0" y="211" width="320" height="82"/>
+                                        <rect key="frame" x="0.0" y="275" width="320" height="82"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mqr-ep-Oap" id="a7L-82-lFD">
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="81"/>
@@ -1388,6 +1388,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                             <outlet property="AddressTextField" destination="zVq-sF-DGh" id="BNC-p4-lrb"/>
                                             <outlet property="NameLabel" destination="Wsw-wd-0dD" id="wxj-m6-j7x"/>
                                             <outlet property="TimeLabel" destination="jHU-0U-mix" id="CSu-Xg-92F"/>
+                                            <segue destination="6fs-7O-fXG" kind="push" identifier="lodgingDetailSegue" id="bGo-x8-dqh"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -2604,13 +2605,13 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <barButtonItem key="rightBarButtonItem" title="Edit" id="d6C-fU-gs0"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="AddressField" destination="LFZ-xb-ZoI" id="OEV-xP-wKm"/>
-                        <outlet property="CheckInLabel" destination="7cF-qr-iot" id="d9G-ZY-uRU"/>
-                        <outlet property="CheckOutLabel" destination="NjG-ls-6eh" id="bJI-GD-Z7H"/>
-                        <outlet property="ConfirmationLabel" destination="o5N-Bk-dTd" id="dJj-Sq-txw"/>
-                        <outlet property="NameLabel" destination="p9W-Mn-LbL" id="7Z0-jT-aOb"/>
-                        <outlet property="NotesField" destination="IGE-39-zgv" id="SlL-gk-bbD"/>
-                        <outlet property="PhoneField" destination="iyn-bu-Osp" id="tmf-S2-NxA"/>
+                        <outlet property="addressLabel" destination="LFZ-xb-ZoI" id="n7R-xk-Q17"/>
+                        <outlet property="checkInTime" destination="7cF-qr-iot" id="QAK-V5-rzR"/>
+                        <outlet property="checkOutTime" destination="NjG-ls-6eh" id="bhU-u6-Hh6"/>
+                        <outlet property="confirmationNumberLabel" destination="o5N-Bk-dTd" id="FZr-ee-EQH"/>
+                        <outlet property="lodgingName" destination="p9W-Mn-LbL" id="Dc5-TM-V9E"/>
+                        <outlet property="notesField" destination="IGE-39-zgv" id="1dd-nW-bnh"/>
+                        <outlet property="phoneLabel" destination="iyn-bu-Osp" id="SeH-zB-aL5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O9b-1w-uxd" userLabel="First Responder" sceneMemberID="firstResponder"/>
