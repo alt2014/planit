@@ -57,6 +57,7 @@ CurrencyManager *_manager;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.title=@"Currency Exchange Rates";
     _sidebarButton.target = self.revealViewController;
     _sidebarButton.action = @selector(revealToggle:);
     _manager = [[CurrencyManager alloc] init];

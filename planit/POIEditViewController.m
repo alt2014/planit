@@ -74,6 +74,7 @@
     [self hideDatePickerCell:@"end"];
     [self hideDatePickerCell:@"when"];
     
+    self.title = @"Add Point of Interest";
     // Do any additional setup after loading the view.
 }
 

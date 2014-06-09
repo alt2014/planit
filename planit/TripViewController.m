@@ -69,6 +69,7 @@ const int dPTag = 1;
         }
     }];
     self.trips = [NSMutableArray arrayWithArray:[dm getTrips]];
+    self.title = @"Your Trips";
 }
 
 - (void)createDateFormatter {

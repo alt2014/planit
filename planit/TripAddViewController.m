@@ -54,6 +54,7 @@
     [self signUpForKeyboardNotifications];
     [self hideDatePickerCell:@"start"];
     [self hideDatePickerCell:@"end"];
+    self.title = @"Add a Trip";
 }
 
 #pragma mark - Helper methods

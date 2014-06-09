@@ -66,6 +66,7 @@
     [self signUpForKeyboardNotifications];
     [self hideDatePickerCell:@"start"];
     [self hideDatePickerCell:@"end"];
+    self.title = @"Add Transportation";
 }
 
 - (void)didReceiveMemoryWarning
