@@ -215,14 +215,6 @@
 - (IBAction)startDateChanged:(UIDatePicker *)sender {
     
     self.startLabel.text =  [self.dateFormatter stringFromDate:sender.date];
-//    NSDate *oldDate = sender.date; // Or however you get it.
-//    unsigned unitFlags = NSCalendarUnitYear | NSCalendarUnitMonth |  NSCalendarUnitDay;
-//    NSCalendar *calendar = [NSCalendar currentCalendar];
-//    NSDateComponents *comps = [calendar components:unitFlags fromDate:oldDate];
-//    comps.hour   = 23;
-//    comps.minute = 59;
-//    comps.second = 59;
-//    NSDate *newDate = [calendar dateFromComponents:comps];
     self.selectedStart = sender.date;
 }
 
@@ -243,6 +235,27 @@
     NSMutableDictionary *trip = [[NSMutableDictionary alloc] init];
     NSDate *start = self.selectedStart;
     NSDate *end = self.selectedEnd;
+    //    NSDate *oldDate = sender.date; // Or however you get it.
+    unsigned unitFlags = NSCalendarUnitYear | NSCalendarUnitMonth |  NSCalendarUnitDay;
+    //    NSCalendar *calendar = [NSCalendar currentCalendar];
+    //    NSDateComponents *comps = [calendar components:unitFlags fromDate:oldDate];
+    //    comps.hour   = 23;
+    //    comps.minute = 59;
+    //    comps.second = 59;
+    //    NSDate *newDate = [calendar dateFromComponents:comps];
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDateComponents *startComps = [calendar components:unitFlags fromDate:start];
+    startComps.hour = 0;
+    startComps.minute = 0;
+    startComps.second = 0;
+    start = [calendar dateFromComponents:startComps];
+    
+    NSDateComponents *endComps = [calendar components:unitFlags fromDate:end];
+    endComps.hour = 23;
+    endComps.minute = 59;
+    endComps.second = 59;
+    end = [calendar dateFromComponents:endComps];
+    
     [trip setObject:self.nameTextField.text forKey:T_NAME_KEY];
     [trip setObject:start   forKey:T_START_KEY];
     [trip setObject:end forKey:T_END_KEY];

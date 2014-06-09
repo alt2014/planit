@@ -80,11 +80,18 @@ BOOL usingFahrenheit;
 
 - (void)setLabelsForForecast:(DailyForecast*)forecast high:(UILabel *)high low:(UILabel *)low {
     if (usingFahrenheit) {
-        high.text = [NSString stringWithFormat:@"%@°F", forecast.highf];
-        low.text = [NSString stringWithFormat:@"%@°F", forecast.lowf];
+        high.text = [NSString stringWithFormat:@"H: %@°F", forecast.highf];
+        low.text = [NSString stringWithFormat:@"L: %@°F", forecast.lowf];
     } else {
-        high.text = [NSString stringWithFormat:@"%@°C", forecast.highc];
-        low.text = [NSString stringWithFormat:@"%@°C", forecast.lowc];
+        high.text = [NSString stringWithFormat:@"H: %@°C", forecast.highc];
+        low.text = [NSString stringWithFormat:@"L: %@°C", forecast.lowc];
+    }
+    
+    if ([forecast.highf length] == 0) {
+        high.text = @"";
+    }
+    if ([forecast.lowc length] == 0) {
+        low.text = @"";
     }
 }
 
@@ -144,9 +151,37 @@ BOOL usingFahrenheit;
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
     
     NSLog(@"Error while getting core location : %@",[error localizedFailureReason]);
-    if ([error code] == kCLErrorDenied) {
-        //you had denied
-    }
+    [GeoLocation geocodeLocation:@"Stanford" callback:^(WeatherForecast *forecast, NSError *error) {
+        if (error) {
+            if (error.code == NO_WEATHER) {
+                // Some error occured and no weather data was given
+                NSString *message = [NSString stringWithFormat:@"Please try again."];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Sorry!"
+                                                                        message:message
+                                                                       delegate:nil
+                                                              cancelButtonTitle:@"OK"
+                                                              otherButtonTitles:nil];
+                    [alertView show];
+                });
+            } else {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Location Not Found"
+                                                                        message:@"Please check spelling and try again."
+                                                                       delegate:nil
+                                                              cancelButtonTitle:@"OK"
+                                                              otherButtonTitles:nil];
+                    [alertView show];
+                });
+            }
+        } else {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                self.forecast = forecast;
+                [self setABunchOfShit];
+            });
+        }
+    }];
+
 }
 
 - (IBAction)backButton:(id)sender {
