@@ -1,23 +1,22 @@
 //
-//  LodgingEditViewController.m
+//  TransportationEditViewController.m
 //  planit
 //
-//  Created by Anh Truong on 6/9/14.
+//  Created by Anh Truong on 6/8/14.
 //  Copyright (c) 2014 Anh Truong. All rights reserved.
 //
-
-#define numRows 12
+#define numRows 13
 #define datePickerCellHeight 164
 #define deleteRowHeight 39
 #define notesRowHeight 67
 #define firstCellHeight 68
-#define startPickerRow 6
-#define endPickerRow 8
-#define notesRow 10
-#define deleteRow 11
+#define startPickerRow 7
+#define endPickerRow 9
+#define notesRow 11
+#define deleteRow 12
 #define standardRowHeight 44
 
-#import "LodgingEditViewController.h"
+#import "TransportationEditViewController.h"
 #import "POIEditViewController.h"
 #import "PIEvent.h"
 #import "PIDay+Model.h"
@@ -26,20 +25,21 @@
 #import "PITrip.h"
 #import "PITrip+Model.h"
 #import "DataManager.h"
-#import "PILodging+Model.h"
-#import "PILodging.h"
+#import "PITransportation+Model.h"
+#import "PITransportation.h"
 
-@interface LodgingEditViewController ()
+@interface TransportationEditViewController ()
 @property (assign) BOOL startPickerIsShowing;
 @property (assign) BOOL endPickerIsShowing;
 @property (strong, nonatomic) NSDate *selectedStart;
 @property (strong, nonatomic) NSDate *selectedEnd;
 @property (strong, nonatomic) UITextField *activeTextField;
-@property (weak, nonatomic) IBOutlet UITextField *nameField;
+@property (weak, nonatomic) IBOutlet UITextField *routeNumberField;
 @property (weak, nonatomic) IBOutlet UITextField *phoneNumberField;
 @property (weak, nonatomic) IBOutlet UITextField *confirmationNumberField;
-@property (weak, nonatomic) IBOutlet UITextField *locationField;
-@property (weak, nonatomic) IBOutlet UITextView *notesField;
+@property (weak, nonatomic) IBOutlet UITextField *departureLocField;
+@property (weak, nonatomic) IBOutlet UITextField *ArrivalLocField;
+@property (weak, nonatomic) IBOutlet UITextView *NotesField;
 @property (weak, nonatomic) IBOutlet UILabel *startLabel;
 @property (weak, nonatomic) IBOutlet UILabel *endLabel;
 @property (weak, nonatomic) IBOutlet UIDatePicker *startDatePicker;
@@ -48,7 +48,7 @@
 - (IBAction)endDatePickerChanged:(UIDatePicker *)sender;
 @end
 
-@implementation LodgingEditViewController
+@implementation TransportationEditViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -86,12 +86,13 @@
         self.startDatePicker.date = self.startDatePicker.minimumDate;
         self.endDatePicker.date = [NSDate dateWithTimeInterval:60 sinceDate:self.startDatePicker.date];
     } else {
-        self.nameField.text = self.event.name;
-        self.notesField.text = self.event.notes;
+        self.routeNumberField.text = self.event.name;
+        self.NotesField.text = self.event.notes;
         self.startDatePicker.date = self.event.start;
         self.endDatePicker.date = self.event.end;
-        self.locationField.text = self.event.addr;
-        self.confirmationNumberField.text = ((PILodging *)self.event).confirmationNumber;
+        self.departureLocField.text = self.event.addr;
+        self.ArrivalLocField.text = ((PITransportation *)self.event).arrivalLocation;
+        self.confirmationNumberField.text = ((PITransportation *)self.event).confirmationNumber;
         self.phoneNumberField.text = self.event.phone;
     }
     
@@ -184,7 +185,7 @@
         [self dateLabelSelectHandler:self.startPickerIsShowing pickerName:@"start"];
     if (indexPath.row == endPickerRow - 1)
         [self dateLabelSelectHandler:self.endPickerIsShowing pickerName:@"end"];
-    
+
     
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     //DO SELECT DELETE ROW
@@ -261,7 +262,7 @@
         self.endDatePicker.date = self.endDatePicker.minimumDate;
         self.endLabel.text = [self.timeFormatter stringFromDate:self.endDatePicker.date];
         self.selectedEnd = self.endDatePicker.date;
-        
+
     }
 }
 
@@ -276,32 +277,35 @@
 - (IBAction)createNewEvent
 {
     NSMutableDictionary *eventDetails = [[NSMutableDictionary alloc] init];
-    [eventDetails setObject:self.nameField.text forKey:E_NAME_KEY];
+    [eventDetails setObject:self.routeNumberField.text forKey:E_NAME_KEY];
     [eventDetails setObject:self.selectedStart   forKey:E_START_KEY];
     [eventDetails setObject:self.selectedEnd forKey:E_END_KEY];
-    [eventDetails setObject:self.notesField.text forKey:E_NOTES_KEY];
-    [eventDetails setObject:self.locationField.text forKey:E_ADDR_KEY];
+    [eventDetails setObject:self.NotesField.text forKey:E_NOTES_KEY];
+    [eventDetails setObject:self.departureLocField.text forKey:E_ADDR_KEY];
+    [eventDetails setObject:self.ArrivalLocField.text forKey:ET_ARRIVAL_KEY];
     [eventDetails setObject:self.phoneNumberField.text forKey:E_PHONE_KEY];
-    [eventDetails setObject:self.confirmationNumberField.text forKey:EL_CONFIRMATION_KEY];
+    [eventDetails setObject:self.confirmationNumberField.text forKey:ET_CONFIRMATION_KEY];
+    [eventDetails setObject:@"" forKey:ET_DEPARTURE_KEY];
     
     NSManagedObjectContext *context = [DataManager getManagedObjectContext];
-    PILodging *t = [PILodging createLodging:eventDetails inManagedObjectContext:context];
+    PITransportation *t = [PITransportation createTransportation:eventDetails inManagedObjectContext:context];
     [[self.trip getDayForDate:self.selectedStart] addEvent:t];
-    
-    
+
+
 }
 
 - (IBAction)saveClicked:(UIBarButtonItem *)sender {
     
-    
+
     if (self.event) {
-        self.event.name = self.nameField.text;
-        self.event.addr = self.locationField.text;
-        self.event.notes = self.notesField.text;
+        self.event.name = self.routeNumberField.text;
+        self.event.addr = self.departureLocField.text;
+        self.event.notes = self.NotesField.text;
         self.event.start = self.selectedStart;
         self.event.end = self.selectedEnd;
         self.event.phone = self.phoneNumberField.text;
-        ((PILodging *)self.event).confirmationNumber = self.confirmationNumberField.text;
+        ((PITransportation *)self.event).arrivalLocation = self.ArrivalLocField.text;
+        ((PITransportation *)self.event).confirmationNumber = self.confirmationNumberField.text;
         
     } else {
         [self createNewEvent];

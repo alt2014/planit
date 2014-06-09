@@ -1,14 +1,20 @@
 //
-//  LodgingEditViewController.h
+//  TransportationEditViewController.h
 //  planit
 //
-//  Created by Anh Truong on 6/9/14.
+//  Created by Anh Truong on 6/8/14.
 //  Copyright (c) 2014 Anh Truong. All rights reserved.
 //
 
+#import <UIKit/UIKit.h>
 #import "POIEditViewController.h"
 
-@interface LodgingEditViewController : POIEditViewController
+@class PIEvent;
+@class PITrip;
+@class PITransportation;
+
+
+@interface TransportationEditViewController : POIEditViewController
 - (IBAction)cancelClicked:(UIBarButtonItem *)sender;
 @property (strong, nonatomic) PITrip *trip;
 - (IBAction)saveClicked:(UIBarButtonItem *)sender;

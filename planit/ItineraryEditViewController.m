@@ -14,6 +14,11 @@
 #import "PITrip+Model.h"
 #import "PIDay+Model.h"
 #import "ItineraryHeaderTableCell.h"
+#import "TransportationEditViewController.h"
+#import "PITransportation.h"
+#import "PITransportation+Model.h"
+#import "PILodging+Model.h"
+#import "PILodging.h"
 
 #define eventCellHeight 82;
 #define headerCellHeight 27;
@@ -22,6 +27,12 @@
 @end
 static NSString *addPOISegueID = @"addPOISegue";
 static NSString *editPOISegueID = @"editPOISegue";
+static NSString *addTransportationSegueID = @"addTransportationSegue";
+static NSString *editTransportationSegueID = @"editTransportationSegue";
+static NSString *addLodgingSegueID = @"addLodgingSegue";
+static NSString *editLodgingSegueID = @"editLodgingSegue";
+
+
 
 @implementation ItineraryEditViewController
 
@@ -50,9 +61,15 @@ static NSString *editPOISegueID = @"editPOISegue";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if(indexPath.row != 0){
-        
-        //hardcoded, change to adapt to more events
-        NSString *CellIdentifier = @"POI";
+        NSString *CellIdentifier;
+        PIEvent * selectedEvent = [[[[self.trip getDaysArray] objectAtIndex:indexPath.section] getEventsArray] objectAtIndex:indexPath.row - 1];
+        if ([selectedEvent isKindOfClass:[PITransportation class]]) {
+            CellIdentifier = @"Transport";
+        } else if ([selectedEvent isKindOfClass:[PILodging class]]){
+            CellIdentifier = @"Lodging";
+        } else {
+            CellIdentifier = @"POI";
+        }
         return [self eventCellForIndexPath:indexPath cellIdentifier:CellIdentifier];
         
     }
@@ -132,16 +149,14 @@ static NSString *editPOISegueID = @"editPOISegue";
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
-    if ([[segue identifier] isEqualToString:addPOISegueID]){
+    if ([[segue identifier] isEqualToString:addPOISegueID] || [[segue identifier] isEqualToString:addTransportationSegueID] || [[segue identifier] isEqualToString:addLodgingSegueID]){
         
         POIEditViewController *controller = [[[segue destinationViewController] viewControllers] objectAtIndex:0];
         controller.dateFormatter = self.dateFormatter;
         controller.timeFormatter = self.timeFormatter;
         controller.trip = self.trip;
         controller.delegate = self;
-    }
-    
-    if ([[segue identifier] isEqualToString:editPOISegueID]){
+    }else if ([[segue identifier] isEqualToString:editPOISegueID] || [[segue identifier] isEqualToString:editTransportationSegueID] || [[segue identifier] isEqualToString:editLodgingSegueID]){
         
         POIEditViewController *controller = [[[segue destinationViewController] viewControllers] objectAtIndex:0];
         controller.dateFormatter = self.dateFormatter;
