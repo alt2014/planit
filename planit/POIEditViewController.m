@@ -15,16 +15,18 @@
 #import "PITrip+Model.h"
 #import "DataManager.h"
 
-#define nameAddrCellHeight 68
-#define dayPickerIndex 2
-#define startPickerIndex 4
-#define endPickerIndex 6
-//#define addrIndex 3
-#define notesIndex 7
-#define datePickerCellHeight 164
-#define dateLabelCellHeight 34
-#define notesCellHeight 364
-#define deleteRow 111
+#define numRows 12
+#define datePickerCellHeight 168
+#define deleteRowHeight 39
+#define notesRowHeight 67
+#define firstCellHeight 68
+#define dayPickerRow 4
+#define startPickerRow 6
+#define endPickerRow 8
+#define notesRow 10
+#define deleteRow 11
+#define standardRowHeight 44
+
 @interface POIEditViewController ()
 @property (assign) BOOL dayPickerIsShowing;
 @property (assign) BOOL startPickerIsShowing;
@@ -33,6 +35,7 @@
 @property (strong, nonatomic) NSDate *selectedWhen;
 @property (strong, nonatomic) NSDate *selectedStart;
 @property (strong, nonatomic) NSDate *selectedEnd;
+@property (weak, nonatomic) IBOutlet UITextField *phoneField;
 @property (strong, nonatomic) UITextField *activeTextField;
 @property (weak, nonatomic) IBOutlet UITextField *nameField;
 @property (weak, nonatomic) IBOutlet UILabel *whenLabel;
@@ -96,7 +99,7 @@
     //if the event is blank
     if (!self.event) {
         self.whenDatePicker.date = self.trip.start;
-        self.startDatePicker.date = [self createNSDate:01 day:01 year:2015 hour:12 minute:00];
+        self.startDatePicker.date = self.trip.start;
         self.endDatePicker.date = [NSDate dateWithTimeInterval:60 sinceDate:self.startDatePicker.date];
     } else {
         self.nameField.text = self.event.name;
@@ -105,6 +108,7 @@
         self.startDatePicker.date = self.event.start;
         self.endDatePicker.date = self.event.end;
         self.locationField.text = self.event.addr;
+        self.phoneField.text = self.event.phone;
     }
     
     self.selectedWhen = self.whenDatePicker.date;
@@ -152,22 +156,26 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    CGFloat height = dateLabelCellHeight;
+    CGFloat height = standardRowHeight;
     
-    if (indexPath.row == startPickerIndex){
+    if (indexPath.row == startPickerRow){
         height = self.startPickerIsShowing ? datePickerCellHeight : 0.0f;
-    } else if(indexPath.row == endPickerIndex){
+    } else if(indexPath.row == endPickerRow){
         height = self.endPickerIsShowing ? datePickerCellHeight : 0.0f;
-    } else if (indexPath.row == dayPickerIndex){
+    } else if (indexPath.row == dayPickerRow){
         height = self.dayPickerIsShowing ? datePickerCellHeight : 0.0f;
     }
     
-    if (indexPath.row == notesIndex) {
-        return notesCellHeight;
+    if (indexPath.row == notesRow) {
+        return notesRowHeight;
+    }
+    
+    if (indexPath.row == deleteRow) {
+        return self.event? deleteRowHeight: 0.0f;
     }
     
     if (indexPath.row == 0)
-        return nameAddrCellHeight;
+        return firstCellHeight;
     
     return height;
 }
@@ -182,11 +190,11 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    if (indexPath.row == startPickerIndex - 1)
+    if (indexPath.row == startPickerRow - 1)
         [self dateLabelSelectHandler:self.startPickerIsShowing pickerName:@"start"];
-    if (indexPath.row == endPickerIndex - 1)
+    if (indexPath.row == endPickerRow - 1)
         [self dateLabelSelectHandler:self.endPickerIsShowing pickerName:@"end"];
-    if (indexPath.row == dayPickerIndex - 1){
+    if (indexPath.row == dayPickerRow - 1){
         [self dateLabelSelectHandler:self.dayPickerIsShowing pickerName:@"when"];
     }
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
@@ -288,9 +296,11 @@
     self.startLabel.text = [self.timeFormatter stringFromDate:sender.date];
     self.selectedStart = sender.date;
     self.endDatePicker.minimumDate = [NSDate dateWithTimeInterval:60 sinceDate:sender.date];
-    self.endDatePicker.date = self.endDatePicker.minimumDate;
-    self.endLabel.text = [self.timeFormatter stringFromDate:self.endDatePicker.date];
-    self.selectedEnd = self.endDatePicker.date;
+    if (self.selectedEnd < self.selectedStart){
+        self.endDatePicker.date = self.endDatePicker.minimumDate;
+        self.endLabel.text = [self.timeFormatter stringFromDate:self.endDatePicker.date];
+        self.selectedEnd = self.endDatePicker.date;
+    }
 }
 
 - (IBAction)endDatePickerChanged:(UIDatePicker *)sender {
@@ -308,6 +318,7 @@
         self.event.notes = self.notesTextView.text;
         self.event.start = start;
         self.event.end = end;
+        self.event.phone = self.phoneField.text;
         [[self.trip getDayForDate:self.event.start] addEvent:self.event];
     } else {
         NSMutableDictionary *eventDetails = [[NSMutableDictionary alloc] init];
@@ -316,6 +327,7 @@
         [eventDetails setObject:end forKey:E_END_KEY];
         [eventDetails setObject:self.notesTextView.text forKey:E_NOTES_KEY];
         [eventDetails setObject:self.locationField.text forKey:E_ADDR_KEY];
+        [eventDetails setObject:self.phoneField.text forKey:E_PHONE_KEY];
         NSManagedObjectContext *context = [DataManager getManagedObjectContext];
         PIEvent *e = [PIEvent createEvent:eventDetails inManagedObjectContext:context];
         [[self.trip getDayForDate:self.selectedWhen] addEvent:e];
