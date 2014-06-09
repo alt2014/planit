@@ -64,6 +64,7 @@
 		E0DCE04E19457646002609B2 /* PIEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = E0DCE04D19457646002609B2 /* PIEvent.m */; };
 		E0DCE0511945785A002609B2 /* PILodging+Model.m in Sources */ = {isa = PBXBuildFile; fileRef = E0DCE0501945785A002609B2 /* PILodging+Model.m */; };
 		E0DCE05419458CBC002609B2 /* TransportationEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E0DCE05319458CBC002609B2 /* TransportationEditViewController.m */; };
+		E0DCE0571945B9ED002609B2 /* LodgingEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E0DCE0561945B9EC002609B2 /* LodgingEditViewController.m */; };
 		E0E20EA8191DD73600B61A52 /* ItineraryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E0E20EA6191DD73600B61A52 /* ItineraryViewController.m */; };
 		E0FD0EAA192016CB007AE809 /* TripViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E0FD0EA9192016CB007AE809 /* TripViewController.m */; };
 /* End PBXBuildFile section */
@@ -176,6 +177,8 @@
 		E0DCE0501945785A002609B2 /* PILodging+Model.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "PILodging+Model.m"; path = "CoreData/PILodging+Model.m"; sourceTree = "<group>"; };
 		E0DCE05219458CBC002609B2 /* TransportationEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransportationEditViewController.h; sourceTree = "<group>"; };
 		E0DCE05319458CBC002609B2 /* TransportationEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransportationEditViewController.m; sourceTree = "<group>"; };
+		E0DCE0551945B9EC002609B2 /* LodgingEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LodgingEditViewController.h; sourceTree = "<group>"; };
+		E0DCE0561945B9EC002609B2 /* LodgingEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LodgingEditViewController.m; sourceTree = "<group>"; };
 		E0E20EA5191DD73600B61A52 /* ItineraryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItineraryViewController.h; sourceTree = "<group>"; };
 		E0E20EA6191DD73600B61A52 /* ItineraryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItineraryViewController.m; sourceTree = "<group>"; };
 		E0FD0EA8192016CA007AE809 /* TripViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TripViewController.h; sourceTree = "<group>"; };
@@ -307,6 +310,8 @@
 				E00A4EB8192C040600990B7C /* POIEditViewController.m */,
 				E0DCE05219458CBC002609B2 /* TransportationEditViewController.h */,
 				E0DCE05319458CBC002609B2 /* TransportationEditViewController.m */,
+				E0DCE0551945B9EC002609B2 /* LodgingEditViewController.h */,
+				E0DCE0561945B9EC002609B2 /* LodgingEditViewController.m */,
 			);
 			name = "Edit View Controllers";
 			sourceTree = "<group>";
@@ -561,6 +566,7 @@
 				E0DCE04E19457646002609B2 /* PIEvent.m in Sources */,
 				E0D745BA190FAB4400999C2D /* AppDelegate.m in Sources */,
 				D02FE448194248E900B7151C /* Model.xcdatamodeld in Sources */,
+				E0DCE0571945B9ED002609B2 /* LodgingEditViewController.m in Sources */,
 				E00A4EB9192C040600990B7C /* POIEditViewController.m in Sources */,
 				E00A4EB0192BF83000990B7C /* POIViewController.m in Sources */,
 				E0DCE05419458CBC002609B2 /* TransportationEditViewController.m in Sources */,

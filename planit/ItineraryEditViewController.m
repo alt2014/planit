@@ -29,6 +29,10 @@ static NSString *addPOISegueID = @"addPOISegue";
 static NSString *editPOISegueID = @"editPOISegue";
 static NSString *addTransportationSegueID = @"addTransportationSegue";
 static NSString *editTransportationSegueID = @"editTransportationSegue";
+static NSString *addLodgingSegueID = @"addLodgingSegue";
+static NSString *editLodgingSegueID = @"editLodgingSegue";
+
+
 
 @implementation ItineraryEditViewController
 
@@ -145,14 +149,14 @@ static NSString *editTransportationSegueID = @"editTransportationSegue";
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
-    if ([[segue identifier] isEqualToString:addPOISegueID] || [[segue identifier] isEqualToString:addTransportationSegueID]){
+    if ([[segue identifier] isEqualToString:addPOISegueID] || [[segue identifier] isEqualToString:addTransportationSegueID] || [[segue identifier] isEqualToString:addLodgingSegueID]){
         
         POIEditViewController *controller = [[[segue destinationViewController] viewControllers] objectAtIndex:0];
         controller.dateFormatter = self.dateFormatter;
         controller.timeFormatter = self.timeFormatter;
         controller.trip = self.trip;
         controller.delegate = self;
-    }else if ([[segue identifier] isEqualToString:editPOISegueID] || [[segue identifier] isEqualToString:editTransportationSegueID]){
+    }else if ([[segue identifier] isEqualToString:editPOISegueID] || [[segue identifier] isEqualToString:editTransportationSegueID] || [[segue identifier] isEqualToString:editLodgingSegueID]){
         
         POIEditViewController *controller = [[[segue destinationViewController] viewControllers] objectAtIndex:0];
         controller.dateFormatter = self.dateFormatter;
