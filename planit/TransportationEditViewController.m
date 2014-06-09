@@ -186,9 +186,12 @@
     if (indexPath.row == endPickerRow - 1)
         [self dateLabelSelectHandler:self.endPickerIsShowing pickerName:@"end"];
 
-    
+    if (indexPath.row == deleteRow){
+        [self.event.day removeEventsObject:self.event];
+        [self.delegate updateTableView];
+        [self dismissViewControllerAnimated:YES completion:NULL];
+    }
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
-    //DO SELECT DELETE ROW
 }
 
 - (void)showDatePickerCell:(NSString *)which {
@@ -298,6 +301,7 @@
     
 
     if (self.event) {
+        [self.event.day removeEventsObject:self.event];
         self.event.name = self.routeNumberField.text;
         self.event.addr = self.departureLocField.text;
         self.event.notes = self.NotesField.text;
@@ -306,7 +310,7 @@
         self.event.phone = self.phoneNumberField.text;
         ((PITransportation *)self.event).arrivalLocation = self.ArrivalLocField.text;
         ((PITransportation *)self.event).confirmationNumber = self.confirmationNumberField.text;
-        
+        [[self.trip getDayForDate:self.event.start] addEvent:self.event];
     } else {
         [self createNewEvent];
     }

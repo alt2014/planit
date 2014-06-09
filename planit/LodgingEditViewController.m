@@ -184,10 +184,12 @@
         [self dateLabelSelectHandler:self.startPickerIsShowing pickerName:@"start"];
     if (indexPath.row == endPickerRow - 1)
         [self dateLabelSelectHandler:self.endPickerIsShowing pickerName:@"end"];
-    
-    
+    if (indexPath.row == deleteRow){
+        [self.event.day removeEventsObject:self.event];
+        [self.delegate updateTableView];
+        [self dismissViewControllerAnimated:YES completion:NULL];
+    }
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
-    //DO SELECT DELETE ROW
 }
 
 - (void)showDatePickerCell:(NSString *)which {
@@ -273,7 +275,7 @@
     [self dismissViewControllerAnimated:YES completion:NULL];
 }
 
-- (IBAction)createNewEvent
+- (void)createNewEvent
 {
     NSMutableDictionary *eventDetails = [[NSMutableDictionary alloc] init];
     [eventDetails setObject:self.nameField.text forKey:E_NAME_KEY];
@@ -295,6 +297,7 @@
     
     
     if (self.event) {
+        [self.event.day removeEventsObject:self.event];
         self.event.name = self.nameField.text;
         self.event.addr = self.locationField.text;
         self.event.notes = self.notesField.text;
@@ -302,7 +305,7 @@
         self.event.end = self.selectedEnd;
         self.event.phone = self.phoneNumberField.text;
         ((PILodging *)self.event).confirmationNumber = self.confirmationNumberField.text;
-        
+        [[self.trip getDayForDate:self.event.start] addEvent:self.event];
     } else {
         [self createNewEvent];
     }
