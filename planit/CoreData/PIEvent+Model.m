@@ -21,6 +21,7 @@ inManagedObjectContext:(NSManagedObjectContext*)context {
     result.start = [event objectForKey:E_START_KEY];
     result.end = [event objectForKey:E_END_KEY];
     result.addr = [event objectForKey:E_ADDR_KEY];
+    result.phone = [event objectForKey:E_PHONE_KEY];
     
     return result;
 }

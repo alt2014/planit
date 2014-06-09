@@ -13,6 +13,7 @@
 #define E_ADDR_KEY @"E_ADDR"
 #define E_START_KEY @"E_START"
 #define E_END_KEY @"E_END"
+#define E_PHONE_KEY @"E_PHONE"
 
 @interface PIEvent (Model)
 

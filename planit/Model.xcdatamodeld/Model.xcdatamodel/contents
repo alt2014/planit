@@ -16,7 +16,15 @@
         <attribute name="uid" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="day" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PIDay" inverseName="events" inverseEntity="PIDay" syncable="YES"/>
     </entity>
-    <entity name="PILodgingEvent" syncable="YES"/>
+    <entity name="PILodging" representedClassName="PILodging" parentEntity="PIEvent" syncable="YES">
+        <attribute name="confirmationNumber" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="PITransportation" representedClassName="PITransportation" parentEntity="PIEvent" syncable="YES">
+        <attribute name="arrivalLocation" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="confirmationNumber" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="departureLocation" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="routeNumber" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <entity name="PITrip" representedClassName="PITrip" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="notes" optional="YES" attributeType="String" syncable="YES"/>
@@ -27,6 +35,7 @@
         <element name="PIDay" positionX="-252" positionY="146" width="128" height="103"/>
         <element name="PIEvent" positionX="-54" positionY="-9" width="128" height="165"/>
         <element name="PITrip" positionX="-450" positionY="-72" width="128" height="103"/>
-        <element name="PILodgingEvent" positionX="-252" positionY="72" width="128" height="45"/>
+        <element name="PILodging" positionX="-252" positionY="-18" width="128" height="58"/>
+        <element name="PITransportation" positionX="-207" positionY="-189" width="128" height="103"/>
     </elements>
 </model>
