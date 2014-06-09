@@ -215,7 +215,14 @@
 - (IBAction)startDateChanged:(UIDatePicker *)sender {
     
     self.startLabel.text =  [self.dateFormatter stringFromDate:sender.date];
-    
+//    NSDate *oldDate = sender.date; // Or however you get it.
+//    unsigned unitFlags = NSCalendarUnitYear | NSCalendarUnitMonth |  NSCalendarUnitDay;
+//    NSCalendar *calendar = [NSCalendar currentCalendar];
+//    NSDateComponents *comps = [calendar components:unitFlags fromDate:oldDate];
+//    comps.hour   = 23;
+//    comps.minute = 59;
+//    comps.second = 59;
+//    NSDate *newDate = [calendar dateFromComponents:comps];
     self.selectedStart = sender.date;
 }
 
@@ -243,7 +250,8 @@
     NSManagedObjectContext *context = [DataManager getManagedObjectContext];
     PITrip *t = [PITrip createTripFromDictionary:trip inManagedObjectContext:context];
     [self.delegate updateTableDataSource];
-    //[self.delegate saveTripDetails:t];
+    //[self.delegate saveT®®ripDetails:t];
+    
     
     [self dismissViewControllerAnimated:YES completion:NULL];
 }
