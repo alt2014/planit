@@ -12,9 +12,6 @@
 
 @protocol AddEventDelegate <NSObject>
 - (void)updateTableView;
-
-//- (void)saveEventDetails:(Event *)eventn isNewEvent:(BOOL)isNewEvent;
-
 @end
 
 @interface POIEditViewController : UITableViewController
