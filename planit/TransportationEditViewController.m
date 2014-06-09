@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Anh Truong. All rights reserved.
 //
 #define numRows 13
-#define datePickerCellHeight 164
+#define datePickerCellHeight 168
 #define deleteRowHeight 39
 #define notesRowHeight 67
 #define firstCellHeight 68

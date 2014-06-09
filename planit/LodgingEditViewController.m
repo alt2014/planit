@@ -7,7 +7,7 @@
 //
 
 #define numRows 12
-#define datePickerCellHeight 164
+#define datePickerCellHeight 168
 #define deleteRowHeight 39
 #define notesRowHeight 67
 #define firstCellHeight 68
