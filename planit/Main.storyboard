@@ -715,7 +715,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <outlet property="fromCountryLabel" destination="uVv-e8-sn2" id="4mv-xF-xMx"/>
                         <outlet property="fromCurrLabel" destination="dZt-ef-9pb" id="DRH-3L-34W"/>
                         <outlet property="fromPicker" destination="fyp-nX-SAI" id="JO8-fR-sz3"/>
-                        <outlet property="toAmountField" destination="Yfp-M3-AwP" id="axK-qd-Hpr"/>
+                        <outlet property="toAmountField" destination="Yfp-M3-AwP" id="ltZ-jF-EmP"/>
                         <outlet property="toCountryLabel" destination="bCE-e8-Vkt" id="vmD-pQ-Af4"/>
                         <outlet property="toCurrLabel" destination="sv4-ya-JXh" id="Jrg-V3-Dpz"/>
                         <outlet property="toPicker" destination="OID-Rw-s5C" id="g2D-eF-w4Z"/>
@@ -2097,9 +2097,9 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="rxy-pz-WX9"/>
         <segue reference="LAb-mW-mXg"/>
-        <segue reference="LkV-mQ-02W"/>
         <segue reference="RK7-Mf-zvK"/>
+        <segue reference="rxy-pz-WX9"/>
+        <segue reference="qg4-Lr-WQw"/>
     </inferredMetricsTieBreakers>
 </document>

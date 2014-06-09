@@ -15,6 +15,5 @@
 
 @property (weak, nonatomic) id<CurrencyCommunicatorDelegate> delegate;
 // Figure out what to pass in here - a currency class var?
-- (void)getCurrentCurrencyRates:(Currency*)exchangeRate;
-
+- (void)getCurrentCurrencyRates:(Currency*)exchangeRate callback:(void (^) (NSError *error, Currency *currency))callback;
 @end
