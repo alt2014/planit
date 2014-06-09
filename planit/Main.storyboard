@@ -1111,29 +1111,8 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.94000000000000006" alpha="1" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="38" id="gzl-NX-dVu">
-                                        <rect key="frame" x="0.0" y="44" width="320" height="38"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gzl-NX-dVu" id="NzW-Qp-zNn">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="37"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HDm-n0-dSe">
-                                                    <rect key="frame" x="14" y="4" width="30" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                </imageView>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Map" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E5b-SN-gt8">
-                                                    <rect key="frame" x="52" y="8" width="81" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" white="0.93999999999999995" alpha="1" colorSpace="calibratedWhite"/>
-                                    </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="exchangeCell" rowHeight="38" id="QWW-Ar-nB9">
-                                        <rect key="frame" x="0.0" y="82" width="320" height="38"/>
+                                        <rect key="frame" x="0.0" y="44" width="320" height="38"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="QWW-Ar-nB9" id="UQo-i8-dcf">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="37"/>
@@ -1158,7 +1137,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="weatherCell" rowHeight="38" id="IUt-xh-t72">
-                                        <rect key="frame" x="0.0" y="120" width="320" height="38"/>
+                                        <rect key="frame" x="0.0" y="82" width="320" height="38"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="IUt-xh-t72" id="ahp-Dr-mQ5">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="37"/>
@@ -1182,7 +1161,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="tripsCell" rowHeight="38" id="t5h-2q-3et">
-                                        <rect key="frame" x="0.0" y="158" width="320" height="38"/>
+                                        <rect key="frame" x="0.0" y="120" width="320" height="38"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="t5h-2q-3et" id="QJX-3l-RzP">
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="37"/>
@@ -1663,9 +1642,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="7zA-o5-GnH">
-                        <barButtonItem key="rightBarButtonItem" title="Edit" id="X1Z-Em-9PQ"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="7zA-o5-GnH"/>
                     <connections>
                         <outlet property="addressLabel" destination="B7U-Z9-4YZ" id="oD7-K0-iyp"/>
                         <outlet property="dateLabel" destination="pLg-SE-pXZ" id="caT-bW-NSy"/>
@@ -2171,9 +2148,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="zIN-ph-vAb">
-                        <barButtonItem key="rightBarButtonItem" title="Edit" id="edT-PL-eNc"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="zIN-ph-vAb"/>
                     <connections>
                         <outlet property="confirmationNumber" destination="t22-Es-jnU" id="wpd-UX-WeY"/>
                         <outlet property="dateLabel" destination="Krr-m0-52s" id="H0A-sf-W8C"/>
@@ -2657,9 +2632,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="fx0-xC-HPI">
-                        <barButtonItem key="rightBarButtonItem" title="Edit" id="d6C-fU-gs0"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="fx0-xC-HPI"/>
                     <connections>
                         <outlet property="addressLabel" destination="LFZ-xb-ZoI" id="n7R-xk-Q17"/>
                         <outlet property="checkInTime" destination="7cF-qr-iot" id="QAK-V5-rzR"/>
@@ -2692,7 +2665,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
     <inferredMetricsTieBreakers>
         <segue reference="LAb-mW-mXg"/>
         <segue reference="rxy-pz-WX9"/>
-        <segue reference="TX3-Un-3y8"/>
         <segue reference="HnY-5k-oDt"/>
+        <segue reference="TX3-Un-3y8"/>
     </inferredMetricsTieBreakers>
 </document>
