@@ -83,7 +83,7 @@
             </objects>
             <point key="canvasLocation" x="282" y="-317"/>
         </scene>
-        <!--Trip Add View Controller - Add Trip-->
+        <!--Trip Add View Controller-->
         <scene sceneID="Cum-bu-uKY">
             <objects>
                 <tableViewController id="h7S-YS-YCX" customClass="TripAddViewController" sceneMemberID="viewController">
@@ -246,7 +246,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                             <outlet property="delegate" destination="h7S-YS-YCX" id="uEn-Qa-hCo"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Add Trip" id="P9v-NJ-bKp">
+                    <navigationItem key="navigationItem" id="P9v-NJ-bKp">
                         <barButtonItem key="leftBarButtonItem" title="Item" systemItem="cancel" id="SGo-YA-Pol">
                             <connections>
                                 <action selector="cancelPressed:" destination="h7S-YS-YCX" id="q2p-Z5-0NQ"/>
@@ -1984,7 +1984,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                                    <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" address="YES"/>
                                                 </textView>
                                             </subviews>
                                         </tableViewCellContentView>

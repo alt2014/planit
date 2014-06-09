@@ -156,7 +156,7 @@
         return self.endPickerIsShowing ? datePickerCellHeight : 0.0f;
     }
     
-    if (indexPath.row == notesRowHeight) {
+    if (indexPath.row == notesRow) {
         return notesRowHeight;
     }
     
@@ -273,32 +273,44 @@
 - (IBAction)cancelClicked:(UIBarButtonItem *)sender {
     [self dismissViewControllerAnimated:YES completion:NULL];
 }
+
+- (IBAction)createNewEvent
+{
+    NSMutableDictionary *eventDetails = [[NSMutableDictionary alloc] init];
+    [eventDetails setObject:self.routeNumberField.text forKey:E_NAME_KEY];
+    [eventDetails setObject:self.selectedStart   forKey:E_START_KEY];
+    [eventDetails setObject:self.selectedEnd forKey:E_END_KEY];
+    [eventDetails setObject:self.NotesField.text forKey:E_NOTES_KEY];
+    [eventDetails setObject:self.departureLocField.text forKey:E_ADDR_KEY];
+    [eventDetails setObject:self.ArrivalLocField.text forKey:ET_ARRIVAL_KEY];
+    [eventDetails setObject:self.phoneNumberField.text forKey:E_PHONE_KEY];
+    [eventDetails setObject:self.confirmationNumberField.text forKey:ET_CONFIRMATION_KEY];
+    [eventDetails setObject:@"" forKey:ET_DEPARTURE_KEY];
+    
+    NSManagedObjectContext *context = [DataManager getManagedObjectContext];
+    PITransportation *t = [PITransportation createTransportation:eventDetails inManagedObjectContext:context];
+    [[self.trip getDayForDate:self.selectedStart] addEvent:t];
+
+
+}
+
 - (IBAction)saveClicked:(UIBarButtonItem *)sender {
-    /*
-    NSDate *start = [self dateFromDayAndTime:self.selectedWhen time:self.selectedStart];
-    NSDate *end = [self dateFromDayAndTime:self.selectedWhen time:self.selectedEnd];
+    
+
     if (self.event) {
-        self.event.name = self.nameField.text;
-        self.event.addr = self.locationField.text;
-        self.event.notes = self.notesTextView.text;
-        //get the NSdate from the when day components and times
-        self.event.start = start;
-        self.event.end = end;
+        self.event.name = self.routeNumberField.text;
+        self.event.addr = self.departureLocField.text;
+        self.event.notes = self.NotesField.text;
+        self.event.start = self.selectedStart;
+        self.event.end = self.selectedEnd;
+        self.event.phone = self.phoneNumberField.text;
+        ((PITransportation *)self.event).arrivalLocation = self.ArrivalLocField.text;
+        ((PITransportation *)self.event).confirmationNumber = self.confirmationNumberField.text;
+        
     } else {
-        NSMutableDictionary *eventDetails = [[NSMutableDictionary alloc] init];
-        //NSDate *start = self.selectedStart;
-        //NSDate *end = self.selectedEnd;
-        [eventDetails setObject:self.nameField.text forKey:E_NAME_KEY];
-        [eventDetails setObject:start   forKey:E_START_KEY];
-        [eventDetails setObject:end forKey:E_END_KEY];
-        [eventDetails setObject:self.notesTextView.text forKey:E_NOTES_KEY];
-        [eventDetails setObject:self.locationField.text forKey:E_ADDR_KEY];
-        NSManagedObjectContext *context = [DataManager getManagedObjectContext];
-        PIEvent *e = [PIEvent createEvent:eventDetails inManagedObjectContext:context];
-        [[self.trip getDayForDate:self.selectedWhen] addEvent:e];
+        [self createNewEvent];
     }
     [self.delegate updateTableView];
     [self dismissViewControllerAnimated:YES completion:NULL];
-     */
 }
 @end

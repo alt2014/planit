@@ -60,9 +60,9 @@ static NSString *editTransportationSegueID = @"editTransportationSegue";
         NSString *CellIdentifier;
         PIEvent * selectedEvent = [[[[self.trip getDaysArray] objectAtIndex:indexPath.section] getEventsArray] objectAtIndex:indexPath.row - 1];
         if ([selectedEvent isKindOfClass:[PITransportation class]]) {
-            CellIdentifier = @"transport";
+            CellIdentifier = @"Transport";
         } else if ([selectedEvent isKindOfClass:[PILodging class]]){
-            CellIdentifier = @"lodging";
+            CellIdentifier = @"Lodging";
         } else {
             CellIdentifier = @"POI";
         }
@@ -145,16 +145,14 @@ static NSString *editTransportationSegueID = @"editTransportationSegue";
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
-    if ([[segue identifier] isEqualToString:addPOISegueID]){
+    if ([[segue identifier] isEqualToString:addPOISegueID] || [[segue identifier] isEqualToString:addTransportationSegueID]){
         
         POIEditViewController *controller = [[[segue destinationViewController] viewControllers] objectAtIndex:0];
         controller.dateFormatter = self.dateFormatter;
         controller.timeFormatter = self.timeFormatter;
         controller.trip = self.trip;
         controller.delegate = self;
-    }
-    
-    if ([[segue identifier] isEqualToString:editPOISegueID]){
+    }else if ([[segue identifier] isEqualToString:editPOISegueID] || [[segue identifier] isEqualToString:editTransportationSegueID]){
         
         POIEditViewController *controller = [[[segue destinationViewController] viewControllers] objectAtIndex:0];
         controller.dateFormatter = self.dateFormatter;
@@ -162,27 +160,6 @@ static NSString *editTransportationSegueID = @"editTransportationSegue";
         NSIndexPath *selectedIndexPath = [self.tableView indexPathForSelectedRow];
         PIEvent *selectedEvent = [[[[self.trip getDaysArray] objectAtIndex:selectedIndexPath.section] getEventsArray] objectAtIndex:selectedIndexPath.row - 1];
         controller.event = selectedEvent;
-        controller.trip = self.trip;
-        controller.delegate = self;
-    }
-    
-    if ([[segue identifier] isEqualToString:addTransportationSegueID]){
-        
-        TransportationEditViewController *controller = [[[segue destinationViewController] viewControllers] objectAtIndex:0];
-        controller.dateFormatter = self.dateFormatter;
-        controller.timeFormatter = self.timeFormatter;
-        controller.trip = self.trip;
-        controller.delegate = self;
-    }
-    
-    if ([[segue identifier] isEqualToString:editTransportationSegueID]){
-        
-        TransportationEditViewController *controller = [[[segue destinationViewController] viewControllers] objectAtIndex:0];
-        controller.dateFormatter = self.dateFormatter;
-        controller.timeFormatter = self.timeFormatter;
-        NSIndexPath *selectedIndexPath = [self.tableView indexPathForSelectedRow];
-        PIEvent *selectedEvent = [[[[self.trip getDaysArray] objectAtIndex:selectedIndexPath.section] getEventsArray] objectAtIndex:selectedIndexPath.row - 1];
-        controller.event = (PITransportation *)selectedEvent;
         controller.trip = self.trip;
         controller.delegate = self;
     }

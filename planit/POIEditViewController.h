@@ -22,22 +22,7 @@
 @property  (weak, nonatomic) id<AddEventDelegate> delegate;
 - (IBAction)cancelClicked:(UIBarButtonItem *)sender;
 - (IBAction)saveClicked:(UIBarButtonItem *)sender;
-@property (weak, nonatomic) IBOutlet UITextField *nameField;
-@property (weak, nonatomic) IBOutlet UILabel *whenLabel;
-- (IBAction)whenDatePickerChanged:(UIDatePicker *)sender;
-@property (weak, nonatomic) IBOutlet UITableViewCell *whenDatePickerCell;
-@property (weak, nonatomic) IBOutlet UIDatePicker *whenDatePicker;
-@property (weak, nonatomic) IBOutlet UITextField *locationField;
 
-@property (weak, nonatomic) IBOutlet UILabel *startLabel;
-- (IBAction)startDatePickerChanged:(UIDatePicker *)sender;
-@property (weak, nonatomic) IBOutlet UIDatePicker *startDatePicker;
-@property (weak, nonatomic) IBOutlet UITableViewCell *startDatePickerCell;
-@property (weak, nonatomic) IBOutlet UILabel *endLabel;
-- (IBAction)endDatePickerChanged:(UIDatePicker *)sender;
-@property (weak, nonatomic) IBOutlet UIDatePicker *endDatePicker;
-@property (weak, nonatomic) IBOutlet UITableViewCell *endDatePickerCell;
-@property (weak, nonatomic) IBOutlet UITextView *notesTextView;
 
 
 @end
