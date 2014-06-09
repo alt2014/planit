@@ -11,13 +11,16 @@
 #import "ItineraryViewController.h"
 #import "SWRevealViewController.h"
 #import "PIEvent.h"
+#import "PITransportation.h"
 #import "PIDay.h"
 #import "ItineraryEditViewController.h"
 #import "POIViewController.h"
+#import "TransportationViewController.h"
 #import "DataManager.h"
 #import "PITrip+Model.h"
 #import "PITrip.h"
 #import "PIDay+Model.h"
+#import "PILodging.h"
 
 #define eventCellHeight 82;
 #define headerCellHeight 27;
@@ -33,6 +36,7 @@
 @implementation ItineraryViewController
 static NSString *itineraryEditSegueID = @"itineraryEditSegue";
 static NSString *poiDetailSegueID = @"pOIDetailSegue";
+static NSString *transportationDetailSegueID = @"transportationDetailSegue";
 
 //should pass in the trip name when the edit button is clicked
 //pass in the event when the event is clicked
@@ -53,7 +57,7 @@ static NSString *poiDetailSegueID = @"pOIDetailSegue";
         expandedSections = [[NSMutableIndexSet alloc] init];
     [self createDateFormatter];
     
-   // [self initTripDetails];
+    // [self initTripDetails];
     
     // set the side bar button action and gesture recognizer
     sidebarButton.target = self.revealViewController;
@@ -89,9 +93,15 @@ static NSString *poiDetailSegueID = @"pOIDetailSegue";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if(indexPath.row != 0){
-        
-        //hardcoded, change to adapt to more events
-        NSString *CellIdentifier = @"POI";
+        NSString *CellIdentifier;
+        PIEvent * selectedEvent = [[[[self.trip getDaysArray] objectAtIndex:indexPath.section] getEventsArray] objectAtIndex:indexPath.row - 1];
+        if ([selectedEvent isKindOfClass:[PITransportation class]]) {
+            CellIdentifier = @"Transport";
+        } else if ([selectedEvent isKindOfClass:[PILodging class]]){
+            CellIdentifier = @"Lodging";
+        } else {
+            CellIdentifier = @"POI";
+        }
         return [self eventCellForIndexPath:indexPath cellIdentifier:CellIdentifier];
         
     }
@@ -188,7 +198,7 @@ static NSString *poiDetailSegueID = @"pOIDetailSegue";
                                                            inSection:section];
             [tmpArray addObject:tmpIndexPath];
         }
-                
+        
         if (currentlyExpanded)
             [tableView deleteRowsAtIndexPaths:tmpArray
                              withRowAnimation:UITableViewRowAnimationTop];
@@ -217,24 +227,33 @@ static NSString *poiDetailSegueID = @"pOIDetailSegue";
     
     if ([[segue identifier] isEqualToString:poiDetailSegueID]) {
         POIViewController *controller = [segue destinationViewController];
-        NSIndexPath *selectedIndexPath = [self.tableView indexPathForSelectedRow];
-        Event *selectedEvent = [[self.itineraryEvents objectAtIndex:selectedIndexPath.section] objectAtIndex:selectedIndexPath.row];
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        PIEvent *selectedEvent = [[[[self.trip getDaysArray] objectAtIndex:indexPath.section] getEventsArray] objectAtIndex:indexPath.row - 1];;
         controller.event = selectedEvent;
         controller.timeFormatter = self.timeFormatter;
         controller.dateFormatter = self.dateFormatter;
         //add an event to the controller
     }
     
-    /*
-    if ([[segue identifier] isEqualToString:tripDetailSegueID]){
+    if ([[segue identifier] isEqualToString:transportationDetailSegueID]) {
+        TransportationViewController *controller = [segue destinationViewController];
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        PITransportation *selectedEvent = [[[[self.trip getDaysArray] objectAtIndex:indexPath.section] getEventsArray] objectAtIndex:indexPath.row - 1];;
+        controller.event = selectedEvent;
         
-        ItineraryViewController *controller = [segue destinationViewController];
-        NSIndexPath *selectedIndexPath = [self.tableView indexPathForSelectedRow];
-        Trip *selectedTrip = [self.trips objectAtIndex:selectedIndexPath.row];
-        controller.daysInTrip = [selectedTrip getDays];
-        
-        controller.navigationItem.title = selectedTrip.name;
+        //add an event to the controller
     }
+    
+    /*
+     if ([[segue identifier] isEqualToString:tripDetailSegueID]){
+     
+     ItineraryViewController *controller = [segue destinationViewController];
+     NSIndexPath *selectedIndexPath = [self.tableView indexPathForSelectedRow];
+     Trip *selectedTrip = [self.trips objectAtIndex:selectedIndexPath.row];
+     controller.daysInTrip = [selectedTrip getDays];
+     
+     controller.navigationItem.title = selectedTrip.name;
+     }
      */
 }
 

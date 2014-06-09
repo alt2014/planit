@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Qtl-1i-M2R">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Qtl-1i-M2R">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -669,7 +669,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                                         <!--2014-06-09 06:45:28 +0000-->
                                                     </date>
                                                     <timeZone key="timeZone" name="America/Los_Angeles">
-                                                        <mutableData key="data">
+                                                        <data key="data">
 VFppZgAAAAAAAAAAAAAAAAAAAAAAAAAEAAAABAAAAAAAAAC5AAAABAAAABCepkign7sVkKCGKqChmveQ
 y4kaoNIj9HDSYSYQ1v50INiArZDa/tGg28CQENzes6DdqayQ3r6VoN+JjpDgnneg4WlwkOJ+WaDjSVKQ
 5F47oOUpNJDmR1gg5xJREOgnOiDo8jMQ6gccIOrSFRDr5v4g7LH3EO3G4CDukdkQ76/8oPBxuxDxj96g
@@ -687,7 +687,7 @@ f5gqkAABAAECAwEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
 AQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
 AQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
 AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
-</mutableData>
+</data>
                                                     </timeZone>
                                                     <connections>
                                                         <action selector="startDatePickerChanged:" destination="TyI-Il-G9X" eventType="valueChanged" id="bV6-1T-zA0"/>
@@ -733,7 +733,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                                         <!--2014-06-09 06:45:28 +0000-->
                                                     </date>
                                                     <timeZone key="timeZone" name="America/Los_Angeles">
-                                                        <mutableData key="data">
+                                                        <data key="data">
 VFppZgAAAAAAAAAAAAAAAAAAAAAAAAAEAAAABAAAAAAAAAC5AAAABAAAABCepkign7sVkKCGKqChmveQ
 y4kaoNIj9HDSYSYQ1v50INiArZDa/tGg28CQENzes6DdqayQ3r6VoN+JjpDgnneg4WlwkOJ+WaDjSVKQ
 5F47oOUpNJDmR1gg5xJREOgnOiDo8jMQ6gccIOrSFRDr5v4g7LH3EO3G4CDukdkQ76/8oPBxuxDxj96g
@@ -751,7 +751,7 @@ f5gqkAABAAECAwEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
 AQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
 AQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
 AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
-</mutableData>
+</data>
                                                     </timeZone>
                                                     <connections>
                                                         <action selector="endDatePickerChanged:" destination="TyI-Il-G9X" eventType="valueChanged" id="IQf-49-FqC"/>
@@ -1291,6 +1291,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                             <outlet property="AddressTextField" destination="EcB-2R-ya5" id="7Qc-lo-3vO"/>
                                             <outlet property="NameLabel" destination="8mp-Il-lfZ" id="1fd-oY-2fw"/>
                                             <outlet property="TimeLabel" destination="Uvu-pz-3tl" id="vjx-Ed-m9c"/>
+                                            <segue destination="QXB-de-ega" kind="push" identifier="pOIDetailSegue" id="4RB-3j-5hO"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Transport" rowHeight="82" id="V2x-Vd-itC" customClass="ItineraryItemTableCell">
@@ -1335,7 +1336,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                         <connections>
                                             <outlet property="NameLabel" destination="rZg-Zk-TOn" id="YJS-YC-vHH"/>
                                             <outlet property="TimeLabel" destination="Dyl-Oa-fkB" id="Op4-2U-9p2"/>
-                                            <segue destination="0wL-88-zba" kind="push" id="qqa-IF-pet"/>
+                                            <segue destination="0wL-88-zba" kind="push" identifier="transportationDetailSegue" id="8aB-Gq-dym"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Lodging" rowHeight="82" id="mqr-ep-Oap" customClass="ItineraryItemTableCell">
@@ -1437,8 +1438,8 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tam-of-l4e">
-                                <rect key="frame" x="25" y="130" width="36" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Date and Time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tam-of-l4e">
+                                <rect key="frame" x="25" y="130" width="100" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" name="selectedMenuItemColor" catalog="System" colorSpace="catalog"/>
@@ -1457,14 +1458,14 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                 <color key="textColor" name="selectedMenuItemColor" catalog="System" colorSpace="catalog"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Hours of Operation" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oQO-Kr-nLQ">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Phone Number" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oQO-Kr-nLQ">
                                 <rect key="frame" x="25" y="281" width="115" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" name="selectedMenuItemColor" catalog="System" colorSpace="catalog"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Hours Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bFs-Q3-K0j">
+                            <label opaque="NO" clipsSubviews="YES" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Phone Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bFs-Q3-K0j">
                                 <rect key="frame" x="25" y="298" width="253" height="27"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -1499,11 +1500,11 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <barButtonItem key="rightBarButtonItem" title="Edit" id="X1Z-Em-9PQ"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="AddressField" destination="B7U-Z9-4YZ" id="uSU-rH-1zc"/>
-                        <outlet property="DateLabel" destination="pLg-SE-pXZ" id="TVN-fT-9ia"/>
-                        <outlet property="HoursLabel" destination="bFs-Q3-K0j" id="VOZ-ih-cuz"/>
-                        <outlet property="NameLabel" destination="y0t-gt-AA9" id="Qya-rm-SkT"/>
-                        <outlet property="NotesField" destination="p2x-Mq-NhD" id="7Om-ra-0el"/>
+                        <outlet property="addressLabel" destination="B7U-Z9-4YZ" id="oD7-K0-iyp"/>
+                        <outlet property="dateLabel" destination="pLg-SE-pXZ" id="caT-bW-NSy"/>
+                        <outlet property="eventName" destination="y0t-gt-AA9" id="Moe-FP-7yY"/>
+                        <outlet property="notesField" destination="p2x-Mq-NhD" id="Bcg-As-R5e"/>
+                        <outlet property="phoneLabel" destination="bFs-Q3-K0j" id="eys-8x-Qhz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y4M-9R-xsl" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1930,36 +1931,8 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Uia-NQ-xzq">
-                                <rect key="frame" x="25" y="312" width="107" height="64"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <string key="text">Departure Location
-1
-2
-3</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IOW-Mr-5ir">
-                                <rect key="frame" x="193" y="312" width="107" height="64"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <string key="text">Arrival Location
-1
-2
-3</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="to" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bc5-ur-IbY">
-                                <rect key="frame" x="155" y="333" width="42" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OAN-Xu-g5K">
-                                <rect key="frame" x="32" y="384" width="107" height="21"/>
+                                <rect key="frame" x="25" y="332" width="239" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <attributedString key="attributedText">
                                     <fragment content="00:00AM PST">
@@ -1972,32 +1945,25 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AFs-lT-5nJ">
-                                <rect key="frame" x="193" y="386" width="107" height="19"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <attributedString key="attributedText">
-                                    <fragment content="00:00PM PST">
-                                        <attributes>
-                                            <color key="NSColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                            <font key="NSFont" size="14" name="HelveticaNeue"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Notes text" translatesAutoresizingMaskIntoConstraints="NO" id="6Gr-dU-xfr">
-                                <rect key="frame" x="25" y="437" width="275" height="120"/>
+                                <rect key="frame" x="20" y="378" width="275" height="120"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Notes" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jLq-zG-bYN">
-                                <rect key="frame" x="25" y="421" width="115" height="21"/>
+                                <rect key="frame" x="25" y="361" width="115" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="tripLocations" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6f8-me-b7h">
+                                <rect key="frame" x="25" y="309" width="246" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -2007,15 +1973,13 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <barButtonItem key="rightBarButtonItem" title="Edit" id="edT-PL-eNc"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="ArriveAddrField" destination="IOW-Mr-5ir" id="SFk-Yc-BIz"/>
-                        <outlet property="ArriveTimeLabel" destination="AFs-lT-5nJ" id="szE-je-zKA"/>
-                        <outlet property="ConfirmationLabel" destination="t22-Es-jnU" id="AKp-2r-wIY"/>
-                        <outlet property="DateLabel" destination="Krr-m0-52s" id="5Cq-sp-8ki"/>
-                        <outlet property="DepartAddrField" destination="Uia-NQ-xzq" id="2wr-RC-CqG"/>
-                        <outlet property="DepartTimeLabel" destination="OAN-Xu-g5K" id="cJK-BP-AI7"/>
-                        <outlet property="NameLabel" destination="pv4-dp-7Pr" id="dPd-mq-Yr4"/>
-                        <outlet property="NotesField" destination="6Gr-dU-xfr" id="1B0-9s-eJo"/>
-                        <outlet property="RouteNumberLabel" destination="OcW-Z0-fIx" id="hor-Lz-JOa"/>
+                        <outlet property="confirmationNumber" destination="t22-Es-jnU" id="wpd-UX-WeY"/>
+                        <outlet property="dateLabel" destination="Krr-m0-52s" id="H0A-sf-W8C"/>
+                        <outlet property="location" destination="6f8-me-b7h" id="9vd-t0-z0p"/>
+                        <outlet property="notesField" destination="6Gr-dU-xfr" id="6uf-qc-Haw"/>
+                        <outlet property="routeNumber" destination="OcW-Z0-fIx" id="bKQ-lS-KJY"/>
+                        <outlet property="time" destination="OAN-Xu-g5K" id="IPB-b3-sdM"/>
+                        <outlet property="transportationName" destination="pv4-dp-7Pr" id="iGR-4t-XS3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DuR-mb-bOU" userLabel="First Responder" sceneMemberID="firstResponder"/>
