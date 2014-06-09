@@ -55,10 +55,25 @@
 }
 
 + (int)daysBetween:(NSDate *)dt1 and:(NSDate *)dt2 {
-    NSUInteger unitFlags = NSDayCalendarUnit;
-    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-    NSDateComponents *components = [calendar components:unitFlags fromDate:dt1 toDate:dt2 options:0];
-    return [components day];
+    
+//    NSUInteger unitFlags = NSDayCalendarUnit;
+//    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+//    NSDateComponents *components = [calendar components:unitFlags fromDate:dt1 toDate:dt2 options:0];
+//    return [components day];
+    NSDate *fromDate;
+    NSDate *toDate;
+    
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    
+    [calendar rangeOfUnit:NSDayCalendarUnit startDate:&fromDate
+                 interval:NULL forDate:dt1];
+    [calendar rangeOfUnit:NSDayCalendarUnit startDate:&toDate
+                 interval:NULL forDate:dt2];
+    
+    NSDateComponents *difference = [calendar components:NSDayCalendarUnit
+                                               fromDate:fromDate toDate:toDate options:0];
+    
+    return [difference day];
 }
 
 + (NSArray*)sortTrips:(NSArray*)trips {
