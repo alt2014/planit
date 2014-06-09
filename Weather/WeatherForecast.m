@@ -61,14 +61,14 @@
                 }
                 // Some error occured and no weather data was given
                 NSString *message = [NSString stringWithFormat:@"%@. Please try again.",[errors objectForKey:DESCRIPTION]];
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Sorry!"
-                                                                        message:message
-                                                                       delegate:nil
-                                                              cancelButtonTitle:@"OK"
-                                                              otherButtonTitles:nil];
-                    [alertView show];
-                });
+//                dispatch_async(dispatch_get_main_queue(), ^{
+//                    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Sorry!"
+//                                                                        message:message
+//                                                                       delegate:nil
+//                                                              cancelButtonTitle:@"OK"
+//                                                              otherButtonTitles:nil];
+//                    [alertView show];
+//                });
                 NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
                 [errorDetail setValue:message forKey:NSLocalizedDescriptionKey];
                 error = [NSError errorWithDomain:@"invalid_location" code:NO_WEATHER userInfo:errorDetail];

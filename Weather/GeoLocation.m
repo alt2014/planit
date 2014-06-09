@@ -48,14 +48,14 @@
                         block(forecast, error);
                     }];
                 } else {
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Location Not Found"
-                                                                            message:@"Please check spelling and try again."
-                                                                           delegate:nil
-                                                                  cancelButtonTitle:@"OK"
-                                                                  otherButtonTitles:nil];
-                        [alertView show];
-                    });
+//                    dispatch_async(dispatch_get_main_queue(), ^{
+//                        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Location Not Found"
+//                                                                            message:@"Please check spelling and try again."
+//                                                                           delegate:nil
+//                                                                  cancelButtonTitle:@"OK"
+//                                                                  otherButtonTitles:nil];
+//                        [alertView show];
+//                    });
                     NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
                     [errorDetail setValue:@"Location request was invalid" forKey:NSLocalizedDescriptionKey];
                     error = [NSError errorWithDomain:@"invalid_location" code:INVALID_LOCATION userInfo:errorDetail];

@@ -12,6 +12,7 @@
 #import "ItineraryViewController.h"
 #import "DataManager.h"
 #import "PITrip+Model.h"
+#import "GeoLocation.h"
 
 static NSString *tripCellID = @"TripCell";
 static NSString *addTripSegueID = @"addTrip";
@@ -48,32 +49,13 @@ const int dPTag = 1;
     [self createDateFormatter];
     
     DataManager *dm = [[DataManager alloc] init];
+    
     [dm loadTrips:^(BOOL success, NSArray *trips) {
-        NSLog(@"Hahaha");
         if (success) {
-            NSLog(@"Yay");
             // document created/loaded safely
             self.trips = [NSMutableArray arrayWithArray:trips];
             [self.tableView reloadData];
-//            if ([self.trips count] < 1) {
-//                NSMutableDictionary *trip = [[NSMutableDictionary alloc] init];
-//                NSDate *start = [NSDate date];
-//                NSDate *end = [NSDate dateWithTimeInterval:60*60*24*3 sinceDate:start];
-//                [trip setObject:@"Cabo" forKey:T_NAME_KEY];
-//                [trip setObject:start   forKey:T_START_KEY];
-//                [trip setObject:end forKey:T_END_KEY];
-//                [trip setObject:@"with some freindss" forKey:T_NOTES_KEY];
-//                NSManagedObjectContext *context = [DataManager getManagedObjectContext];
-//                PITrip *t = [PITrip createTripFromDictionary:trip inManagedObjectContext:context];
-//                
-//                NSError *error;
-//                [context save:&error];
-//                
-//                NSLog(@"%@", t);
-// self.trips = [NSMutableArray arrayWithArray:[dm getTrips]];
-//            }
         } else {
-            NSLog(@"ADSKFLSADNFKLDASNF");
             NSLog(@"Error");
         }
     }];

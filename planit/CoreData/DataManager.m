@@ -7,6 +7,8 @@
 //
 
 #import "DataManager.h"
+#import "GeoLocation.h"
+#import "WeatherForecast.h"
 
 @implementation DataManager
 
