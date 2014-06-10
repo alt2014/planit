@@ -119,7 +119,12 @@ static NSString *lodgingDetailSegueID = @"lodgingDetailSegue";
     if (cell == nil) {
         cell = [[ItineraryItemTableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
-    cell.AddressTextField.text = cellData.addr;
+    if ([cellData isKindOfClass:[PITransportation class]]) {
+        cell.AddressTextField.text = @"";
+    } else {
+        cell.AddressTextField.text = cellData.addr;
+    }
+   // cell.AddressTextField.text = cellData.addr;
     //insert time formatter
     NSString *startTime = [self.timeFormatter stringFromDate:cellData.start];
     NSString *endTime = [self.timeFormatter stringFromDate:cellData.end];

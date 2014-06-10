@@ -48,6 +48,7 @@ static NSString *editLodgingSegueID = @"editLodgingSegue";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.title = [NSString stringWithFormat:@"Edit Trip: %@", self.trip.name];
 }
 
 - (void)didReceiveMemoryWarning
@@ -84,7 +85,11 @@ static NSString *editLodgingSegueID = @"editLodgingSegue";
     if (cell == nil) {
         cell = [[ItineraryItemTableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
-    cell.AddressTextField.text = cellData.addr;
+    if ([cellData isKindOfClass:[PITransportation class]]) {
+        cell.AddressTextField.text = @"";
+    } else {
+        cell.AddressTextField.text = cellData.addr;
+    }
     //insert time formatter
     NSString *startTime = [self.timeFormatter stringFromDate:cellData.start];
     NSString *endTime = [self.timeFormatter stringFromDate:cellData.end];

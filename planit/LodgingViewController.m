@@ -10,7 +10,6 @@
 #import "PILodging.h"
 
 @interface LodgingViewController ()
-@property (weak, nonatomic) IBOutlet UILabel *lodgingName;
 @property (weak, nonatomic) IBOutlet UILabel *checkInTime;
 @property (weak, nonatomic) IBOutlet UILabel *checkOutTime;
 @property (weak, nonatomic) IBOutlet UITextView *addressLabel;
@@ -39,7 +38,7 @@
 }
 - (void)displayLabels
 {
-    self.lodgingName.text = self.event.name;
+    self.title = self.event.name;
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setFormatterBehavior:NSDateFormatterBehavior10_4];

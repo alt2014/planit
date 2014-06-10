@@ -54,6 +54,7 @@ BOOL usingFahrenheit;
     
     self.forecast = [[WeatherForecast alloc] init];
     self.forecast.forecast = [[NSMutableArray alloc] init];
+    self.forecast.location = [[NSString alloc] init];
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
@@ -145,13 +146,14 @@ BOOL usingFahrenheit;
         [self.view addSubview:self.i2];
         [self.view addSubview:self.i3];
     }
+    self.title = [NSString stringWithFormat:@"Weather %@", self.forecast.location];
     
 }
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
     
     NSLog(@"Error while getting core location : %@",[error localizedFailureReason]);
-    [GeoLocation geocodeLocation:@"Stanford" callback:^(WeatherForecast *forecast, NSError *error) {
+    [GeoLocation geocodeLocation:@"Stanford, CA" callback:^(WeatherForecast *forecast, NSError *error) {
         if (error) {
             if (error.code == NO_WEATHER) {
                 // Some error occured and no weather data was given
@@ -229,6 +231,7 @@ BOOL usingFahrenheit;
             }
         } else {
             dispatch_async(dispatch_get_main_queue(), ^{
+                //
                 self.forecast = forecast;
                 [self setABunchOfShit];
             });
@@ -253,7 +256,7 @@ BOOL usingFahrenheit;
     } else {
         usingFahrenheit = NO;
     }
-    
+    self.title = @"Weather";
     self.searchBar.delegate = self;
 }
 

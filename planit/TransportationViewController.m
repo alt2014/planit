@@ -10,7 +10,6 @@
 #import "PITransportation.h"
 
 @interface TransportationViewController ()
-@property (weak, nonatomic) IBOutlet UILabel *transportationName;
 @property (weak, nonatomic) IBOutlet UILabel *routeNumber;
 @property (weak, nonatomic) IBOutlet UILabel *confirmationNumber;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
@@ -42,7 +41,7 @@
 
 - (void)setLabels
 {
-    self.transportationName.text = self.event.name;
+    self.title = self.event.name;
     self.routeNumber.text = self.event.routeNumber;
     self.confirmationNumber.text = self.event.confirmationNumber;
     

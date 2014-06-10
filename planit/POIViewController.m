@@ -11,7 +11,6 @@
 
 
 @interface POIViewController ()
-@property (weak, nonatomic) IBOutlet UILabel *eventName;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 @property (weak, nonatomic) IBOutlet UITextView *addressLabel;
 @property (weak, nonatomic) IBOutlet UITextView *notesField;
@@ -40,7 +39,7 @@
 
 - (void)setLabels
 {
-    self.eventName.text = self.event.name;
+    self.title = self.event.name;
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setFormatterBehavior:NSDateFormatterBehavior10_4];

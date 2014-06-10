@@ -14,7 +14,7 @@
 @interface WeatherForecast : NSObject
 
 @property (strong, nonatomic) NSMutableArray* forecast;
-
+@property (strong, nonatomic) NSString *location;
 +(void) getFourDayForecast:(WeatherForecast*)forecast location:(CLLocationCoordinate2D)coordinate callback:(void (^)(WeatherForecast *weather, NSError *error))block;
 
 @end

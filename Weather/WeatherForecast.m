@@ -26,6 +26,7 @@
 #define ERROR @"error"
 #define DESCRIPTION @"description"
 #define RESPONSE @"response"
+#define LOCATION @"location"
 
 
 
@@ -84,6 +85,8 @@
 // Parses the JSON file and stores the information into the WeatherForecast struct
 +(void)parseWeather:(WeatherForecast *)forecast parsedObject:(NSDictionary *)parsedObject
 {
+    NSDictionary *location = [parsedObject valueForKey:LOCATION];
+    forecast.location = [NSString stringWithFormat:@"for %@", [location objectForKey:@"city"]];
     
     NSDictionary *forecastDict = [parsedObject valueForKey:FORECAST];
     
