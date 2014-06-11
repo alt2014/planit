@@ -18,6 +18,8 @@
 static NSString *tripCellID = @"TripCell";
 static NSString *addTripSegueID = @"addTrip";
 static NSString *tripDetailSegueID = @"itineraryDetailView";
+static NSString *editTripsSegueID = @"editTrips";
+
 const int dPTag = 1;
 
 @interface TripViewController ()
@@ -149,6 +151,16 @@ const int dPTag = 1;
                 
         controller.navigationItem.title = selectedTrip.name;
     }
+    
+    if ([[segue identifier] isEqualToString:editTripsSegueID]){
+        TripViewController *controller = [[[segue destinationViewController] viewControllers] objectAtIndex:0];
+        controller.delegate = self;
+
+    }
 }
 
+- (IBAction)doneClicked:(UIBarButtonItem *)sender {
+    [self.delegate updateTableDataSource];
+    [self dismissViewControllerAnimated:YES completion:NULL];
+}
 @end

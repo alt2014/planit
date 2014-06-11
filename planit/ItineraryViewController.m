@@ -14,25 +14,27 @@
 #import "PITransportation.h"
 #import "PILodging.h"
 #import "PIDay.h"
-#import "ItineraryEditViewController.h"
 #import "POIViewController.h"
+#import "POIEditViewController.h"
 #import "TransportationViewController.h"
+#import "TransportationEditViewController.h"
 #import "LodgingViewController.h"
 #import "DataManager.h"
 #import "PITrip+Model.h"
 #import "PITrip.h"
 #import "PIDay+Model.h"
 #import "PILodging.h"
+#import "PITransportation+Model.h"
+#import "PILodging+Model.h"
+#import "DTCustomColoredAccessory.h"
 
 #define eventCellHeight 82;
-#define headerCellHeight 27;
+#define headerCellHeight 30;
 
 @interface ItineraryViewController ()
 @property (strong, nonatomic) NSDateFormatter *dateFormatter;
 @property (strong, nonatomic) NSDateFormatter *timeFormatter;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (strong, nonatomic) NSMutableArray *itineraryEvents;
-
 @end
 
 @implementation ItineraryViewController
@@ -40,6 +42,12 @@ static NSString *itineraryEditSegueID = @"itineraryEditSegue";
 static NSString *poiDetailSegueID = @"pOIDetailSegue";
 static NSString *transportationDetailSegueID = @"transportationDetailSegue";
 static NSString *lodgingDetailSegueID = @"lodgingDetailSegue";
+static NSString *addPOISegueID = @"addPOISegue";
+static NSString *editPOISegueID = @"editPOISegue";
+static NSString *addTransportationSegueID = @"addTransportSegue";
+static NSString *editTransportationSegueID = @"editTransportationSegue";
+static NSString *addLodgingSegueID = @"addLodgingSegue";
+static NSString *editLodgingSegueID = @"editLodgingSegue";
 
 //should pass in the trip name when the edit button is clicked
 //pass in the event when the event is clicked
@@ -63,9 +71,13 @@ static NSString *lodgingDetailSegueID = @"lodgingDetailSegue";
     // [self initTripDetails];
     
     // set the side bar button action and gesture recognizer
-    sidebarButton.target = self.revealViewController;
-    sidebarButton.action = @selector(revealToggle:);
-    [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
+    if (sidebarButton) {
+        sidebarButton.target = self.revealViewController;
+        sidebarButton.action = @selector(revealToggle:);
+        [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
+    } else {
+        self.title = [NSString stringWithFormat:@"Edit Trip: %@", self.trip.name];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -124,7 +136,6 @@ static NSString *lodgingDetailSegueID = @"lodgingDetailSegue";
     } else {
         cell.AddressTextField.text = cellData.addr;
     }
-   // cell.AddressTextField.text = cellData.addr;
     //insert time formatter
     NSString *startTime = [self.timeFormatter stringFromDate:cellData.start];
     NSString *endTime = [self.timeFormatter stringFromDate:cellData.end];
@@ -152,6 +163,14 @@ static NSString *lodgingDetailSegueID = @"lodgingDetailSegue";
     [dateFormatter setDateFormat:@"EEEE MMMM d, YYYY"];
     NSString *date = [dateFormatter stringFromDate:headerDate];
     cell.DateLabel.text = date;
+    if ([expandedSections containsIndex:section])
+    {
+        cell.accessoryView = [DTCustomColoredAccessory accessoryWithColor:[UIColor grayColor] type:DTCustomColoredAccessoryTypeUp];
+    }
+    else
+    {
+        cell.accessoryView = [DTCustomColoredAccessory accessoryWithColor:[UIColor grayColor] type:DTCustomColoredAccessoryTypeDown];
+    }
     return cell;
 }
 
@@ -211,13 +230,18 @@ static NSString *lodgingDetailSegueID = @"lodgingDetailSegue";
             [tmpArray addObject:tmpIndexPath];
         }
         
-        if (currentlyExpanded)
+        UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+        
+        if (currentlyExpanded) {
             [tableView deleteRowsAtIndexPaths:tmpArray
                              withRowAnimation:UITableViewRowAnimationTop];
-        
-        else
+            cell.accessoryView = [DTCustomColoredAccessory accessoryWithColor:[UIColor grayColor] type:DTCustomColoredAccessoryTypeDown];
+        } else {
             [tableView insertRowsAtIndexPaths:tmpArray
                              withRowAnimation:UITableViewRowAnimationTop];
+            cell.accessoryView =  [DTCustomColoredAccessory accessoryWithColor:[UIColor grayColor] type:DTCustomColoredAccessoryTypeUp];
+
+        }
     }
 }
 
@@ -230,10 +254,8 @@ static NSString *lodgingDetailSegueID = @"lodgingDetailSegue";
     
     if ([[segue identifier] isEqualToString:itineraryEditSegueID]){
         
-        ItineraryEditViewController *controller = [[[segue destinationViewController] viewControllers] objectAtIndex:0];
+        ItineraryViewController *controller = [[[segue destinationViewController] viewControllers] objectAtIndex:0];
         controller.trip = self.trip;
-        controller.dateFormatter = self.dateFormatter;
-        controller.timeFormatter = self.timeFormatter;
         controller.delegate = self;
     }
     
@@ -265,17 +287,30 @@ static NSString *lodgingDetailSegueID = @"lodgingDetailSegue";
         //add an event to the controller
     }
     
-    /*
-     if ([[segue identifier] isEqualToString:tripDetailSegueID]){
-     
-     ItineraryViewController *controller = [segue destinationViewController];
-     NSIndexPath *selectedIndexPath = [self.tableView indexPathForSelectedRow];
-     Trip *selectedTrip = [self.trips objectAtIndex:selectedIndexPath.row];
-     controller.daysInTrip = [selectedTrip getDays];
-     
-     controller.navigationItem.title = selectedTrip.name;
-     }
-     */
+    if ([[segue identifier] isEqualToString:addPOISegueID] || [[segue identifier] isEqualToString:addTransportationSegueID] || [[segue identifier] isEqualToString:addLodgingSegueID]){
+        
+        POIEditViewController *controller = [[[segue destinationViewController] viewControllers] objectAtIndex:0];
+        controller.dateFormatter = self.dateFormatter;
+        controller.timeFormatter = self.timeFormatter;
+        controller.trip = self.trip;
+        controller.delegate = self;
+    }else if ([[segue identifier] isEqualToString:editPOISegueID] || [[segue identifier] isEqualToString:editTransportationSegueID] || [[segue identifier] isEqualToString:editLodgingSegueID]){
+        
+        POIEditViewController *controller = [[[segue destinationViewController] viewControllers] objectAtIndex:0];
+        controller.dateFormatter = self.dateFormatter;
+        controller.timeFormatter = self.timeFormatter;
+        NSIndexPath *selectedIndexPath = [self.tableView indexPathForSelectedRow];
+        PIEvent *selectedEvent = [[[[self.trip getDaysArray] objectAtIndex:selectedIndexPath.section] getEventsArray] objectAtIndex:selectedIndexPath.row - 1];
+        controller.event = selectedEvent;
+        controller.trip = self.trip;
+        controller.delegate = self;
+    }
+
+}
+
+- (IBAction)doneClicked:(UIBarButtonItem *)sender {
+    [self.delegate updateTableView];
+    [self dismissViewControllerAnimated:YES completion:NULL];
 }
 
 @end

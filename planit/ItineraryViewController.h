@@ -10,13 +10,17 @@
 
 @class PITrip;
 
+@protocol updateTableDelegate <NSObject>
+- (void)updateTableView;
+@end
 
-
-@interface ItineraryViewController : UIViewController{
+@interface ItineraryViewController : UIViewController<UITableViewDelegate, UITableViewDataSource>{
     NSMutableIndexSet *expandedSections;
     __weak IBOutlet UIBarButtonItem *sidebarButton;
 }
 
+- (IBAction)doneClicked:(UIBarButtonItem *)sender;
 @property (strong, nonatomic) PITrip *trip;
+@property  (weak, nonatomic) ItineraryViewController<updateTableDelegate>* delegate;
 
 @end
