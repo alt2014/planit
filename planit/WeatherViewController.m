@@ -128,7 +128,7 @@ BOOL usingFahrenheit;
         CGPoint d2 = self.day2.frame.origin;
         CGPoint d3 = self.day3.frame.origin;
         
-        self.primary = [[UIImageView alloc] initWithFrame:CGRectMake(pp.x, pp.y+offset, size, size)];
+        self.primary = [[UIImageView alloc] initWithFrame:CGRectMake(pp.x+80, pp.y+offset+20, size, size)];
         self.i1 = [[UIImageView  alloc] initWithFrame:CGRectMake(d1.x, d1.y+offset, size, 50)];
         self.i2 = [[UIImageView alloc] initWithFrame:CGRectMake(d2.x, d2.y+offset, size, size)];
         self.i3 = [[UIImageView alloc] initWithFrame:CGRectMake(d3.x, d3.y+offset, size, size)];
@@ -250,6 +250,7 @@ BOOL usingFahrenheit;
     [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     // Do any additional setup after loading the view.
     [self loadWeatherManager];
+    [_searchBar resignFirstResponder];
     
     if (self.temperatureControl.selectedSegmentIndex == 0) {
         usingFahrenheit = YES;
@@ -274,7 +275,14 @@ BOOL usingFahrenheit;
     }
     [self setABunchOfShit];
 }
-
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    
+    UITouch *touch = [[event allTouches] anyObject];
+    if ([self.searchBar isFirstResponder] && [touch view] != self.searchBar) {
+        [self.searchBar resignFirstResponder];
+    }
+    [super touchesBegan:touches withEvent:event];
+}
 /*
 #pragma mark - Navigation
 

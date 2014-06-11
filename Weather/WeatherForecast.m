@@ -98,7 +98,11 @@
         dayForecast.iconurl = [NSString stringWithFormat:@"%@.gif", [nextDay objectForKey:ICON]];
         
         NSDictionary *date = [nextDay valueForKey:DATE];
-        dayForecast.day = [NSString stringWithFormat:@"%@ %@",[date objectForKey:MONTH], [date objectForKey:DAY]];
+        if (i > 0) {
+            dayForecast.day = [NSString stringWithFormat:@"%@ %@",[date objectForKey:MONTH], [date objectForKey:DAY]];
+        } else {
+            dayForecast.day = [NSString stringWithFormat:@"%@ %@, %@", [date objectForKey:@"monthname"], [date objectForKey:DAY], [date objectForKey:@"year"]];
+        }
         
         NSDictionary *highTemp = [nextDay valueForKey:HIGH];
         dayForecast.highf = [highTemp objectForKey:DEGREEF];

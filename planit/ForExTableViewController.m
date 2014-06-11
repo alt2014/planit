@@ -166,7 +166,7 @@ CurrencyManager *_manager;
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (section == 0)
-        return firstSectionNumRows;
+        return firstSectionNumRows-1;
     return secondSectionNumRows;
 }
 
