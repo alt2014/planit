@@ -9,14 +9,14 @@
 #import <UIKit/UIKit.h>
 @class PITrip;
 
-@protocol AddTripDelegate <NSObject>
+@protocol ChangeTrip <NSObject>
 
 - (void)updateTableDataSource;
 
 @end
 
 @interface TripAddViewController : UITableViewController <UITextFieldDelegate>
-@property  (weak, nonatomic) id<AddTripDelegate> delegate;
+@property  (weak, nonatomic) id<ChangeTrip> delegate;
 - (IBAction)startDateChanged:(UIDatePicker *)sender;
 - (IBAction)cancelPressed:(UIBarButtonItem *)sender;
 - (IBAction)endDateChanged:(UIDatePicker *)sender;

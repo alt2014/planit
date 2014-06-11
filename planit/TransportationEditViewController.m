@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Anh Truong. All rights reserved.
 //
 #define numRows 12
-#define datePickerCellHeight 168
+#define datePickerCellHeight 200
 #define deleteRowHeight 39
 #define notesRowHeight 67
 #define firstCellHeight 68
@@ -97,7 +97,7 @@
     //send in the trip
     self.startDatePicker.minimumDate = self.trip.start;
     self.startDatePicker.maximumDate = self.trip.end;
-    
+    self.endDatePicker.maximumDate = self.trip.end;
     if (!self.event) {
         self.startDatePicker.date = self.startDatePicker.minimumDate;
         self.endDatePicker.date = [NSDate dateWithTimeInterval:60 sinceDate:self.startDatePicker.date];
@@ -211,9 +211,10 @@
         [self.delegate updateTableView:-1];
         [self dismissViewControllerAnimated:YES completion:NULL];
     } else {
-        [self hideDatePickerCell:@"start"];
-        [self hideDatePickerCell:@"end"];
-        
+        if (indexPath.row != startPickerRow && indexPath.row!= endPickerRow) {
+            [self hideDatePickerCell:@"end"];
+            [self hideDatePickerCell:@"start"];
+        }
     }
     [self dismissKeyboard];
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];

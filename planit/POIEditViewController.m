@@ -17,7 +17,7 @@
 #import "DateCompare.h"
 
 #define numRows 12
-#define datePickerCellHeight 168
+#define datePickerCellHeight 200
 #define deleteRowHeight 39
 #define notesRowHeight 67
 #define firstCellHeight 68
@@ -104,7 +104,6 @@
     //send in the trip
     self.whenDatePicker.minimumDate = self.trip.start;
     self.whenDatePicker.maximumDate = self.trip.end;
-    
     
     //if the event is blank
     if (!self.event) {
@@ -216,9 +215,11 @@
         [self.delegate updateTableView:num];
         [self dismissViewControllerAnimated:YES completion:NULL];
     } else {
-        [self hideDatePickerCell:@"end"];
-        [self hideDatePickerCell:@"start"];
-        [self hideDatePickerCell:@"when"];
+        if (indexPath.row != startPickerRow && indexPath.row!= endPickerRow && indexPath.row != dayPickerRow) {
+            [self hideDatePickerCell:@"end"];
+            [self hideDatePickerCell:@"start"];
+            [self hideDatePickerCell:@"when"];
+        }
     }
     
     [self dismissKeyboard];

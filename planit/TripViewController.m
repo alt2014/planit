@@ -19,6 +19,7 @@ static NSString *tripCellID = @"TripCell";
 static NSString *addTripSegueID = @"addTrip";
 static NSString *tripDetailSegueID = @"itineraryDetailView";
 static NSString *editTripsSegueID = @"editTrips";
+static NSString *editTripSegueID = @"editTrip";
 
 const int dPTag = 1;
 
@@ -156,6 +157,15 @@ const int dPTag = 1;
         TripViewController *controller = [[[segue destinationViewController] viewControllers] objectAtIndex:0];
         controller.delegate = self;
 
+    }
+    
+    if ([[segue identifier] isEqualToString:editTripSegueID]) {
+        TripAddViewController *controller = [[[segue destinationViewController] viewControllers] objectAtIndex:0];
+        NSIndexPath *selectedIndexPath = [self.tableView indexPathForSelectedRow];
+        PITrip *selectedTrip = [self.trips objectAtIndex:selectedIndexPath.row];
+        controller.trip = selectedTrip;
+        controller.delegate = self;
+        controller.navigationItem.title = @"Edit Trip";
     }
 }
 

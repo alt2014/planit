@@ -9,12 +9,16 @@
 #import "TripAddViewController.h"
 #import "PITrip+Model.h"
 #import "DataManager.h"
+#import "PITrip.h"
 
-#define startPickerIndex 2
-#define endPickerIndex 4
-#define datePickerCellHeight 164
+#define toggleIndex 1
+#define startPickerIndex 3
+#define endPickerIndex 5
+#define datePickerCellHeight 200
 
 @interface TripAddViewController ()
+- (IBAction)didChangeMode:(UISegmentedControl *)sender;
+@property (weak, nonatomic) IBOutlet UILabel *endSpecLabel;
 @property (strong, nonatomic) NSDateFormatter *dateFormatter;
 @property (assign) BOOL startPickerIsShowing;
 @property (assign) BOOL endPickerIsShowing;
@@ -26,7 +30,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *endLabel;
 @property (weak, nonatomic) IBOutlet UITextField *nameTextField;
 @property(nonatomic, readonly, getter=isEditing) BOOL editing;
-
+@property (assign) BOOL modeIsReschedule;
 @property (strong, nonatomic) NSDate *selectedStart;
 
 @property (strong, nonatomic) NSDate *selectedEnd;
@@ -56,8 +60,25 @@
     [self signUpForKeyboardNotifications];
     [self hideDatePickerCell:@"start"];
     [self hideDatePickerCell:@"end"];
-    if (!self.trip)
+    if (!self.trip){
         self.title = @"Add a Trip";
+        self.toggleButton.hidden = YES;
+    } else {
+        self.modeIsReschedule = NO;
+        [self initWithTrip];
+    }
+    self.endDatePicker.minimumDate = self.selectedStart;
+}
+
+- (void)initWithTrip
+{
+    self.nameTextField.text = self.trip.name;
+    self.selectedStart = self.trip.start;
+    self.selectedEnd = self.trip.end;
+    self.startDatePicker.date = self.trip.start;
+    self.endDatePicker.date = self.trip.end;
+    self.startLabel.text = [self.dateFormatter stringFromDate:self.selectedStart];
+    self.endLabel.text = [self.dateFormatter stringFromDate:self.selectedEnd];
 }
 
 -(void)dismissKeyboard
@@ -115,12 +136,23 @@
         height = self.endPickerIsShowing ? datePickerCellHeight : 0.0f;
     }
     
+    if(self.trip) {
+        if (self.modeIsReschedule) {
+            if (indexPath.row == endPickerIndex || indexPath.row == endPickerIndex - 1) {
+                return 0.0f;
+            }
+        }
+    } else {
+        if (indexPath.row == toggleIndex)
+            return 0.0f;
+    }
+    
     return height;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    if (indexPath.row == 1){
+    if (indexPath.row == 2){
         [self hideDatePickerCell:@"end"];
         if (self.startPickerIsShowing){
             
@@ -131,7 +163,7 @@
             [self.activeTextField resignFirstResponder];
             [self showDatePickerCell:@"start"];
         }
-    } else if (indexPath.row == 3){
+    } else if (indexPath.row == 4){
         [self hideDatePickerCell:@"start"];
         if (self.endPickerIsShowing){
             
@@ -143,8 +175,10 @@
             [self showDatePickerCell:@"end"];
         }
     } else {
-        [self hideDatePickerCell:@"start"];
-        [self hideDatePickerCell:@"end"];
+        if (indexPath.row != startPickerIndex && indexPath.row != endPickerIndex){
+            [self hideDatePickerCell:@"start"];
+            [self hideDatePickerCell:@"end"];
+        }
     }
     
     [self dismissKeyboard];
@@ -212,28 +246,23 @@
     
 }
 
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
 - (IBAction)startDateChanged:(UIDatePicker *)sender {
     
     self.startLabel.text =  [self.dateFormatter stringFromDate:sender.date];
     self.selectedStart = sender.date;
+    self.endDatePicker.minimumDate = self.selectedStart;
+    if (!self.trip || !self.modeIsReschedule){
+        if (self.selectedEnd < self.selectedStart) {
+            self.selectedEnd = self.selectedStart;
+            self.endLabel.text = [self.dateFormatter stringFromDate:self.selectedEnd];
+            self.endDatePicker.date = self.selectedEnd;
+        }
+    }
 }
 
 - (IBAction)endDateChanged:(UIDatePicker *)sender {
     
     self.endLabel.text =  [self.dateFormatter stringFromDate:sender.date];
-    
     self.selectedEnd = sender.date;
 }
 
@@ -266,9 +295,15 @@
         [trip setObject:end forKey:T_END_KEY];
         [trip setObject:@"with some freindss" forKey:T_NOTES_KEY];
         NSManagedObjectContext *context = [DataManager getManagedObjectContext];
-        PITrip *t = [PITrip createTripFromDictionary:trip inManagedObjectContext:context];
+        [PITrip createTripFromDictionary:trip inManagedObjectContext:context];
     } else {
-        
+        self.trip.name = self.nameTextField.text;
+        if (self.modeIsReschedule) {
+            [self.trip moveStartDateTo:self.selectedStart];
+        }else {
+            [self.trip changeStartDateTo:self.selectedStart];
+            [self.trip changeEndDateTo:self.endDatePicker.date];
+        }
     }
     [self.delegate updateTableDataSource];
     
@@ -276,4 +311,28 @@
     [self dismissViewControllerAnimated:YES completion:NULL];
 }
 
+- (void) toggleBetweenModes {
+    if (self.modeIsReschedule) {
+        self.endDatePicker.hidden = YES;
+        self.endLabel.hidden = YES;
+        self.endSpecLabel.hidden = YES;
+    } else {
+        self.endSpecLabel.hidden = NO;
+        self.endLabel.hidden = NO;
+        self.endDatePicker.hidden = NO;
+    }
+}
+
+- (IBAction)didChangeMode:(UISegmentedControl *)sender {
+    if (self.modeIsReschedule) {
+        self.modeIsReschedule = NO;
+        
+    } else {
+        self.modeIsReschedule = YES;
+    }
+    [self.tableView beginUpdates];
+    [self.tableView endUpdates];
+    [self toggleBetweenModes];
+
+}
 @end

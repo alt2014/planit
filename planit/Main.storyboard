@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Qtl-1i-M2R">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Qtl-1i-M2R">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
-        <!--Trip View Controller - Title-->
+        <!--Trip View Controller-->
         <scene sceneID="7lI-KT-7Zj">
             <objects>
                 <tableViewController id="lLE-2a-osK" customClass="TripViewController" sceneMemberID="viewController">
@@ -70,7 +70,7 @@
                         </connections>
                     </tableView>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Title" id="gcP-gY-u1J">
+                    <navigationItem key="navigationItem" id="gcP-gY-u1J">
                         <barButtonItem key="leftBarButtonItem" image="menu.png" id="ZOY-VO-4sQ"/>
                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="edit" id="VWf-Cm-Erm">
                             <connections>
@@ -98,7 +98,7 @@
                         <sections>
                             <tableViewSection id="li6-hc-0os">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="Zag-Gi-FgR">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="Zag-Gi-FgR">
                                         <rect key="frame" x="0.0" y="64" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Zag-Gi-FgR" id="dVN-gh-bmr">
@@ -114,7 +114,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="5Wa-f9-1gp">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="5Wa-f9-1gp">
                                         <rect key="frame" x="0.0" y="108" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5Wa-f9-1gp" id="4de-8a-Fbf">
@@ -125,14 +125,17 @@
                                                     <rect key="frame" x="15" y="8" width="290" height="29"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <segments>
-                                                        <segment title="Reschedule"/>
                                                         <segment title="Change Length"/>
+                                                        <segment title="Reschedule"/>
                                                     </segments>
+                                                    <connections>
+                                                        <action selector="didChangeMode:" destination="h7S-YS-YCX" eventType="valueChanged" id="mKM-Ky-q6e"/>
+                                                    </connections>
                                                 </segmentedControl>
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="X1Z-BB-MgT">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="X1Z-BB-MgT">
                                         <rect key="frame" x="0.0" y="152" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="X1Z-BB-MgT" id="KkC-Dt-hoy">
@@ -155,7 +158,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="164" id="Fj6-Aa-7ig">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="164" id="Fj6-Aa-7ig">
                                         <rect key="frame" x="0.0" y="196" width="320" height="164"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Fj6-Aa-7ig" id="jVp-04-2yG">
@@ -196,7 +199,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="HG8-wU-4fq">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="HG8-wU-4fq">
                                         <rect key="frame" x="0.0" y="360" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HG8-wU-4fq" id="rL4-Cn-qrQ">
@@ -219,7 +222,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="150" id="9lE-81-UeK">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="150" id="9lE-81-UeK">
                                         <rect key="frame" x="0.0" y="404" width="320" height="150"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9lE-81-UeK" id="uIa-zi-neM">
@@ -284,6 +287,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <outlet property="endDatePicker" destination="mh9-Tc-ehW" id="QUH-R0-wGy"/>
                         <outlet property="endDatePickerCell" destination="9lE-81-UeK" id="8ak-c4-KEq"/>
                         <outlet property="endLabel" destination="y9G-iC-Ck0" id="2Rk-Bu-O1v"/>
+                        <outlet property="endSpecLabel" destination="Mx3-4l-VMc" id="Htz-ew-3QV"/>
                         <outlet property="nameTextField" destination="XIt-nv-IuN" id="pTu-LO-HYM"/>
                         <outlet property="startDatePicker" destination="lxL-hQ-qFt" id="6mc-c6-hRc"/>
                         <outlet property="startDatePickerCell" destination="Fj6-Aa-7ig" id="3ip-1Y-S7X"/>
@@ -381,7 +385,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                     <outlet property="tripEndLabel" destination="gpf-aI-8sv" id="KoF-eO-svQ"/>
                                     <outlet property="tripNameLabel" destination="Cq9-g2-QBE" id="fd9-as-DeM"/>
                                     <outlet property="tripStartLabel" destination="sOJ-CV-kn7" id="bEw-it-ZGu"/>
-                                    <segue destination="gQH-F1-fpT" kind="modal" id="CAc-E6-b72"/>
+                                    <segue destination="gQH-F1-fpT" kind="modal" identifier="editTrip" id="CAc-E6-b72"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -663,7 +667,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             </objects>
             <point key="canvasLocation" x="1444" y="-79"/>
         </scene>
-        <!--Lodging Edit View Controller - Add Lodging-->
+        <!--Lodging Edit View Controller-->
         <scene sceneID="7SL-AH-j6J">
             <objects>
                 <tableViewController id="TyI-Il-G9X" customClass="LodgingEditViewController" sceneMemberID="viewController">
@@ -971,7 +975,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                             <outlet property="delegate" destination="TyI-Il-G9X" id="p5j-Cs-PJU"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Add Lodging" id="oGw-w2-HwT">
+                    <navigationItem key="navigationItem" id="oGw-w2-HwT">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="HFf-qi-OhT">
                             <connections>
                                 <action selector="cancelClicked:" destination="TyI-Il-G9X" id="yZz-SB-R6j"/>
@@ -1326,7 +1330,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             </objects>
             <point key="canvasLocation" x="-226" y="-1121"/>
         </scene>
-        <!--Itinerary View Controller - Title-->
+        <!--Itinerary View Controller-->
         <scene sceneID="o1V-bv-AOA">
             <objects>
                 <viewController id="geG-i3-F4X" customClass="ItineraryViewController" sceneMemberID="viewController">
@@ -1523,7 +1527,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                             <outletCollection property="gestureRecognizers" destination="t0i-cg-SrR" appends="YES" id="ll6-b6-Q60"/>
                         </connections>
                     </view>
-                    <navigationItem key="navigationItem" title="Title" id="8oj-Q4-QOB">
+                    <navigationItem key="navigationItem" id="8oj-Q4-QOB">
                         <barButtonItem key="leftBarButtonItem" image="menu.png" id="kPx-9Y-DTa">
                             <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         </barButtonItem>
@@ -2088,7 +2092,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="dZe-tk-z3b">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="dZe-tk-z3b">
                                         <rect key="frame" x="0.0" y="810" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dZe-tk-z3b" id="gNY-Ih-V6L">
@@ -2331,7 +2335,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             </objects>
             <point key="canvasLocation" x="2033" y="-380"/>
         </scene>
-        <!--Transportation Edit View Controller - Title-->
+        <!--Transportation Edit View Controller-->
         <scene sceneID="iEz-Ua-DKL">
             <objects>
                 <tableViewController id="lDV-is-x6P" customClass="TransportationEditViewController" sceneMemberID="viewController">
@@ -2515,7 +2519,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="164" id="scm-Rb-wBD">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="164" id="scm-Rb-wBD">
                                         <rect key="frame" x="0.0" y="396" width="320" height="164"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="scm-Rb-wBD" id="Ukr-Na-sdi">
@@ -2579,7 +2583,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="164" id="s62-Br-cB0">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="164" id="s62-Br-cB0">
                                         <rect key="frame" x="0.0" y="604" width="320" height="164"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="s62-Br-cB0" id="Mwm-rc-k9b">
@@ -2674,7 +2678,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                             <outlet property="delegate" destination="lDV-is-x6P" id="hx4-Bg-s1H"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Title" id="De0-D0-yTE">
+                    <navigationItem key="navigationItem" id="De0-D0-yTE">
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="Mwc-74-WcI">
                             <connections>
                                 <action selector="cancelClicked:" destination="lDV-is-x6P" id="253-Hr-A0w"/>
@@ -2841,10 +2845,10 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="LAb-mW-mXg"/>
         <segue reference="PV8-oU-3ZN"/>
-        <segue reference="KOF-gc-hnD"/>
+        <segue reference="LAb-mW-mXg"/>
+        <segue reference="CAc-E6-b72"/>
         <segue reference="Hig-tu-quU"/>
-        <segue reference="M0G-gb-Wml"/>
+        <segue reference="KOF-gc-hnD"/>
     </inferredMetricsTieBreakers>
 </document>

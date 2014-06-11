@@ -499,9 +499,9 @@
 		E02CEFFA1941F06A00A0C90A /* Edit View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				E06A7EB11947E40900D6367C /* POIEditViewController.h */,
 				E081DC7619373933006D22E9 /* TripAddViewController.h */,
 				E081DC7719373933006D22E9 /* TripAddViewController.m */,
+				E06A7EB11947E40900D6367C /* POIEditViewController.h */,
 				E00A4EB8192C040600990B7C /* POIEditViewController.m */,
 				E0DCE05219458CBC002609B2 /* TransportationEditViewController.h */,
 				E0DCE05319458CBC002609B2 /* TransportationEditViewController.m */,

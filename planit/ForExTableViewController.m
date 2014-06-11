@@ -18,7 +18,7 @@
 #define toPickerRow 3
 #define firstSectionNumRows 4
 #define secondSectionNumRows 1
-#define pickerCellHeight 135
+#define pickerCellHeight 200
 #define fromCellHeight 35
 #define converterCellHeight 93
 #define firstSectionCellHeight 35
@@ -206,8 +206,10 @@ CurrencyManager *_manager;
             [self hidePickerCell:@"from"];
             [self countryLabelSelectHandler:self.toPickerIsShowing pickerName:@"to"];
         } else {
-            [self hidePickerCell:@"to"];
-            [self hidePickerCell:@"from"];
+            if (indexPath.row != toPickerRow && indexPath.row != fromPickerRow){
+                [self hidePickerCell:@"to"];
+                [self hidePickerCell:@"from"];
+            }
         }
     }
     

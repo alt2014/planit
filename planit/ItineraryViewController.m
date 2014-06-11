@@ -279,7 +279,7 @@ static NSString *editLodgingSegueID = @"editLodgingSegue";
         
         ItineraryViewController *controller = [[[segue destinationViewController] viewControllers] objectAtIndex:0];
         controller.trip = self.trip;
-        controller.delegate = self;
+        controller.presentingController = self;
     }
     
     if ([[segue identifier] isEqualToString:poiDetailSegueID]) {
@@ -332,7 +332,7 @@ static NSString *editLodgingSegueID = @"editLodgingSegue";
 }
 
 - (IBAction)doneClicked:(UIBarButtonItem *)sender {
-    [self.delegate updateTableView];
+    [self.presentingController updateTableView:-1];
     [self dismissViewControllerAnimated:YES completion:NULL];
 }
 
