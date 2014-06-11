@@ -114,8 +114,26 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="X1Z-BB-MgT">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="5Wa-f9-1gp">
                                         <rect key="frame" x="0.0" y="108" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5Wa-f9-1gp" id="4de-8a-Fbf">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="07f-sE-XS2">
+                                                    <rect key="frame" x="15" y="8" width="290" height="29"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <segments>
+                                                        <segment title="Reschedule"/>
+                                                        <segment title="Change Length"/>
+                                                    </segments>
+                                                </segmentedControl>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="X1Z-BB-MgT">
+                                        <rect key="frame" x="0.0" y="152" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="X1Z-BB-MgT" id="KkC-Dt-hoy">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -138,7 +156,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="164" id="Fj6-Aa-7ig">
-                                        <rect key="frame" x="0.0" y="152" width="320" height="164"/>
+                                        <rect key="frame" x="0.0" y="196" width="320" height="164"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Fj6-Aa-7ig" id="jVp-04-2yG">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="163"/>
@@ -179,7 +197,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="HG8-wU-4fq">
-                                        <rect key="frame" x="0.0" y="316" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="360" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HG8-wU-4fq" id="rL4-Cn-qrQ">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -202,7 +220,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="150" id="9lE-81-UeK">
-                                        <rect key="frame" x="0.0" y="360" width="320" height="150"/>
+                                        <rect key="frame" x="0.0" y="404" width="320" height="150"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9lE-81-UeK" id="uIa-zi-neM">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="149"/>
@@ -270,6 +288,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <outlet property="startDatePicker" destination="lxL-hQ-qFt" id="6mc-c6-hRc"/>
                         <outlet property="startDatePickerCell" destination="Fj6-Aa-7ig" id="3ip-1Y-S7X"/>
                         <outlet property="startLabel" destination="PWe-m4-WxP" id="eQd-ZU-uhq"/>
+                        <outlet property="toggleButton" destination="07f-sE-XS2" id="Lr2-VN-GuH"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xzH-v2-jVS" userLabel="First Responder" sceneMemberID="firstResponder"/>

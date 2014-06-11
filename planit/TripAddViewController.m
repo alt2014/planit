@@ -32,6 +32,7 @@
 @property (strong, nonatomic) NSDate *selectedEnd;
  
 @property (strong, nonatomic) UITextField *activeTextField;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *toggleButton;
 
 @end
 
