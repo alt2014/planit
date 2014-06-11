@@ -28,6 +28,7 @@
 #import "DataManager.h"
 #import "PILodging+Model.h"
 #import "PILodging.h"
+#import "DateCompare.h"
 
 @interface LodgingEditViewController ()
 @property (assign) BOOL startPickerIsShowing;
@@ -191,7 +192,7 @@
         [self dateLabelSelectHandler:self.endPickerIsShowing pickerName:@"end"];
     if (indexPath.row == deleteRow){
         [self.event.day removeEventsObject:self.event];
-        [self.delegate updateTableView];
+        [self.delegate updateTableView:-1];
         [self dismissViewControllerAnimated:YES completion:NULL];
     }
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
@@ -314,7 +315,8 @@
     } else {
         [self createNewEvent];
     }
-    [self.delegate updateTableView];
+    NSInteger day = [DateCompare getDayFromArray:self.trip.getDaysArray date:self.selectedStart];
+    [self.delegate updateTableView:day];
     [self dismissViewControllerAnimated:YES completion:NULL];
 }
 @end

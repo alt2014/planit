@@ -11,7 +11,7 @@
 @class PITrip;
 
 @protocol AddEventDelegate <NSObject>
-- (void)updateTableView;
+- (void)updateTableView:(NSInteger)lastAddDate;
 @end
 
 @interface POIEditViewController : UITableViewController

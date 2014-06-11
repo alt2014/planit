@@ -27,6 +27,7 @@
 #import "PITransportation+Model.h"
 #import "PILodging+Model.h"
 #import "DTCustomColoredAccessory.h"
+#import "DateCompare.h"
 
 #define eventCellHeight 82;
 #define headerCellHeight 30;
@@ -91,44 +92,20 @@ static NSString *editLodgingSegueID = @"editLodgingSegue";
     // Dispose of any resources that can be recreated.
 }
 
+
 - (int)isCurrentDay
 {
     NSInteger numDays = [[self.trip getDaysArray] count];
     for (NSInteger i = 0; i < numDays; i++) {
         NSDate *date = ((PIDay*)[[self.trip getDaysArray] objectAtIndex:i]).date;
         NSDate *now = [NSDate date];
-        if ([self timelessCompare:date date2:now]== NSOrderedSame) {
+        if ([DateCompare timelessCompare:date date2:now]== NSOrderedSame) {
             return i;
             
         }
     }
     return -1;
 }
-
-#pragma mark - date comparison
-- (NSComparisonResult)timelessCompare:(NSDate *)date1 date2:(NSDate *)date2
-{
-    NSDate *dt1 = [self dateByZeroingOutTimeComponents:date1];
-    NSDate *dt2 = [self dateByZeroingOutTimeComponents:date2];
-    return [dt1 compare:dt2];
-}
-
-- (NSDate *)dateByZeroingOutTimeComponents:(NSDate*)date
-{
-    NSCalendar *calendar = [NSCalendar currentCalendar];
-    NSDateComponents *components = [calendar components:NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit
-                                               fromDate:date];
-    [self zeroOutTimeComponents:&components];
-    return [calendar dateFromComponents:components];
-}
-
-- (void)zeroOutTimeComponents:(NSDateComponents **)components
-{
-    [*components setHour:0];
-    [*components setMinute:0];
-    [*components setSecond:0];
-}
-
 #pragma mark - helper functions
 
 - (void)createDateFormatter {
@@ -287,8 +264,11 @@ static NSString *editLodgingSegueID = @"editLodgingSegue";
         }
     }
 }
-
--(void) updateTableView {
+-(void) updateTableView:(NSInteger)lastAddDate {
+    if (lastAddDate != -1) {
+        if (![expandedSections containsIndex:lastAddDate])
+            [expandedSections addIndex:lastAddDate];
+    }
     [self.tableView reloadData];
 }
 #pragma mark - Navigation

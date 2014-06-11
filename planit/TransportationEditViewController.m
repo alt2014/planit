@@ -27,6 +27,7 @@
 #import "DataManager.h"
 #import "PITransportation+Model.h"
 #import "PITransportation.h"
+#import "DateCompare.h"
 
 @interface TransportationEditViewController ()
 @property (assign) BOOL startPickerIsShowing;
@@ -195,7 +196,7 @@
 
     if (indexPath.row == deleteRow){
         [self.event.day removeEventsObject:self.event];
-        [self.delegate updateTableView];
+        [self.delegate updateTableView:-1];
         [self dismissViewControllerAnimated:YES completion:NULL];
     }
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
@@ -323,7 +324,9 @@
     } else {
         [self createNewEvent];
     }
-    [self.delegate updateTableView];
+    
+    NSInteger day = [DateCompare getDayFromArray:self.trip.getDaysArray date:self.selectedStart];
+    [self.delegate updateTableView:day];
     [self dismissViewControllerAnimated:YES completion:NULL];
 }
 @end

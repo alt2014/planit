@@ -14,6 +14,7 @@
 #import "PITrip.h"
 #import "PITrip+Model.h"
 #import "DataManager.h"
+#import "DateCompare.h"
 
 #define numRows 12
 #define datePickerCellHeight 168
@@ -200,7 +201,8 @@
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (indexPath.row == deleteRow){
         [self.event.day removeEventsObject:self.event];
-        [self.delegate updateTableView];
+        NSInteger num = -1;
+        [self.delegate updateTableView:num];
         [self dismissViewControllerAnimated:YES completion:NULL];
     }
     
@@ -332,7 +334,8 @@
         PIEvent *e = [PIEvent createEvent:eventDetails inManagedObjectContext:context];
         [[self.trip getDayForDate:self.selectedWhen] addEvent:e];
     }
-    [self.delegate updateTableView];
+    NSInteger day = [DateCompare getDayFromArray:self.trip.getDaysArray date:start];
+    [self.delegate updateTableView:day];
     [self dismissViewControllerAnimated:YES completion:NULL];
 }
 
