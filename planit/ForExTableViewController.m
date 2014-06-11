@@ -12,16 +12,16 @@
 #import "CurrencyCommunicator.h"
 #import "SWRevealViewController.h"
 #define numSections 2
-#define fromCountryRow 1
-#define fromPickerRow 2
-#define toCountryRow 3
-#define toPickerRow 4
-#define firstSectionNumRows 5
+#define fromCountryRow 0
+#define fromPickerRow 1
+#define toCountryRow 2
+#define toPickerRow 3
+#define firstSectionNumRows 4
 #define secondSectionNumRows 1
-#define pickerCellHeight 163
-#define fromCellHeight 44
+#define pickerCellHeight 135
+#define fromCellHeight 35
 #define converterCellHeight 93
-#define firstSectionCellHeight 68
+#define firstSectionCellHeight 35
 
 @interface ForExTableViewController ()
 @property (assign) BOOL fromPickerIsShowing;

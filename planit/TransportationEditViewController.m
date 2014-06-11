@@ -48,6 +48,8 @@
 @property (weak, nonatomic) IBOutlet UIDatePicker *endDatePicker;
 - (IBAction)endDatePickerChanged:(UIDatePicker *)sender;
 @property (strong, nonatomic) NSDateFormatter *dateTimeFormatter;
+@property(nonatomic, readonly, getter=isEditing) BOOL editing;
+
 @end
 
 @implementation TransportationEditViewController
@@ -71,7 +73,14 @@
     [self signUpForKeyboardNotifications];
     [self hideDatePickerCell:@"start"];
     [self hideDatePickerCell:@"end"];
-    self.title = @"Add Transportation";
+    if (!self.event)
+        self.title = @"Add Transportation";
+}
+
+-(void)dismissKeyboard
+{
+    if (self.activeTextField) [self.activeTextField resignFirstResponder];
+    if (self.NotesField) [self.NotesField resignFirstResponder];
 }
 
 - (void)didReceiveMemoryWarning
@@ -188,16 +197,24 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    if (indexPath.row == startPickerRow - 1)
+    if (indexPath.row == startPickerRow - 1){
         [self dateLabelSelectHandler:self.startPickerIsShowing pickerName:@"start"];
-    if (indexPath.row == endPickerRow - 1)
+        [self hideDatePickerCell:@"end"];
+    }
+    else if (indexPath.row == endPickerRow - 1){
         [self dateLabelSelectHandler:self.endPickerIsShowing pickerName:@"end"];
-
-    if (indexPath.row == deleteRow){
+        [self hideDatePickerCell:@"start"];
+    }
+    else if (indexPath.row == deleteRow){
         [self.event.day removeEventsObject:self.event];
         [self.delegate updateTableView];
         [self dismissViewControllerAnimated:YES completion:NULL];
+    } else {
+        [self hideDatePickerCell:@"start"];
+        [self hideDatePickerCell:@"end"];
+        
     }
+    [self dismissKeyboard];
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 

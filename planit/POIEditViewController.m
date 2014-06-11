@@ -53,6 +53,8 @@
 @property (weak, nonatomic) IBOutlet UIDatePicker *endDatePicker;
 @property (weak, nonatomic) IBOutlet UITableViewCell *endDatePickerCell;
 @property (weak, nonatomic) IBOutlet UITextView *notesTextView;
+@property(nonatomic, readonly, getter=isEditing) BOOL editing;
+
 @end
 
 
@@ -76,9 +78,15 @@
     [self hideDatePickerCell:@"start"];
     [self hideDatePickerCell:@"end"];
     [self hideDatePickerCell:@"when"];
-    
-    self.title = @"Add Point of Interest";
-    // Do any additional setup after loading the view.
+    if (!self.event)
+        self.title = @"Add Point of Interest";
+}
+
+-(void)dismissKeyboard
+{
+    if ([self.activeTextField isEditing]) [self.activeTextField resignFirstResponder];
+    if (self.notesTextView) [self.notesTextView resignFirstResponder];
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -95,6 +103,7 @@
     //send in the trip
     self.whenDatePicker.minimumDate = self.trip.start;
     self.whenDatePicker.maximumDate = self.trip.end;
+    
     
     //if the event is blank
     if (!self.event) {
@@ -152,8 +161,6 @@
 }
 
 #pragma mark - Table view data source
-
-
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     CGFloat height = standardRowHeight;
@@ -190,19 +197,32 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    if (indexPath.row == startPickerRow - 1)
+    if (indexPath.row == startPickerRow - 1){
         [self dateLabelSelectHandler:self.startPickerIsShowing pickerName:@"start"];
-    if (indexPath.row == endPickerRow - 1)
+        [self hideDatePickerCell:@"end"];
+        [self hideDatePickerCell:@"when"];
+    } else if (indexPath.row == endPickerRow - 1) {
         [self dateLabelSelectHandler:self.endPickerIsShowing pickerName:@"end"];
-    if (indexPath.row == dayPickerRow - 1){
+        [self hideDatePickerCell:@"start"];
+        [self hideDatePickerCell:@"when"];
+    } else if (indexPath.row == dayPickerRow - 1){
         [self dateLabelSelectHandler:self.dayPickerIsShowing pickerName:@"when"];
-    }
-    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
-    if (indexPath.row == deleteRow){
+        [self hideDatePickerCell:@"end"];
+        [self hideDatePickerCell:@"start"];
+    } else if (indexPath.row == deleteRow){
         [self.event.day removeEventsObject:self.event];
         [self.delegate updateTableView];
         [self dismissViewControllerAnimated:YES completion:NULL];
+    } else {
+        [self hideDatePickerCell:@"end"];
+        [self hideDatePickerCell:@"start"];
+        [self hideDatePickerCell:@"when"];
     }
+    
+    [self dismissKeyboard];
+    
+    
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     
 }
 

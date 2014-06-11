@@ -14,7 +14,7 @@
 @class PITransportation;
 
 
-@interface TransportationEditViewController : POIEditViewController
+@interface TransportationEditViewController : POIEditViewController<UITextFieldDelegate>
 - (IBAction)cancelClicked:(UIBarButtonItem *)sender;
 @property (strong, nonatomic) PITrip *trip;
 - (IBAction)saveClicked:(UIBarButtonItem *)sender;

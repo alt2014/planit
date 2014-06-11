@@ -25,7 +25,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *startLabel;
 @property (weak, nonatomic) IBOutlet UILabel *endLabel;
 @property (weak, nonatomic) IBOutlet UITextField *nameTextField;
- 
+@property(nonatomic, readonly, getter=isEditing) BOOL editing;
+
 @property (strong, nonatomic) NSDate *selectedStart;
 
 @property (strong, nonatomic) NSDate *selectedEnd;
@@ -55,6 +56,11 @@
     [self hideDatePickerCell:@"start"];
     [self hideDatePickerCell:@"end"];
     self.title = @"Add a Trip";
+}
+
+-(void)dismissKeyboard
+{
+    if (self.nameTextField) [self.nameTextField resignFirstResponder];
 }
 
 #pragma mark - Helper methods
@@ -113,7 +119,7 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if (indexPath.row == 1){
-        
+        [self hideDatePickerCell:@"end"];
         if (self.startPickerIsShowing){
             
             [self hideDatePickerCell:@"start"];
@@ -123,9 +129,8 @@
             [self.activeTextField resignFirstResponder];
             [self showDatePickerCell:@"start"];
         }
-    }
-    if (indexPath.row == 3){
-        
+    } else if (indexPath.row == 3){
+        [self hideDatePickerCell:@"start"];
         if (self.endPickerIsShowing){
             
             [self hideDatePickerCell:@"end"];
@@ -135,8 +140,12 @@
             [self.activeTextField resignFirstResponder];
             [self showDatePickerCell:@"end"];
         }
+    } else {
+        [self hideDatePickerCell:@"start"];
+        [self hideDatePickerCell:@"end"];
     }
     
+    [self dismissKeyboard];
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
