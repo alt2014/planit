@@ -72,7 +72,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Title" id="gcP-gY-u1J">
                         <barButtonItem key="leftBarButtonItem" image="menu.png" id="ZOY-VO-4sQ"/>
-                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="compose" id="VWf-Cm-Erm">
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="edit" id="VWf-Cm-Erm">
                             <connections>
                                 <segue destination="Fvn-Bg-wBd" kind="modal" identifier="editTrips" modalTransitionStyle="crossDissolve" id="sBW-5l-i17"/>
                             </connections>
@@ -1493,7 +1493,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <barButtonItem key="leftBarButtonItem" image="menu.png" id="kPx-9Y-DTa">
                             <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="lUP-Uz-7In">
+                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="lUP-Uz-7In">
                             <connections>
                                 <segue destination="GIF-Mc-LfC" kind="modal" identifier="itineraryEditSegue" modalTransitionStyle="crossDissolve" id="3L8-Mv-dG8"/>
                             </connections>
