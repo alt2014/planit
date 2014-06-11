@@ -8,7 +8,7 @@
 
 #import "POIEditViewController.h"
 
-@interface LodgingEditViewController : POIEditViewController
+@interface LodgingEditViewController : POIEditViewController<UITextFieldDelegate>
 - (IBAction)cancelClicked:(UIBarButtonItem *)sender;
 @property (strong, nonatomic) PITrip *trip;
 - (IBAction)saveClicked:(UIBarButtonItem *)sender;

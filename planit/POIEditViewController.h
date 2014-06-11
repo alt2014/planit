@@ -14,7 +14,7 @@
 - (void)updateTableView:(NSInteger)lastAddDate;
 @end
 
-@interface POIEditViewController : UITableViewController
+@interface POIEditViewController : UITableViewController<UITextFieldDelegate>
 @property (strong, nonatomic) PIEvent *event;
 @property (strong, nonatomic) PITrip *trip;
 @property (strong, nonatomic) NSDateFormatter *dateFormatter;
