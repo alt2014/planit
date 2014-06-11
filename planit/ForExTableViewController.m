@@ -200,9 +200,14 @@ CurrencyManager *_manager;
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {
         if (indexPath.row == fromPickerRow - 1) {
+            [self hidePickerCell:@"to"];
             [self countryLabelSelectHandler:self.fromPickerIsShowing pickerName:@"from"];
         } else if (indexPath.row == toPickerRow - 1) {
+            [self hidePickerCell:@"from"];
             [self countryLabelSelectHandler:self.toPickerIsShowing pickerName:@"to"];
+        } else {
+            [self hidePickerCell:@"to"];
+            [self hidePickerCell:@"from"];
         }
     }
     
