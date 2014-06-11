@@ -21,6 +21,6 @@
 
 - (IBAction)doneClicked:(UIBarButtonItem *)sender;
 @property (strong, nonatomic) PITrip *trip;
-@property  (weak, nonatomic) ItineraryViewController<updateTableDelegate>* delegate;
+@property  (weak, nonatomic) id<updateTableDelegate> delegate;
 
 @end

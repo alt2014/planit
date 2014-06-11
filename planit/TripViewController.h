@@ -17,5 +17,5 @@
 @interface TripViewController : UITableViewController
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *sideBarButton;
 - (IBAction)doneClicked:(UIBarButtonItem *)sender;
-@property TripViewController<AddTripDelegate>* delegate;
+@property id<AddTripDelegate> delegate;
 @end

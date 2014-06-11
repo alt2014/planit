@@ -55,7 +55,8 @@
     [self signUpForKeyboardNotifications];
     [self hideDatePickerCell:@"start"];
     [self hideDatePickerCell:@"end"];
-    self.title = @"Add a Trip";
+    if (!self.trip)
+        self.title = @"Add a Trip";
 }
 
 -(void)dismissKeyboard
@@ -245,14 +246,7 @@
     NSMutableDictionary *trip = [[NSMutableDictionary alloc] init];
     NSDate *start = self.selectedStart;
     NSDate *end = self.selectedEnd;
-    //    NSDate *oldDate = sender.date; // Or however you get it.
     unsigned unitFlags = NSCalendarUnitYear | NSCalendarUnitMonth |  NSCalendarUnitDay;
-    //    NSCalendar *calendar = [NSCalendar currentCalendar];
-    //    NSDateComponents *comps = [calendar components:unitFlags fromDate:oldDate];
-    //    comps.hour   = 23;
-    //    comps.minute = 59;
-    //    comps.second = 59;
-    //    NSDate *newDate = [calendar dateFromComponents:comps];
     NSCalendar *calendar = [NSCalendar currentCalendar];
     NSDateComponents *startComps = [calendar components:unitFlags fromDate:start];
     startComps.hour = 0;
@@ -265,15 +259,17 @@
     endComps.minute = 59;
     endComps.second = 59;
     end = [calendar dateFromComponents:endComps];
-    
-    [trip setObject:self.nameTextField.text forKey:T_NAME_KEY];
-    [trip setObject:start   forKey:T_START_KEY];
-    [trip setObject:end forKey:T_END_KEY];
-    [trip setObject:@"with some freindss" forKey:T_NOTES_KEY];
-    NSManagedObjectContext *context = [DataManager getManagedObjectContext];
-    PITrip *t = [PITrip createTripFromDictionary:trip inManagedObjectContext:context];
+    if (!self.trip) {
+        [trip setObject:self.nameTextField.text forKey:T_NAME_KEY];
+        [trip setObject:start   forKey:T_START_KEY];
+        [trip setObject:end forKey:T_END_KEY];
+        [trip setObject:@"with some freindss" forKey:T_NOTES_KEY];
+        NSManagedObjectContext *context = [DataManager getManagedObjectContext];
+        PITrip *t = [PITrip createTripFromDictionary:trip inManagedObjectContext:context];
+    } else {
+        
+    }
     [self.delegate updateTableDataSource];
-    //[self.delegate saveT®®ripDetails:t];
     
     
     [self dismissViewControllerAnimated:YES completion:NULL];

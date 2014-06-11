@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-@class Trip;
+@class PITrip;
 
 @protocol AddTripDelegate <NSObject>
 
@@ -21,5 +21,5 @@
 - (IBAction)cancelPressed:(UIBarButtonItem *)sender;
 - (IBAction)endDateChanged:(UIDatePicker *)sender;
 - (IBAction)savePressed:(UIBarButtonItem *)sender;
-
+@property (weak, nonatomic) PITrip *trip;
 @end
