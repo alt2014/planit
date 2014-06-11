@@ -235,11 +235,11 @@ static NSString *editLodgingSegueID = @"editLodgingSegue";
         if (currentlyExpanded) {
             [tableView deleteRowsAtIndexPaths:tmpArray
                              withRowAnimation:UITableViewRowAnimationTop];
-            cell.accessoryView = [DTCustomColoredAccessory accessoryWithColor:[UIColor grayColor] type:DTCustomColoredAccessoryTypeDown];
+            cell.accessoryView = [DTCustomColoredAccessory accessoryWithColor:[UIColor grayColor] type:DTCustomColoredAccessoryTypeUp];
         } else {
             [tableView insertRowsAtIndexPaths:tmpArray
                              withRowAnimation:UITableViewRowAnimationTop];
-            cell.accessoryView =  [DTCustomColoredAccessory accessoryWithColor:[UIColor grayColor] type:DTCustomColoredAccessoryTypeUp];
+            cell.accessoryView =  [DTCustomColoredAccessory accessoryWithColor:[UIColor grayColor] type:DTCustomColoredAccessoryTypeDown];
 
         }
     }
